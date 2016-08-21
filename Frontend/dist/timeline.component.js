@@ -25,10 +25,13 @@ var TimelineComponent = (function () {
         console.log("woohoo!");
         // open/expand a Modal?? for the first Milestone input
     };
+    TimelineComponent.prototype.addMilestone = function () {
+        console.log("blarg");
+    };
     TimelineComponent = __decorate([
         core_1.Component({
             selector: "timeline",
-            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date\">\n\t\t\t\t<input\n\t                class=\"start-date\"\n\t                type=\"text\"\n\t                placeholder=\"start date\"\n\t                [(ngModel)]=\"timelineObject.startDate\"\n\t                (blur)=\"moveToCompletionDate()\"\n\t            />\n\t        </div>\n\n\t\t\t<div>\n\t\t\t\t<svg class=\"line\" height=\"400\">\n\t  \t\t\t<line x10=\"1\" y1=\"0\" x20=\"1\" y2=\"400\" style=\"stroke:rgb(128,140,140);stroke-width:5\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\n\t\t\t<div class=\"date\">\n\t\t\t\t<input\n\t                class=\"completion-date\"\n\t                type=\"text\"\n\t                placeholder=\"completion date\"\n\t                [(ngModel)]=\"timelineObject.completionDate\"\n\t                (blur)=\"openFirstMilestone()\"\n\t            />\n\t        </div>\n\n\t\t</div>\n\t",
+            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date\">\n\t\t\t\t<input\n\t                class=\"start-date\"\n\t                type=\"text\"\n\t                placeholder=\"start date\"\n\t                [(ngModel)]=\"timelineObject.startDate\"\n\t                (blur)=\"moveToCompletionDate()\"\n\t            />\n\t        </div>\n\n\t\t\t<div>\n\t\t\t\t<svg class=\"line\" height=\"400\">\n\t  \t\t\t<line x10=\"1\" y1=\"0\" x20=\"1\" y2=\"400\" style=\"stroke:rgb(128,140,140);stroke-width:5\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\n\t\t\t<div class=\"date\">\n\t\t\t\t<input\n\t                class=\"completion-date\"\n\t                type=\"text\"\n\t                placeholder=\"completion date\"\n\t                [(ngModel)]=\"timelineObject.completionDate\"\n\t                (blur)=\"openFirstMilestone()\"\n\t            />\n\t        </div>\n\n\t        <button class=\"btn btn-default\"\n    \t\t\t(click)=\"addMilestone()\" data-toggle=\"modal\" data-target=\"#individual-milestone\"\n\t\t\t>Add Milestone</button>\n\n\t\t</div>\n\t",
             styles: ["\n\t\t.line {\n\t\t\tz-index: -1;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])

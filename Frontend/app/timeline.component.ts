@@ -30,6 +30,10 @@ import { Component } from "@angular/core";
 	            />
 	        </div>
 
+	        <button class="btn btn-default"
+    			(click)="addMilestone()" data-toggle="modal" data-target="#individual-milestone"
+			>Add Milestone</button>
+
 		</div>
 	`,
 	styles: [`
@@ -55,6 +59,9 @@ export class TimelineComponent {
 	openFirstMilestone() {
 		console.log("woohoo!");
 		// open/expand a Modal?? for the first Milestone input
+	}
+	addMilestone() {
+		console.log("blarg");
 	}
 }
 
