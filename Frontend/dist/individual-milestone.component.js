@@ -10,20 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var MilestoneComponent = (function () {
-    function MilestoneComponent() {
+var IndividualMilestoneComponent = (function () {
+    function IndividualMilestoneComponent() {
         this.milestoneDescription = "";
         this.milestoneDeadline = "";
         this.milestoneResources = [];
         this.milestoneResourcesCost = [];
         this.milestoneTeamMembers = [];
         this.milestoneTeamMemberRoles = [];
-        this.milestoneTeamMembersHours = [];
-        this.milestoneTeamMembersCost = [];
         this.milestoneObstacles = [];
         this.milestoneSolutions = [];
     }
-    MilestoneComponent.prototype.addResource = function (resource, resourceCost) {
+    IndividualMilestoneComponent.prototype.addResource = function (resource, resourceCost) {
         // add new resource to Milestone component
         if (resource) {
             this.milestoneResources.push(resource);
@@ -33,7 +31,7 @@ var MilestoneComponent = (function () {
             this.milestoneResourcesCost.push(resourceCost);
         }
     };
-    MilestoneComponent.prototype.addTeamMember = function (teamMember, teamMemberRole, teamMemberHours, teamMemberSalary) {
+    IndividualMilestoneComponent.prototype.addTeamMember = function (teamMember, teamMemberRole) {
         // add new team member to Milestone component
         if (teamMember) {
             this.milestoneTeamMembers.push(teamMember);
@@ -41,14 +39,8 @@ var MilestoneComponent = (function () {
         if (teamMemberRole) {
             this.milestoneTeamMemberRoles.push(teamMemberRole);
         }
-        if (teamMemberHours) {
-            this.milestoneTeamMembersHours.push(teamMemberHours);
-        }
-        if (teamMemberSalary) {
-            this.milestoneTeamMembersCost.push((teamMemberSalary / 2080) * teamMemberHours);
-        }
     };
-    MilestoneComponent.prototype.addObstacle = function (obstacle, solution) {
+    IndividualMilestoneComponent.prototype.addObstacle = function (obstacle, solution) {
         // add new obstacle to Milestone component
         if (obstacle) {
             this.milestoneObstacles.push(obstacle);
@@ -57,19 +49,19 @@ var MilestoneComponent = (function () {
             this.milestoneSolutions.push(solution);
         }
     };
-    MilestoneComponent.prototype.saveMilestone = function () {
+    IndividualMilestoneComponent.prototype.saveMilestone = function () {
         // save data to Mongo
     };
-    MilestoneComponent = __decorate([
+    IndividualMilestoneComponent = __decorate([
         core_1.Component({
-            selector: 'milestone',
+            selector: 'individual-milestone',
             directives: common_1.FORM_DIRECTIVES.slice(),
-            templateUrl: 'app/html_files/milestone-component.html',
+            templateUrl: 'app/html_files/individual-milestone-component.html',
             styleUrls: ['app/css_files/milestone.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], MilestoneComponent);
-    return MilestoneComponent;
+    ], IndividualMilestoneComponent);
+    return IndividualMilestoneComponent;
 }());
-exports.MilestoneComponent = MilestoneComponent;
-//# sourceMappingURL=milestone.component.js.map
+exports.IndividualMilestoneComponent = IndividualMilestoneComponent;
+//# sourceMappingURL=individual-milestone.component.js.map

@@ -15,7 +15,7 @@ var DashboardComponent = (function () {
     DashboardComponent = __decorate([
         core_1.Component({
             selector: "dashboard",
-            template: "\n        <div class=\"dashboard\">\n\t\t\t<button class=\"btn btn-default\" (click)=\"newGoal()\">\n\t\t\t\t<a routerLink=\"/goal-builder\">Build a New Goal></a>\n\t\t\t</button>\n        </div>\n    "
+            template: "\n        <div class=\"dashboard\">\n\t\t\t<button class=\"btn btn-default\" (click)=\"newGoal()\">\n\t\t\t\t<a routerLink=\"/corporate-goal-builder\">Build a New Goal></a>\n\t\t\t</button>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);

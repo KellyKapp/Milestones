@@ -15,8 +15,10 @@ var routes_1 = require("./routes");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./welcome.component");
-var dashboard_component_1 = require("./dashboard.component");
-var goal_builder_component_1 = require("./goal-builder.component");
+var corporate_dashboard_component_1 = require("./corporate-dashboard.component");
+var corporate_goal_builder_component_1 = require("./corporate-goal-builder.component");
+var individual_dashboard_component_1 = require("./individual-dashboard.component");
+var individual_goal_builder_component_1 = require("./individual-goal-builder.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,8 +28,10 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 welcome_component_1.WelcomeComponent,
-                dashboard_component_1.DashboardComponent,
-                goal_builder_component_1.GoalBuilderComponent,
+                corporate_dashboard_component_1.CorporateDashboardComponent,
+                corporate_goal_builder_component_1.CorporateGoalBuilderComponent,
+                individual_dashboard_component_1.IndividualDashboardComponent,
+                individual_goal_builder_component_1.IndividualGoalBuilderComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [router_1.provideRouter(routes_1.routes)]

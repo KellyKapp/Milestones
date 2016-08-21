@@ -1,8 +1,10 @@
 import { RouterConfig } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { WelcomeComponent } from "./welcome.component";
-import { DashboardComponent } from "./dashboard.component";
-import { GoalBuilderComponent } from "./goal-builder.component";
+import { CorporateDashboardComponent } from "./corporate-dashboard.component";
+import { CorporateGoalBuilderComponent } from "./corporate-goal-builder.component";
+import { IndividualDashboardComponent } from "./individual-dashboard.component";
+import { IndividualGoalBuilderComponent } from "./individual-goal-builder.component";
 
 export const routes: RouterConfig = [
     {
@@ -10,12 +12,20 @@ export const routes: RouterConfig = [
         component: WelcomeComponent
     },
     {
-        path: "dashboard",
-        component: DashboardComponent
+        path: "corporate-dashboard",
+        component: CorporateDashboardComponent
     },
     {
-        path: "goal-builder",
-        component: GoalBuilderComponent
+        path: "individual-dashboard",
+        component: IndividualDashboardComponent
+    },
+    {
+        path: "corporate-goal-builder",
+        component: CorporateGoalBuilderComponent
+    },
+    {
+        path: "individual-goal-builder",
+        component: IndividualGoalBuilderComponent
     }
 ];
 

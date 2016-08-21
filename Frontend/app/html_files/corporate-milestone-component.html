@@ -8,7 +8,7 @@
 	<div class="milestone-input col-md-6 col-sm-10">
 		<div class="milestone-description">
 			<h5><img src="#" alt="#" style="#"> Description</h5>
-			<input #box
+			<input
 		        class="form-control"
 		        type="text"
 		        [(ngModel)]="milestoneDescription"
@@ -32,75 +32,67 @@
 		        type="text"
 		        placeholder="Resource"
 		        [(ngModel)]="milestoneResource"
-		        (keyup.enter)="addResource(resource.value)"
-		        (blur)="addResource(resource.value)"
 		    />
-		    <input
+		    <input #resourceCost
 		        class="form-control"
 		        type="number"
 		        placeholder="Total Cost"
 		        [(ngModel)]="milestoneResourceCost"
-		        (blur)="printToOutput"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="addResource()"
+		    	(click)="addResource(resource.value, resourceCost.value)"
 			>Add Resource</button>
 
 		</div>
 
 		<div class="milestone-team">
 			<h5><img src="#" alt="#" style="#"> Team</h5>
-			<input
+			<input #teamMember
 		        class="form-control"
 		        type="text"
 		        placeholder="Name"
 		        [(ngModel)]="milestoneTeamMember"
-		        (blur)="printToOutput"
 		    />
-		    <input
+		    <input #teamMemberRole
 		        class="form-control"
 		        type="text"
 		        placeholder="Role"
 		        [(ngModel)]="milestoneTeamMemberRole"
 		        (blur)="printToOutput"
 		    />
-		    <input
+		    <input #teamMemberHours
 		        class="form-control"
 		        type="text"
 		        placeholder="Hours Committed"
 		        [(ngModel)]="milestoneTeamMemberHours"
-		        (blur)="printToOutput"
 		    />
-		    <input
+		    <input #teamMemberSalary
 		        class="form-control"
 		        type="text"
 		        placeholder="Salary"
-		        [(ngModel)]="milestoneTeamMemberSalary"
-		        (blur)="printToOutput"
+		        [(ngModel)]="milestoneTeamMemberCost"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="addTeamMember()"
+		    	(click)="addTeamMember(teamMember.value, teamMemberRole.value, teamMemberHours.value, teamMemberSalary.value)"
 			>Add Team Member</button>
 		</div>
 
 		<div class="milestone-obstacles">
 			<h5><img src="#" alt="#" style="#"> Obstacles</h5>
-			<input
+			<input #obstacle
 		        class="form-control"
 		        type="text"
 		        placeholder="description"
 		        [(ngModel)]="milestoneObstacle"
-		        (blur)="printToOutput"
 		    />
-		    <input
+		    <input #solution
 		        class="form-control"
 		        type="text"
 		        placeholder="solution"
 		        [(ngModel)]="milestoneSolution"
-		        (blur)="printToOutput"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="addObstacle()"
+		    	(click)="addObstacle(obstacle.value, solution.value)"
 			>Add Obstacle</button>
 		</div>
 	</div>
@@ -119,43 +111,43 @@
 	        </li>
 	    </ul>
 	    <ul>
-<!-- 	    	<li *ngFor="let milestone-resource-cost of milestone-resource-costs">
-	    		{{milestone-resource-cost}}
-	    	</li> -->
+	    	<li *ngFor="let milestoneResourceCost of milestoneResourcesCost">
+	    		{{milestoneResourceCost}}
+	    	</li>
 		</ul>
 
 		<h5>Team</h5>
 		<ul>
-<!-- 			<li *ngFor="let milestone-member of milestone-members">
-				{{milestone-member}}
-			</li> -->
+			<li *ngFor="let milestoneTeamMember of milestoneTeamMembers">
+				{{milestoneTeamMember}}
+			</li>
 		</ul>
 		<ul>
-<!-- 			<li *ngFor="let milestone-member-role of milestone-member-roles">
-				{{milestone-member-role}}
-			</li> -->
+			<li *ngFor="let milestoneTeamMemberRole of milestoneTeamMemberRoles">
+				{{milestoneTeamMemberRole}}
+			</li>
 		</ul>
 		<ul>
-<!-- 			<li *ngFor="let milestone-member-hour of milestone-member-hours">
-				{{milestone-member-hour}}
-			</li> -->
+			<li *ngFor="let milestoneTeamMemberHours of milestoneTeamMembersHours">
+				{{milestoneTeamMemberHours}}
+			</li>
 		</ul>
 		<ul>
-<!-- 			<li *ngFor="let milestone-member-cost of milestone-member-costs">
-				{{milestone-member-cost}}
-			</li> -->
+			<li *ngFor="let milestoneTeamMemberCost of milestoneTeamMembersCost">
+				{{milestoneTeamMemberCost.toFixed(2)}}
+			</li>
 		</ul>
 
 		<h5>Obstacles & Solutions</h5>
 		<ul>
-<!-- 			<li *ngFor="let milestone-obstacle of milestone-obstacles">
-				{{milestone-obstacle}}
-			</li> -->
+			<li *ngFor="let milestoneObstacle of milestoneObstacles">
+				{{milestoneObstacle}}
+			</li>
 		</ul>
 		<ul>
-<!-- 			<li *ngFor="let milestone-solution of milestone-solutions">
-				{{milestone-solution}}
-			</li> -->
+			<li *ngFor="let milestoneSolution of milestoneSolutions">
+				{{milestoneSolution}}
+			</li>
 		</ul>
 	</div>
 </div>
@@ -164,7 +156,7 @@
 	<div class="col-md-10 col-sm-10">
 		<button class="btn btn-default"
     		(click)="saveMilestone()"
-		>#</button>
+		>Add To Timeline</button>
 	</div>
 </div>
 

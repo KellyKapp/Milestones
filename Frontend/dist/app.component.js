@@ -14,14 +14,12 @@ var AppComponent = (function () {
     function AppComponent(router) {
         this.router = router;
     }
-    AppComponent.prototype.getStarted = function (evt) {
-        this.router.navigate(['dashboard']);
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: "milestones-app",
             directives: router_1.ROUTER_DIRECTIVES.slice(),
-            template: "\n    <div>\n        <nav class=\"navbar navbar-default\">\n          <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n              <a class=\"navbar-brand\" href=\"#\">\n                <img alt=\"Brand\" src=\"...\">\n              </a>\n            </div>\n            <ul class=\"nav navbar-nav\">\n                <li>\n                    <a routerLink=\"\">Home</a>\n                </li>\n                <li>\n                    <a routerLink=\"/about\">About</a>\n                </li>\n                <li>\n                <a routerLink=\"/login\">Login</a>\n                </li>\n            </ul>\n          </div>\n        </nav>\n        <router-outlet></router-outlet>\n    </div>\n    "
+            template: "\n    <div>\n        <nav class=\"navbar navbar-default\">\n          <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n              <a class=\"navbar-brand\" routerLink=\"/\">\n                <img id=\"brand\" alt=\"Brand\" src=\"../media/Short_Logo.png\">\n              </a>\n            </div>\n            <ul class=\"nav navbar-nav\">\n                <li>\n                    <a routerLink=\"/about\">About</a>\n                </li>\n                <li>\n                <a routerLink=\"/login\">Login</a>\n                </li>\n            </ul>\n          </div>\n        </nav>\n        <router-outlet></router-outlet>\n    </div>\n    ",
+            styles: ["\n        .navbar-brand {\n            padding: 10px;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], AppComponent);

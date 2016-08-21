@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var WelcomeComponent = (function () {
-    function WelcomeComponent() {
+var CorporateDashboardComponent = (function () {
+    function CorporateDashboardComponent() {
     }
-    WelcomeComponent = __decorate([
+    CorporateDashboardComponent = __decorate([
         core_1.Component({
-            selector: "welcome",
-            template: "\n    \t<button class=\"btn btn-default\">\n            <a routerLink=\"/individual-dashboard\">Individual</a>\n        </button>\n        <button class=\"btn btn-default\">\n\t\t\t<a routerLink=\"/corporate-dashboard\">Corporate</a>\n        </button>\n    "
+            selector: "corporate-dashboard",
+            template: "\n        <div class=\"dashboard\">\n\t\t\t<button class=\"btn btn-default\">\n\t\t\t\t<a routerLink=\"/corporate-goal-builder\">Build a New Goal></a>\n\t\t\t</button>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
-    ], WelcomeComponent);
-    return WelcomeComponent;
+    ], CorporateDashboardComponent);
+    return CorporateDashboardComponent;
 }());
-exports.WelcomeComponent = WelcomeComponent;
-//# sourceMappingURL=welcome.component.js.map
+exports.CorporateDashboardComponent = CorporateDashboardComponent;
+//# sourceMappingURL=corporate-dashboard.component.js.map

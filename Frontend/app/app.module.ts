@@ -6,16 +6,20 @@ import { FormsModule } from "@angular/forms";
 
 import { AppComponent }  from "./app.component";
 import { WelcomeComponent } from "./welcome.component";
-import { DashboardComponent } from "./dashboard.component";
-import { GoalBuilderComponent} from "./goal-builder.component";
+import { CorporateDashboardComponent } from "./corporate-dashboard.component";
+import { CorporateGoalBuilderComponent} from "./corporate-goal-builder.component";
+import { IndividualDashboardComponent } from "./individual-dashboard.component";
+import { IndividualGoalBuilderComponent } from "./individual-goal-builder.component";
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
   declarations: [ 
   		AppComponent, 
   		WelcomeComponent, 
-  		DashboardComponent, 
-  		GoalBuilderComponent,
+  		CorporateDashboardComponent, 
+  		CorporateGoalBuilderComponent,
+  		IndividualDashboardComponent,
+  		IndividualGoalBuilderComponent
   	],
   bootstrap:    [ AppComponent ],
   providers:    [ provideRouter(routes)]

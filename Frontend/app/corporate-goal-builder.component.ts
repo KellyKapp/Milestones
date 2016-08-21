@@ -1,10 +1,10 @@
 import { Component } from "@angular/core";
 import { GoalSummaryComponent } from "./goal-summary.component";
 import { TimelineComponent } from "./timeline.component";
-import { MilestoneComponent } from "./milestone.component";
+import { CorporateMilestoneComponent } from "./corporate-milestone.component";
 
 @Component({
-    selector: "goal-builder",
+    selector: "corproate-goal-builder",
     template: `
         <div class="row">
 			<div class="col-md-4 col-sm-12 divtest">
@@ -14,7 +14,7 @@ import { MilestoneComponent } from "./milestone.component";
 				<timeline></timeline>
 			</div>
 			<div class="col-md-4 col-sm-12 divtest">
-				<milestone></milestone>
+				<corporate-milestone></corporate-milestone>
 			</div>
         </div>
     `,
@@ -28,11 +28,11 @@ import { MilestoneComponent } from "./milestone.component";
     directives: [
     	GoalSummaryComponent,
     	TimelineComponent,
-    	MilestoneComponent
+    	CorporateMilestoneComponent
     ]
 })
 
-export class GoalBuilderComponent {
+export class CorporateGoalBuilderComponent {
 
     
 }

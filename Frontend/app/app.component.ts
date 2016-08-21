@@ -9,14 +9,11 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">
-                <img alt="Brand" src="...">
+              <a class="navbar-brand" routerLink="/">
+                <img id="brand" alt="Brand" src="../media/Short_Logo.png">
               </a>
             </div>
             <ul class="nav navbar-nav">
-                <li>
-                    <a routerLink="">Home</a>
-                </li>
                 <li>
                     <a routerLink="/about">About</a>
                 </li>
@@ -28,15 +25,20 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
         </nav>
         <router-outlet></router-outlet>
     </div>
-    `
+    `,
+    styles: [`
+        .navbar-brand {
+            padding: 10px;
+        }
+    `]
 })
 
 export class AppComponent {
     constructor ( private router: Router) { }
 
-    getStarted(evt) {
-        this.router.navigate(['dashboard']);
-    }
+    // getStarted(evt) {
+    //     this.router.navigate(['dashboard']);
+    // }
 }
 
  // <div>
