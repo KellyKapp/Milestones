@@ -18,8 +18,8 @@ var CorporateGoalBuilderComponent = (function () {
     CorporateGoalBuilderComponent = __decorate([
         core_1.Component({
             selector: "corproate-goal-builder",
-            template: "\n        <div class=\"row\">\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<goal-summary></goal-summary>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<timeline></timeline>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<corporate-milestone></corporate-milestone>\n\t\t\t</div>\n        </div>\n    ",
-            styles: ["\n    \t.divtest {\n\t\t\tborder: 1px solid black;\n\t\t\theight: 700px;\n\t\t\twidth: 400px;\n    \t}\n    "],
+            template: "\n        <div class=\"row\">\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<goal-summary></goal-summary>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<timeline></timeline>\n\t\t\t</div>\n        </div>\n\n         <div id=\"corporate-milestone\" class=\"modal fade\" role=\"dialog\">\n          <div class=\"modal-dialog modal-lg\">\n\n            <!-- Modal content-->\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n                <h4 class=\"modal-title\">Milestone</h4>\n              </div>\n              <div class=\"modal-body\">\n                <corporate-milestone></corporate-milestone>\n              </div>\n            </div>\n\n          </div>\n        </div>\n    ",
+            styles: ["\n    \t.divtest {\n\t\t\tborder: 1px solid black;\n\t\t\theight: 500px;\n\t\t\twidth: 400px;\n    \t}\n    "],
             directives: [
                 goal_summary_component_1.GoalSummaryComponent,
                 timeline_component_1.TimelineComponent,

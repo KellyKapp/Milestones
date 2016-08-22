@@ -14,6 +14,9 @@ import { MilestonesRollupComponent } from "./milestones-rollup.component";
                     [(ngModel)]="goalName"
                 />
 			</div>
+			<button class="btn btn-default"
+    			(click)="startGoal()"
+			>Create</button>
 			<div class="milestones-rollup">
 				<milestone-rollup></milestone-rollup>
 			</div>
@@ -26,7 +29,15 @@ import { MilestonesRollupComponent } from "./milestones-rollup.component";
 
 export class GoalSummaryComponent {
 
-	goalName: string= "";
+		goalName: string= "";
+
+
+	startGoal() {
+		console.log("clicked");
+		// save goal name to db
+		// open blank timeline
+		// unlock timeline start and end date fields
+	}
 
 	moveToStartDate(evt) {
 		console.log("clicked");

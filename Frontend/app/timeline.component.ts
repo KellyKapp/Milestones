@@ -10,7 +10,6 @@ import { Component } from "@angular/core";
 	                type="text"
 	                placeholder="start date"
 	                [(ngModel)]="timelineObject.startDate"
-	                (blur)="moveToCompletionDate()"
 	            />
 	        </div>
 
@@ -26,12 +25,14 @@ import { Component } from "@angular/core";
 	                type="text"
 	                placeholder="completion date"
 	                [(ngModel)]="timelineObject.completionDate"
-	                (blur)="openFirstMilestone()"
 	            />
 	        </div>
+	        <button class="btn btn-default"
+    			(click)="saveTimeline()"
+			>Save</button>
 
 	        <button class="btn btn-default"
-    			(click)="addMilestone()" data-toggle="modal" data-target="#individual-milestone"
+    			data-toggle="modal" data-target=".modal"
 			>Add Milestone</button>
 
 		</div>
@@ -51,17 +52,11 @@ export class TimelineComponent {
 		milestones: []
 	};
 
-	moveToCompletionDate() {
+	saveTimeline() {
 		console.log("yay!");
-		// open input for completion date on timeline
+		// save timeline start and end dates to db
+		// unlock add milestone button
 	}
 
-	openFirstMilestone() {
-		console.log("woohoo!");
-		// open/expand a Modal?? for the first Milestone input
-	}
-	addMilestone() {
-		console.log("blarg");
-	}
 }
 

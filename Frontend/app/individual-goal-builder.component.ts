@@ -35,7 +35,7 @@ import { IndividualMilestoneComponent } from "./individual-milestone.component";
     styles: [`
     	.divtest {
 			border: 1px solid black;
-			height: 700px;
+			height: 500px;
 			width: 400px;
     	}
     `],
