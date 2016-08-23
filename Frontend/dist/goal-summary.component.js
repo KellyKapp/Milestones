@@ -19,14 +19,10 @@ var GoalSummaryComponent = (function () {
         // open blank timeline
         // unlock timeline start and end date fields
     };
-    GoalSummaryComponent.prototype.moveToStartDate = function (evt) {
-        console.log("clicked");
-        // open input for start date on timeline
-    };
     GoalSummaryComponent = __decorate([
         core_1.Component({
             selector: "goal-summary",
-            template: "\n\t\t<div class=\"goal-summary\">\n\t\t\t<div>\n\t\t\t\t<input\n                    class=\"form-control\"\n                    type=\"text\"\n                    placeholder=\"Goal Name\"\n                    [(ngModel)]=\"goalName\"\n                />\n\t\t\t</div>\n\t\t\t<button class=\"btn btn-default\"\n    \t\t\t(click)=\"startGoal()\"\n\t\t\t>Create</button>\n\t\t\t<div class=\"milestones-rollup\">\n\t\t\t\t<milestone-rollup></milestone-rollup>\n\t\t\t</div>\n\t\t</div>\n\t",
+            template: "\n\t\t<div class=\"goal-summary\">\n\n\t\t</div>\n\t",
             styles: ["\n\n\t"]
         }), 
         __metadata('design:paramtypes', [])

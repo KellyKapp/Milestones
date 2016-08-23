@@ -11,11 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var CorporateDashboardComponent = (function () {
     function CorporateDashboardComponent() {
+        this.corporateGoalStartObject = {
+            name: "",
+            startDate: "",
+            completionDate: ""
+        };
     }
     CorporateDashboardComponent = __decorate([
         core_1.Component({
             selector: "corporate-dashboard",
-            template: "\n        <div class=\"dashboard\">\n\t\t\t<button class=\"btn btn-default\">\n\t\t\t\t<a routerLink=\"/corporate-goal-builder\">Build a New Goal></a>\n\t\t\t</button>\n        </div>\n    "
+            template: "\n        <div class=\"dashboard\">\n        \t<div class=\"row\">\n\t        \t<div class=\"col-md-3\">\n\t\t        \t<input\n\t\t                class=\"form-control\"\n\t\t                type=\"text\"\n\t\t                placeholder=\"Goal Name\"\n\t\t                [(ngModel)]=\"corporateGoalStartObject.name\"\n\t\t            />\n\t\t        </div>\n\t\t        <div class=\"col-md-3\">\n\t\t            <input\n\t\t                class=\"form-control\"\n\t\t                type=\"text\"\n\t\t                placeholder=\"start date\"\n\t\t                [(ngModel)]=\"corporateGoalStartObject.startDate\"\n\t\t            />\n\t\t        </div>\n\t\t        <div class=\"col-md-3\">\n\t\t            <input\n\t\t                class=\"form-control\"\n\t\t                type=\"text\"\n\t\t                placeholder=\"end date\"\n\t\t                [(ngModel)]=\"corporateGoalStartObject.completionDate\"\n\t\t            />\n\t\t        </div>\n\t\t        <div class=\"col-md-3\">\n\t\t\t\t\t<button class=\"btn btn-default\" (click)=\"buildNewGoal\">\n\t\t\t\t\t\t<a routerLink=\"/individual-goal-builder\">Build a New Goal</a>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</div>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], CorporateDashboardComponent);

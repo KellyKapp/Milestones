@@ -12,21 +12,14 @@ var core_1 = require("@angular/core");
 var TimelineComponent = (function () {
     function TimelineComponent() {
         this.timelineObject = {
-            startDate: "",
-            completionDate: "",
             milestones: []
         };
     }
-    TimelineComponent.prototype.saveTimeline = function () {
-        console.log("yay!");
-        // save timeline start and end dates to db
-        // unlock add milestone button
-    };
     TimelineComponent = __decorate([
         core_1.Component({
             selector: "timeline",
-            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date\">\n\t\t\t\t<input\n\t                class=\"start-date\"\n\t                type=\"text\"\n\t                placeholder=\"start date\"\n\t                [(ngModel)]=\"timelineObject.startDate\"\n\t            />\n\t        </div>\n\n\t\t\t<div>\n\t\t\t\t<svg class=\"line\" height=\"400\">\n\t  \t\t\t<line x10=\"1\" y1=\"0\" x20=\"1\" y2=\"400\" style=\"stroke:rgb(128,140,140);stroke-width:5\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\n\t\t\t<div class=\"date\">\n\t\t\t\t<input\n\t                class=\"completion-date\"\n\t                type=\"text\"\n\t                placeholder=\"completion date\"\n\t                [(ngModel)]=\"timelineObject.completionDate\"\n\t            />\n\t        </div>\n\t        <button class=\"btn btn-default\"\n    \t\t\t(click)=\"saveTimeline()\"\n\t\t\t>Save</button>\n\n\t        <button class=\"btn btn-default\"\n    \t\t\tdata-toggle=\"modal\" data-target=\".modal\"\n\t\t\t>Add Milestone</button>\n\n\t\t</div>\n\t",
-            styles: ["\n\t\t.line {\n\t\t\tz-index: -1;\n\t\t}\n\t"]
+            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\">\n\n\t        </div>\n\n\t\t\t<div>\n\t\t\t\t<svg class=\"line\" height=\"400\">\n\t  \t\t\t<line x10=\"1\" y1=\"0\" x20=\"1\" y2=\"400\" style=\"stroke:rgb(128,140,140);stroke-width:5\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\n\t\t\t<div class=\"date end\">\n\n\t        </div>\n\n\t        <button class=\"btn btn-default\"\n    \t\t\tdata-toggle=\"modal\" data-target=\".modal\"\n\t\t\t>Add Milestone</button>\n\n\t\t</div>\n\t",
+            styles: ["\n\t\t.line {\n\t\t\tz-index: -1;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 80px;\n\t\t\tborder: 1px solid black;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], TimelineComponent);

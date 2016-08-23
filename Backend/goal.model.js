@@ -1,7 +1,8 @@
 module.exports = function(mongoose) {
 	var Goal = mongoose.model ("Goal", {
 		name: String,
-		timeline: {},
+		startDate: String,
+		completionDate: String,
 		resources: [],
 		team: [],
 		obstacles: []

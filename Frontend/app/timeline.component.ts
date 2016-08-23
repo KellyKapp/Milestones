@@ -1,16 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
 	selector: "timeline",
 	template: `
 		<div class="timeline">
-			<div class="date">
-				<input
-	                class="start-date"
-	                type="text"
-	                placeholder="start date"
-	                [(ngModel)]="timelineObject.startDate"
-	            />
+			<div class="date start">
+
 	        </div>
 
 			<div>
@@ -19,17 +14,9 @@ import { Component } from "@angular/core";
 				</svg>
 			</div>
 
-			<div class="date">
-				<input
-	                class="completion-date"
-	                type="text"
-	                placeholder="completion date"
-	                [(ngModel)]="timelineObject.completionDate"
-	            />
+			<div class="date end">
+
 	        </div>
-	        <button class="btn btn-default"
-    			(click)="saveTimeline()"
-			>Save</button>
 
 	        <button class="btn btn-default"
     			data-toggle="modal" data-target=".modal"
@@ -41,22 +28,19 @@ import { Component } from "@angular/core";
 		.line {
 			z-index: -1;
 		}
+		.date {
+			height: 30px;
+			width: 80px;
+			border: 1px solid black;
+		}
 	`]
 })
 
 export class TimelineComponent {
 
 	timelineObject = {
-		startDate: "",
-		completionDate: "",
 		milestones: []
 	};
-
-	saveTimeline() {
-		console.log("yay!");
-		// save timeline start and end dates to db
-		// unlock add milestone button
-	}
 
 }
 

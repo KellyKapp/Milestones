@@ -6,6 +6,7 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
     directives: [ ...ROUTER_DIRECTIVES ],
     template: `
     <div>
+    
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -23,6 +24,7 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
             </ul>
           </div>
         </nav>
+
         <router-outlet></router-outlet>
     </div>
     `,
@@ -35,13 +37,6 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
 
 export class AppComponent {
     constructor ( private router: Router) { }
-
-    // getStarted(evt) {
-    //     this.router.navigate(['dashboard']);
-    // }
 }
 
- // <div>
- //         <button class="btn btn-default" (click)="getStarted($event)">Get Started</button>
- //    </div>
- 
+

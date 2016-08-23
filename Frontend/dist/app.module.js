@@ -13,6 +13,9 @@ var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
 var routes_1 = require("./routes");
 var forms_1 = require("@angular/forms");
+var api_service_1 = require("./api.service");
+var http_1 = require("@angular/http");
+var goal_builder_service_1 = require("./goal-builder.service");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./welcome.component");
 var corporate_dashboard_component_1 = require("./corporate-dashboard.component");
@@ -34,7 +37,7 @@ var AppModule = (function () {
                 individual_goal_builder_component_1.IndividualGoalBuilderComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [router_1.provideRouter(routes_1.routes)]
+            providers: [router_1.provideRouter(routes_1.routes), api_service_1.ApiService].concat(http_1.HTTP_PROVIDERS, [goal_builder_service_1.GoalBuilderService])
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

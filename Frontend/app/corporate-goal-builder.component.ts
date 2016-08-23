@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { GoalSummaryComponent } from "./goal-summary.component";
 import { TimelineComponent } from "./timeline.component";
 import { CorporateMilestoneComponent } from "./corporate-milestone.component";
+import { GoalBuilderService } from "./goal-builder.service";
 
 @Component({
     selector: "corproate-goal-builder",

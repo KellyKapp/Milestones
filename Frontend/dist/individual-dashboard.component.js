@@ -11,11 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var IndividualDashboardComponent = (function () {
     function IndividualDashboardComponent() {
+        this.individualGoalStartObject = {
+            name: "",
+            startDate: "",
+            completionDate: ""
+        };
     }
     IndividualDashboardComponent = __decorate([
         core_1.Component({
             selector: "individual-dashboard",
-            template: "\n        <div class=\"dashboard\">\n\t\t\t<button class=\"btn btn-default\">\n\t\t\t\t<a routerLink=\"/individual-goal-builder\">Build a New Goal></a>\n\t\t\t</button>\n        </div>\n    "
+            template: "\n        <div class=\"dashboard\">\n        \t<div class=\"row\">\n\t        \t<div class=\"col-md-3\">\n\t\t        \t<input\n\t\t                class=\"form-control\"\n\t\t                type=\"text\"\n\t\t                placeholder=\"Goal Name\"\n\t\t                [(ngModel)]=\"individualGoalStartObject.name\"\n\t\t            />\n\t\t        </div>\n\t\t        <div class=\"col-md-3\">\n\t\t            <input\n\t\t                class=\"form-control\"\n\t\t                type=\"text\"\n\t\t                placeholder=\"start date\"\n\t\t                [(ngModel)]=\"individualGoalStartObject.startDate\"\n\t\t            />\n\t\t        </div>\n\t\t        <div class=\"col-md-3\">\n\t\t            <input\n\t\t                class=\"form-control\"\n\t\t                type=\"text\"\n\t\t                placeholder=\"end date\"\n\t\t                [(ngModel)]=\"individualGoalStartObject.completionDate\"\n\t\t            />\n\t\t        </div>\n\t\t        <div class=\"col-md-3\">\n\t\t\t\t\t<button class=\"btn btn-default\" (click)=\"buildNewGoal\">\n\t\t\t\t\t\t<a routerLink=\"/individual-goal-builder\">Build a New Goal</a>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</div>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], IndividualDashboardComponent);

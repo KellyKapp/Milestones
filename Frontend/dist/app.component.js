@@ -18,7 +18,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: "milestones-app",
             directives: router_1.ROUTER_DIRECTIVES.slice(),
-            template: "\n    <div>\n        <nav class=\"navbar navbar-default\">\n          <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n              <a class=\"navbar-brand\" routerLink=\"/\">\n                <img id=\"brand\" alt=\"Brand\" src=\"../media/Short_Logo.png\">\n              </a>\n            </div>\n            <ul class=\"nav navbar-nav\">\n                <li>\n                    <a routerLink=\"/about\">About</a>\n                </li>\n                <li>\n                <a routerLink=\"/login\">Login</a>\n                </li>\n            </ul>\n          </div>\n        </nav>\n        <router-outlet></router-outlet>\n    </div>\n    ",
+            template: "\n    <div>\n    \n        <nav class=\"navbar navbar-default\">\n          <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n              <a class=\"navbar-brand\" routerLink=\"/\">\n                <img id=\"brand\" alt=\"Brand\" src=\"../media/Short_Logo.png\">\n              </a>\n            </div>\n            <ul class=\"nav navbar-nav\">\n                <li>\n                    <a routerLink=\"/about\">About</a>\n                </li>\n                <li>\n                <a routerLink=\"/login\">Login</a>\n                </li>\n            </ul>\n          </div>\n        </nav>\n\n        <router-outlet></router-outlet>\n    </div>\n    ",
             styles: ["\n        .navbar-brand {\n            padding: 10px;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
@@ -26,7 +26,4 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-// <div>
-//         <button class="btn btn-default" (click)="getStarted($event)">Get Started</button>
-//    </div>
 //# sourceMappingURL=app.component.js.map

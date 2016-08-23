@@ -31,9 +31,25 @@ app.use(function(req, res, next) {
 });
 
 
-app.post('/start-goal', function(req, res) {
-	var name = 
-})
+app.post('/create', function(req, res) {
+	var goal = {
+		name: req.body.name,
+		startDate: req.body.startDate,
+		completionDate: req.body.completionDate,
+		resources: [],
+		team: [],
+		obstacles: []
+	};
+
+	new GoalModel(goal).save(function(err, data){
+		if (err) {
+			res.status(500);
+			res.send("Error creating new Goal");
+			return;
+		}
+		res.send(JSON.stringify(data));
+	});
+});
 
 
 
