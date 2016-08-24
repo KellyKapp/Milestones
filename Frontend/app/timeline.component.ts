@@ -1,21 +1,17 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, ViewChild } from "@angular/core";
 
 @Component({
 	selector: "timeline",
 	template: `
 		<div class="timeline">
 			<div class="date start">
-
+				{{goal.startDate}}
 	        </div>
-
-			<div>
-				<svg class="line" height="400">
-	  			<line x10="1" y1="0" x20="1" y2="400" style="stroke:rgb(128,140,140);stroke-width:5" />
-				</svg>
-			</div>
+	        <canvas #canvas width="300" height="400" style="border:solid 1px #000000;">
+			</canvas>
 
 			<div class="date end">
-
+				{{goal.completionDate}}
 	        </div>
 
 	        <button class="btn btn-default"
@@ -37,6 +33,29 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 })
 
 export class TimelineComponent {
+
+	@Input() goal;
+
+	DrawTimeline() {
+	
+	}
+
+		@ViewChild('canvas') canvas;
+
+	ngOnInit() {
+	
+    	var ctx = this.canvas.nativeElement.getContext("2d");
+
+    	function Vertical_line() {
+    		ctx.beginPath();
+		    ctx.moveTo(150, 10);
+		    ctx.lineTo(150, 390);
+		    ctx.closePath();
+		    ctx.stroke();
+		}
+
+		Vertical_line();
+	}
 
 	timelineObject = {
 		milestones: []

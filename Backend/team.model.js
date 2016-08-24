@@ -1,6 +1,7 @@
 module.exports = function(mongoose) {
-	var Team = mongoose.model("Team", {
+	var TeamModel = mongoose.model("Team", {
 		members: [],
+		roles: [],
 		hours: [],
 		cost: []
 	});

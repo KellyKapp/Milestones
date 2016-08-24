@@ -20,11 +20,11 @@ export const routes: RouterConfig = [
         component: IndividualDashboardComponent
     },
     {
-        path: "corporate-goal-builder",
+        path: "corporate-goal-builder/:_id",
         component: CorporateGoalBuilderComponent
     },
     {
-        path: "individual-goal-builder",
+        path: "individual-goal-builder/:_id",
         component: IndividualGoalBuilderComponent
     }
 ];

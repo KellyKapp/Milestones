@@ -12,13 +12,23 @@ var core_1 = require("@angular/core");
 var goal_summary_component_1 = require("./goal-summary.component");
 var timeline_component_1 = require("./timeline.component");
 var individual_milestone_component_1 = require("./individual-milestone.component");
+var router_1 = require("@angular/router");
+var goal_builder_service_1 = require("./goal-builder.service");
 var IndividualGoalBuilderComponent = (function () {
-    function IndividualGoalBuilderComponent() {
+    function IndividualGoalBuilderComponent(route, goalBuilderService) {
+        this.route = route;
+        this.goalBuilderService = goalBuilderService;
     }
+    IndividualGoalBuilderComponent.prototype.ngOnInit = function () {
+        this.route.params.subscribe(function (params) {
+            this.goal = this.goalBuilderService.findGoalById(params["_id"]);
+            console.log(this.goal);
+        }.bind(this));
+    };
     IndividualGoalBuilderComponent = __decorate([
         core_1.Component({
             selector: "individual-goal-builder",
-            template: "\n        <div class=\"row\">\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<goal-summary></goal-summary>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<timeline></timeline>\n\t\t\t</div>\n        </div>\n\n        <div id=\"individual-milestone\" class=\"modal fade\" role=\"dialog\">\n          <div class=\"modal-dialog modal-lg\">\n\n            <!-- Modal content-->\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n                <h4 class=\"modal-title\">Milestone</h4>\n              </div>\n              <div class=\"modal-body\">\n                <individual-milestone></individual-milestone>\n              </div>\n            </div>\n\n          </div>\n        </div>\n    ",
+            template: "\n        <div class=\"row\">\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<goal-summary [goal]=\"goal\"></goal-summary>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<timeline [goal]=\"goal\"></timeline>\n\t\t\t</div>\n        </div>\n\n        <div id=\"individual-milestone\" class=\"modal fade\" role=\"dialog\">\n          <div class=\"modal-dialog modal-lg\">\n\n            <!-- Modal content-->\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n                <h4 class=\"modal-title\">Milestone</h4>\n              </div>\n              <div class=\"modal-body\">\n                <individual-milestone></individual-milestone>\n              </div>\n            </div>\n\n          </div>\n        </div>\n    ",
             styles: ["\n    \t.divtest {\n\t\t\tborder: 1px solid black;\n\t\t\theight: 500px;\n\t\t\twidth: 400px;\n    \t}\n    "],
             directives: [
                 goal_summary_component_1.GoalSummaryComponent,
@@ -26,7 +36,7 @@ var IndividualGoalBuilderComponent = (function () {
                 individual_milestone_component_1.IndividualMilestoneComponent
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, goal_builder_service_1.GoalBuilderService])
     ], IndividualGoalBuilderComponent);
     return IndividualGoalBuilderComponent;
 }());

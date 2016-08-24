@@ -1,5 +1,5 @@
 module.exports = function(mongoose) {
-	var Organization = mongoose.model("Organization", {
+	var OrganizationModel = mongoose.model("Organization", {
 		name: String,
 		admin: String,
 		members: [],

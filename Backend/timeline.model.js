@@ -1,5 +1,5 @@
 module.exports = function(mongoose) {
-	var Timeline = mongoose.model("Timeline", {
+	var TimelineModel = mongoose.model("Timeline", {
 		startDate: String,
 		completionDate: String,
 		milestones: []

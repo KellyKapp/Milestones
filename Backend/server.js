@@ -33,13 +33,16 @@ app.use(function(req, res, next) {
 
 app.post('/create', function(req, res) {
 	var goal = {
-		name: req.body.name,
-		startDate: req.body.startDate,
-		completionDate: req.body.completionDate,
+		name: req.body.goal.name,
+		startDate: req.body.goal.startDate,
+		completionDate: req.body.goal.completionDate,
 		resources: [],
 		team: [],
 		obstacles: []
 	};
+
+
+console.log(goal);
 
 	new GoalModel(goal).save(function(err, data){
 		if (err) {
@@ -49,6 +52,37 @@ app.post('/create', function(req, res) {
 		}
 		res.send(JSON.stringify(data));
 	});
+});
+
+
+app.get('/summary', function(req, res) {
+		GoalModel.find(
+		{ 
+			_id: req.body._id
+		}, 
+		function(err, data) {
+			if(err) {
+				res.status(500);
+				res.send("Error Finding Goal");
+				return;
+			}
+			res.send(JSON.stringify(data));
+		}
+	);
+});
+
+app.get('/all', function(req, res) {
+	GoalModel.find(
+		{ }, 
+		function(err, data) {
+			if(err) {
+				res.status(500);
+				res.send("Error Finding Goal");
+				return;
+			}
+			res.send(JSON.stringify(data));
+		}
+	);
 });
 
 

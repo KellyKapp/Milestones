@@ -1,0 +1,104 @@
+.hero {
+    background-image: url("../media/bg-43.png");
+    background-size: 1400px 800px;
+    font-family: 'Droid Sans Mono', monospace;
+    height: 600px;
+}
+.navbar-brand {
+    padding: none;
+    height: 60px;
+}
+nav.navbar.navbar-default {
+    border-radius: 0;
+    border: none;
+    background-color: #2F353B;
+    position: fixed;
+    z-index: 1;
+    width: 1360px;
+}
+.pull-right {
+    margin: 6px 0 0 250px;
+    font-size: 1.2em;
+    color: white;
+
+}
+.navbar-default .navbar-nav>li>a {
+    color: #32C5D2;
+}
+#brand {
+    margin: -28;
+}
+.welcome {
+    height: 500px;
+}
+.hero-text {
+    margin: 400px 0 0 420px;
+    width: 600px;
+}
+.hero-text h2 {
+    font-size: 2.75em;
+    color: white;
+}
+.buttons {
+    margin: 30px 475px;
+    width: 450px;
+}
+button.btn.btn-default {
+    height: 60px;
+    width: 180px;
+    margin: 0 20px;
+    font-family: Helvetica;
+    font-size: 1.5em;
+    background-color: #32C5D2;
+    border-radius: 0;
+    border: none;
+}
+button.btn.btn-default a {
+    color: white;
+}
+.line {
+    height: 3.5px;
+    width: 80px;
+    background-color: #32C5D2;
+    margin: 0 650px 20px 0;
+}
+p {
+    font-size: 1.25em;
+    text-align: justify;
+}
+.graphics-area {
+    padding-left: 100px;
+    padding-top: 40px;
+}
+.icon {
+    height: 175px;
+    width: 175px;
+    margin: 5px;
+}
+#team {
+    margin-top: 25px;
+}
+#cost {
+    margin-top: -5px;
+}
+#resources {
+    margin-top: 10px;
+}
+#obstacles {
+    margin-top: 5px;
+}
+.contact-container {
+    background-color: #F7F7F7;
+    margin-top: 40px;
+    padding: 40px 0;
+}
+.contact {
+    text-align: center;
+    margin: 8px 0;
+    height: 40px;
+}
+.contact-text {
+    font-size: 1.35em;
+    text-align: left;
+    line-height: 3em;
+}

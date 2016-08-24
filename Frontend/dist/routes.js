@@ -18,11 +18,11 @@ exports.routes = [
         component: individual_dashboard_component_1.IndividualDashboardComponent
     },
     {
-        path: "corporate-goal-builder",
+        path: "corporate-goal-builder/:_id",
         component: corporate_goal_builder_component_1.CorporateGoalBuilderComponent
     },
     {
-        path: "individual-goal-builder",
+        path: "individual-goal-builder/:_id",
         component: individual_goal_builder_component_1.IndividualGoalBuilderComponent
     }
 ];

@@ -17,23 +17,32 @@ var GoalBuilderService = (function () {
         this.getAllGoals().subscribe();
     }
     GoalBuilderService.prototype.getAllGoals = function () {
+        console.log("calling getAllGoals");
         return this.apiService.get("/all")
             .do(function (res) {
             this.goals = res;
+            console.log("got all goals");
         }.bind(this));
     };
-    GoalBuilderService.prototype.buildNewGoal = function () {
+    GoalBuilderService.prototype.buildNewGoal = function (individualGoalStartObject) {
         return this.apiService.post("/create", JSON.stringify({
             goal: {
-                name: "",
-                startDate: "",
-                completionDate: "",
+                name: individualGoalStartObject.name,
+                startDate: individualGoalStartObject.startDate,
+                completionDate: individualGoalStartObject.completionDate,
+                milestones: [],
                 resources: [],
                 team: [],
                 obstacles: []
             }
         })).do(function (res) {
             this.goals.push(res);
+        }.bind(this));
+    };
+    GoalBuilderService.prototype.getSummaryData = function () {
+        return this.apiService.get("/summary")
+            .do(function (res) {
+            this.goals = res;
         }.bind(this));
     };
     GoalBuilderService.prototype.deleteGoal = function (id) {

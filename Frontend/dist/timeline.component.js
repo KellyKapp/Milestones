@@ -15,10 +15,31 @@ var TimelineComponent = (function () {
             milestones: []
         };
     }
+    TimelineComponent.prototype.DrawTimeline = function () {
+    };
+    TimelineComponent.prototype.ngOnInit = function () {
+        var ctx = this.canvas.nativeElement.getContext("2d");
+        function Vertical_line() {
+            ctx.beginPath();
+            ctx.moveTo(150, 10);
+            ctx.lineTo(150, 390);
+            ctx.closePath();
+            ctx.stroke();
+        }
+        Vertical_line();
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], TimelineComponent.prototype, "goal", void 0);
+    __decorate([
+        core_1.ViewChild('canvas'), 
+        __metadata('design:type', Object)
+    ], TimelineComponent.prototype, "canvas", void 0);
     TimelineComponent = __decorate([
         core_1.Component({
             selector: "timeline",
-            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\">\n\n\t        </div>\n\n\t\t\t<div>\n\t\t\t\t<svg class=\"line\" height=\"400\">\n\t  \t\t\t<line x10=\"1\" y1=\"0\" x20=\"1\" y2=\"400\" style=\"stroke:rgb(128,140,140);stroke-width:5\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\n\t\t\t<div class=\"date end\">\n\n\t        </div>\n\n\t        <button class=\"btn btn-default\"\n    \t\t\tdata-toggle=\"modal\" data-target=\".modal\"\n\t\t\t>Add Milestone</button>\n\n\t\t</div>\n\t",
+            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\">\n\t\t\t\t{{goal.startDate}}\n\t        </div>\n\t        <canvas #canvas width=\"300\" height=\"400\" style=\"border:solid 1px #000000;\">\n\t\t\t</canvas>\n\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate}}\n\t        </div>\n\n\t        <button class=\"btn btn-default\"\n    \t\t\tdata-toggle=\"modal\" data-target=\".modal\"\n\t\t\t>Add Milestone</button>\n\n\t\t</div>\n\t",
             styles: ["\n\t\t.line {\n\t\t\tz-index: -1;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 80px;\n\t\t\tborder: 1px solid black;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])

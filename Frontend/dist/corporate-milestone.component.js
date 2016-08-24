@@ -59,6 +59,8 @@ var CorporateMilestoneComponent = (function () {
     };
     CorporateMilestoneComponent.prototype.saveMilestone = function () {
         // save data to Mongo
+        // create milestone object
+        // push pieces to arrays in goal object
     };
     CorporateMilestoneComponent = __decorate([
         core_1.Component({

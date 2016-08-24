@@ -1,5 +1,5 @@
 module.exports = function(mongoose) {
-	var Milestone = mongoose.model("Milestone", {
+	var MilestoneModel = mongoose.model("Milestone", {
 		description: String,
 		completionDate: String,
 		resources: [],

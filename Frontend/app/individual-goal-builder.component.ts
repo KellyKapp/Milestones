@@ -2,16 +2,18 @@ import { Component } from "@angular/core";
 import { GoalSummaryComponent } from "./goal-summary.component";
 import { TimelineComponent } from "./timeline.component";
 import { IndividualMilestoneComponent } from "./individual-milestone.component";
+import { ActivatedRoute } from "@angular/router";
+import { GoalBuilderService } from "./goal-builder.service";
 
 @Component({
     selector: "individual-goal-builder",
     template: `
         <div class="row">
 			<div class="col-md-4 col-sm-12 divtest">
-				<goal-summary></goal-summary>
+				<goal-summary [goal]="goal"></goal-summary>
 			</div>
 			<div class="col-md-4 col-sm-12 divtest">
-				<timeline></timeline>
+				<timeline [goal]="goal"></timeline>
 			</div>
         </div>
 
@@ -48,5 +50,15 @@ import { IndividualMilestoneComponent } from "./individual-milestone.component";
 
 export class IndividualGoalBuilderComponent {
 
-    
+    private goal;
+
+    constructor(private route: ActivatedRoute, private goalBuilderService: GoalBuilderService) {
+
+    }
+    ngOnInit() {
+      this.route.params.subscribe(function(params) {
+        this.goal = this.goalBuilderService.findGoalById(params["_id"]);
+        console.log(this.goal);
+      }.bind(this));
+    }
 }

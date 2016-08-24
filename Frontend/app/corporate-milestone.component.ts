@@ -69,6 +69,8 @@ addObstacle(obstacle: string, solution: string) {
 
 saveMilestone() {
 	// save data to Mongo
+		// create milestone object
+		// push pieces to arrays in goal object
 }
 
 }

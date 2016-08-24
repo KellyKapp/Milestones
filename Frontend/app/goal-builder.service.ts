@@ -10,18 +10,21 @@ import { ApiService } from "./api.service";
     }
 
     getAllGoals() {
+        console.log("calling getAllGoals");
         return this.apiService.get("/all")
             .do(function(res) {
                 this.goals = res;
+                console.log("got all goals");
             }.bind(this));
     }
 
-    buildNewGoal() {
+    buildNewGoal(individualGoalStartObject) {
         return this.apiService.post("/create", JSON.stringify({
             goal : {
-                name: "",
-                startDate: "",
-                completionDate: "",
+                name: individualGoalStartObject.name,
+                startDate: individualGoalStartObject.startDate,
+                completionDate: individualGoalStartObject.completionDate,
+                milestones: [],
                 resources: [],
 				team: [],
 				obstacles: []
@@ -29,6 +32,13 @@ import { ApiService } from "./api.service";
         })).do(function(res) {
             this.goals.push(res);
         }.bind(this));
+    }
+
+    getSummaryData() {
+        return this.apiService.get("/summary")
+            .do(function(res) {
+                this.goals = res;
+            }.bind(this));
     }
 
     deleteGoal(id) {

@@ -5,38 +5,21 @@ import { ROUTER_DIRECTIVES, Router } from "@angular/router";
     selector: "milestones-app",
     directives: [ ...ROUTER_DIRECTIVES ],
     template: `
-    <div>
-    
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" routerLink="/">
-                <img id="brand" alt="Brand" src="../media/Short_Logo.png">
-              </a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a routerLink="/about">About</a>
-                </li>
-                <li>
-                <a routerLink="/login">Login</a>
-                </li>
-            </ul>
-          </div>
-        </nav>
-
-        <router-outlet></router-outlet>
-    </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
     `,
     styles: [`
-        .navbar-brand {
-            padding: 10px;
-        }
+		router-outlet {
+			width: 100%
+		}
     `]
 })
 
 export class AppComponent {
     constructor ( private router: Router) { }
 }
+
+
 
 

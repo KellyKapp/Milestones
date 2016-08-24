@@ -1,11 +1,14 @@
 module.exports = function(mongoose) {
-	var Goal = mongoose.model ("Goal", {
+	var GoalModel = mongoose.model ("Goal", {
 		name: String,
 		startDate: String,
 		completionDate: String,
+		milestones: [],
 		resources: [],
 		team: [],
-		obstacles: []
+		obstacles: [],
+		typeIndividual: Boolean,
+		typeCorporate: Boolean
 	});
 
 	return GoalModel;

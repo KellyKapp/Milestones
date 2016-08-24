@@ -3,15 +3,8 @@ import { Router } from "@angular/router";
 
 @Component({
     selector: "welcome",
-    template: `
-		<button class="btn btn-default">
-			<a routerLink="/individual-dashboard">Individual</a>
-		</button>
-
-		<button class="btn btn-default">
-			<a routerLink="/corporate-dashboard">Corporate</a>
-		</button>
-    `
+    templateUrl: `app/html_files/welcome-component.html`,
+    styleUrls: ['app/css_files/welcome.css']
 })
 
 export class WelcomeComponent {}

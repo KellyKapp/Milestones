@@ -15,7 +15,8 @@ var WelcomeComponent = (function () {
     WelcomeComponent = __decorate([
         core_1.Component({
             selector: "welcome",
-            template: "\n\t\t<button class=\"btn btn-default\">\n\t\t\t<a routerLink=\"/individual-dashboard\">Individual</a>\n\t\t</button>\n\n\t\t<button class=\"btn btn-default\">\n\t\t\t<a routerLink=\"/corporate-dashboard\">Corporate</a>\n\t\t</button>\n    "
+            templateUrl: "app/html_files/welcome-component.html",
+            styleUrls: ['app/css_files/welcome.css']
         }), 
         __metadata('design:paramtypes', [])
     ], WelcomeComponent);
