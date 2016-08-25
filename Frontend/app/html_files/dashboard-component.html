@@ -1,0 +1,67 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">
+        <img id="brand" alt="Brand" src="../media/Short_Logo-Grey.svg" height="90px">
+      </a>
+    </div>
+    <div class="pull-right">
+        <ul class="nav navbar-nav">
+            <li>
+            	<a routerLink="/Dashboard">LOG OUT</a>
+            </li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+	<div class="row dashboard">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid create-div">
+	<div class="row create-header">
+		<h4>CREATE A NEW GOAL</h4>
+		<div class="line"></div>
+	</div>
+	<div class="row goal-starter">
+		<div class="col-md-3">
+			<h5>GOAL NAME</h5>
+	    	<input
+	            class="form-control"
+	            type="text"
+	            [(ngModel)]="individualGoalStartObject.name"
+	        />
+	    </div>
+	    <div class="col-md-3 start-date">
+	    	<h5>START DATE</h5>
+	        <input
+	            class="form-control"
+	            type="date"
+	            [(ngModel)]="individualGoalStartObject.startDate"
+	        />
+	    </div>
+	    <div class="col-md-3 completion-date">
+	    	<h5>COMPLETION DATE</h5>
+	        <input
+	            class="form-control"
+	            type="date"
+	            [(ngModel)]="individualGoalStartObject.completionDate"
+	        />
+	    </div>
+	    <div class="col-md-3 build">
+			<button class="btn btn-default" (click)="buildNewGoal()">
+				BUILD GOAL
+			</button>
+		</div>
+	</div>
+</div>

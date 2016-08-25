@@ -7,5 +7,7 @@ import { Router } from "@angular/router";
     styleUrls: ['app/css_files/welcome.css']
 })
 
-export class WelcomeComponent {}
+export class WelcomeComponent {
+
+}
 

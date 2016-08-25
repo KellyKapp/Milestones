@@ -1,3 +1,66 @@
 body {
 	font-family: Helvetica;
 }
+.modal-body {
+    padding-top: 0;
+}
+.col {
+    margin: 15px;
+}
+.divider {
+    margin: 10px 25px 0 20px;
+    border-bottom: 1px solid lightgrey;
+}
+.milestone-input {
+	margin-left: 10px;
+}
+h5 {
+	font-size: 1.1em;
+}
+.form-control {
+	display: inline;
+	margin: 3px;
+	color: lightgrey;
+}
+.resource {
+	width: 66%;
+}
+.resource-cost {
+	width: 30%;
+}
+.name {
+	width: 48%;
+}
+.role {
+	width: 48%;
+}
+.left {
+    border-right: 1px solid lightgrey;
+}
+button.btn.btn-default {
+    height: 30px;
+    font-family: Helvetica;
+    font-size: 1em;
+    background-color: #32C5D2;
+    border-radius: 0;
+    border: none;
+    color: white;
+    float: right;
+    margin-right: 5px;
+    margin-top: 7px;
+}
+button.btn.btn-default.save {
+    height: 40px;
+    font-family: Helvetica;
+    font-size: 1.25em;
+    background-color: #2F353B;
+    border-radius: 0;
+    border: none;
+    color: #32C5D2;
+    margin-right: 25px;
+}
+.output {
+    color: #32C5D2;
+    font-size: 1.1em;
+    margin-top: 5px;
+}

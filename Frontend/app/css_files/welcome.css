@@ -52,6 +52,7 @@ button.btn.btn-default {
     background-color: #32C5D2;
     border-radius: 0;
     border: none;
+    color: white;
 }
 button.btn.btn-default a {
     color: white;

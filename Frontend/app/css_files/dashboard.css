@@ -1,0 +1,28 @@
+.dashboard {
+	height: 450px;
+	border: 1px dotted lightgrey;
+}
+h4 {
+	color: #2F353B;
+	font-size: 1.5em;
+}
+h5 {
+	font-size: 1.25em;
+	color: #32C5D2;
+}
+.create-div {
+	background-color: #F7F7F7;
+	height: 200px;
+}
+.create-header {
+	margin-left: 15px;
+}
+.goal-starter {
+	margin-left: 15px;
+}s
+.form-control {
+	color: lightgrey;
+}
+.build {
+	margin-top: 15px;
+}

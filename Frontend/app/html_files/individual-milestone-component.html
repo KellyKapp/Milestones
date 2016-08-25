@@ -1,134 +1,134 @@
-<div class="row">
-	<div class="milestone-input col-md-6 col-sm-10">
-		<div class="milestone-description">
-			<h5><img src="#" alt="#" style="#"> Description</h5>
+<div class="row top">
+	<div class="col col-md-7">
+		<div class="row milestone-description">
+			<h5><img src="../media/description.svg" height="30px" width="30px" alt="Description"> | DESCRIPTION</h5>
 			<input
 		        class="form-control"
 		        type="text"
-		        [(ngModel)]="milestoneDescription"
+		        [(ngModel)]="milestoneObject.description"
 		    />
-		</div>
-
-		<div class="milestone-deadline">
-			<h5><img src="#" alt="#" style="#"> Deadline</h5>
-			<input
-		        class="form-control"
-		        type="text"
-		        placeholder="mm/dd/yyy"
-		        [(ngModel)]="milestoneDeadline"
-		    />
-		</div>
-
-		<div class="milestone-resources">
-			<h5><img src="#" alt="#" style="#"> Resources</h5>
-			<input #resource
-		        class="form-control"
-		        type="text"
-		        placeholder="Resource"
-		        [(ngModel)]="milestoneResource"
-		    />
-		    <input #resourceCost
-		        class="form-control"
-		        type="number"
-		        placeholder="Total Cost"
-		        [(ngModel)]="milestoneResourceCost"
-		    />
-		    <button class="btn btn-default"
-		    	(click)="addResource(resource.value, resourceCost.value)"
-			>Add Resource</button>
-
-		</div>
-
-		<div class="milestone-team">
-			<h5><img src="#" alt="#" style="#"> Team</h5>
-			<input #teamMember
-		        class="form-control"
-		        type="text"
-		        placeholder="Name"
-		        [(ngModel)]="milestoneTeamMember"
-		    />
-		    <input #teamMemberRole
-		        class="form-control"
-		        type="text"
-		        placeholder="Role"
-		        [(ngModel)]="milestoneTeamMemberRole"
-		        (blur)="printToOutput"
-		    />
-		    <button class="btn btn-default"
-		    	(click)="addTeamMember(teamMember.value, teamMemberRole.value)"
-			>Add Team Member</button>
-		</div>
-
-		<div class="milestone-obstacles">
-			<h5><img src="#" alt="#" style="#"> Obstacles</h5>
-			<input #obstacle
-		        class="form-control"
-		        type="text"
-		        placeholder="description"
-		        [(ngModel)]="milestoneObstacle"
-		    />
-		    <input #solution
-		        class="form-control"
-		        type="text"
-		        placeholder="solution"
-		        [(ngModel)]="milestoneSolution"
-		    />
-		    <button class="btn btn-default"
-		    	(click)="addObstacle(obstacle.value, solution.value)"
-			>Add Obstacle</button>
 		</div>
 	</div>
-
-	<div class="milestone-output col-md-4 col-sm-10">
-		<h5>Description</h5>
-		<p>{{milestoneDescription}}</p>
-
-		<h5>Deadline</h5>
-		<p>{{milestoneDeadline}}</p>
-
-		<h5>Resources</h5>
-		<ul>
-	        <li *ngFor="let milestoneResource of milestoneResources">
-	        	{{milestoneResource}}
-	        </li>
-	    </ul>
-	    <ul>
-	    	<li *ngFor="let milestoneResourceCost of milestoneResourcesCost">
-	    		{{milestoneResourceCost}}
-	    	</li>
-		</ul>
-
-		<h5>Team</h5>
-		<ul>
-			<li *ngFor="let milestoneTeamMember of milestoneTeamMembers">
-				{{milestoneTeamMember}}
-			</li>
-		</ul>
-		<ul>
-			<li *ngFor="let milestoneTeamMemberRole of milestoneTeamMemberRoles">
-				{{milestoneTeamMemberRole}}
-			</li>
-		</ul>
-
-		<h5>Obstacles & Solutions</h5>
-		<ul>
-			<li *ngFor="let milestoneObstacle of milestoneObstacles">
-				{{milestoneObstacle}}
-			</li>
-		</ul>
-		<ul>
-			<li *ngFor="let milestoneSolution of milestoneSolutions">
-				{{milestoneSolution}}
-			</li>
-		</ul>
+	<div class="col col-md-4">
+		<div class="row milestone-deadline">
+			<h5><img src="../media/deadline.svg" height="30px" width="30px" alt="Deadline"> | DEADLINE</h5>
+			<input
+		        class="form-control"
+		        type="date"
+		        [(ngModel)]="milestoneObject.deadline"
+		    />
+		</div>
 	</div>
 </div>
 
+<div class="row divider"></div>
+
 <div class="row">
-	<div class="col-md-10 col-sm-10">
-		<button class="btn btn-default"
+	<div class="row milestone-resources">
+		<div class="col col-md-7 left">
+			<h5><img src="../media/resources.svg" height="30px" width="30px" alt="Resource"> | RESOURCES</h5>
+			<input #resource
+		        class="form-control resource"
+		        type="text"
+		        placeholder="resource"
+		        [(ngModel)]="resourceObject.description"
+		    />
+		    <input #resourceCost
+		        class="form-control resource-cost"
+		        type="number"
+		        placeholder="cost"
+		        [(ngModel)]="resourceObject.cost"
+		    />
+		    <button class="btn btn-default"
+		    	(click)="addResource(resource.value, resourceCost.value)"
+			>SAVE RESOURCE</button>
+		</div>
+		<div class="col col-md-4">
+			<h5 class="output"> RESOURCES:</h5>
+			<ul>
+		        <li *ngFor="let resource of resources">
+		        	{{resource.description}}
+		        </li>
+		    </ul>
+		</div>
+	</div>
+
+	<div class="row milestone-team">
+		<div class="col col-md-7 left">
+			<h5><img src="../media/team.svg" height="30px" width="30px" alt="Team"> | TEAM</h5>
+			<input #teamMember
+		        class="form-control name"
+		        type="text"
+		        placeholder="name"
+		        [(ngModel)]="teamObject.member"
+		    />
+		    <input #teamMemberRole
+		        class="form-control role"
+		        type="text"
+		        placeholder="role"
+		        [(ngModel)]="teamObject.role"
+		    />
+		    <button class="btn btn-default"
+		    	(click)="addTeamMember(teamMember.value, teamMemberRole.value)"
+			>SAVE TEAM MEMBER</button>
+		</div>
+		<div class="col col-md-4">
+			<h5 class="output"> TEAM:</h5>
+			<ul>
+				<li *ngFor="let team of teams">
+					{{team.member}}
+				</li>
+			</ul>
+			<ul>
+				<li *ngFor="let team of teams">
+					{{team.role}}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row milestone-obstacles">
+		<div class="col col-md-7 left">
+			<h5><img src="../media/obstacles.svg" height="30px" width="30px" alt="Obstacle">| OBSTACLES</h5>
+			<input #obstacle
+		        class="form-control description"
+		        type="text"
+		        placeholder="description"
+		        [(ngModel)]="obstacleObject.description"
+		    />
+		    <input #solution
+		        class="form-control solution"
+		        type="text"
+		        placeholder="solution"
+		        [(ngModel)]="obstacleObject.solution"
+		    />
+		    <button class="btn btn-default"
+		    	(click)="addObstacle(obstacle.value, solution.value)"
+			>SAVE OBSTACLE</button>
+		</div>
+		<div class="col col-md-4">
+			<h5 class="output"> OBSTACLES & SOLUTIONS:</h5>
+			<ul>
+				<li *ngFor="let obstacle of obstacles">
+					{{obstacle.description}}
+				</li>
+			</ul>
+			<ul>
+				<li *ngFor="let obstacle of obstacles">
+					{{obstacle.solution}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row divider"></div>
+
+<div class="row">
+	<div class="col col-md-12 col-sm-10">
+		<button class="btn btn-default save"
     		(click)="saveMilestone()" data-dismiss="modal"
-		>Add To Timeline</button>
+		>ADD MILESTONE TO TIMELINE</button>
 	</div>
 </div>
 

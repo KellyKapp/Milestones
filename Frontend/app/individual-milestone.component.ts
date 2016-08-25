@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { FORM_DIRECTIVES } from "@angular/common";
+import { Router } from "@angular/router";
+import { GoalBuilderService } from "./goal-builder.service";
 
 @Component ({
 	selector: 'individual-milestone',
@@ -10,51 +12,63 @@ import { FORM_DIRECTIVES } from "@angular/common";
 
 export class IndividualMilestoneComponent {
 
+milestoneObject = {
+	description: "",
+	deadline: "",
+	resources: [],
+	teams: [],
+	obstacles: []
+};
 
-milestoneDescription: string= "";
-milestoneDeadline: string= "";
-milestoneResources= [];
-milestoneResourcesCost= [];
-milestoneTeamMembers= [];
-milestoneTeamMemberRoles= [];
-milestoneObstacles= [];
-milestoneSolutions= [];
+resourceObject = {
+	description: "",
+	cost: ""
+};
 
+teamObject = {
+	members: [],
+	roles: [],
+};
 
-addResource (resource: any, resourceCost: any) {
-	// add new resource to Milestone component
-	if (resource) {
-		this.milestoneResources.push(resource);
-	}
-	console.log(this.milestoneResources);
-	if (resourceCost) {
-		this.milestoneResourcesCost.push(resourceCost);
-	}
+obstacleObject = {
+	description: "",
+	solution: ""
+};
+
+constructor (private goalBuilderService: GoalBuilderService, private router: Router) {}
+
+buildNewMilestone() {
+	this.goalBuilderService
+	.buildNewMilestone(this.milestoneObject)
+	.subscribe(function(res) {
+		console.log(res);
+	}.bind(this));
 }
 
+buildNewResource() {
+		this.goalBuilderService
+		.buildNewResource(this.resourceObject)
+		.subscribe(function(res) {
+			console.log(res);
+		}.bind(this));
+	}
 
-addTeamMember(
-	teamMember: string,
-	teamMemberRole: string) {
-	// add new team member to Milestone component
-	if (teamMember) {
-		this.milestoneTeamMembers.push(teamMember);
-	}
-	if (teamMemberRole) {
-		this.milestoneTeamMemberRoles.push(teamMemberRole);
-	}
+buildNewTeam() {
+	this.goalBuilderService
+	.buildNewTeam(this.teamObject)
+	.subscribe(function(res) {
+		console.log(res);
+	}.bind(this));
 }
 
-
-addObstacle(obstacle: string, solution: string) {
-	// add new obstacle to Milestone component
-	if (obstacle) {
-		this.milestoneObstacles.push(obstacle);
-	}
-	if (solution) {
-		this.milestoneSolutions.push(solution);
-	}
+buildNewObstacle() {
+	this.goalBuilderService
+	.buildNewObstacle(this.obstacleObject)
+	.subscribe(function(res) {
+		console.log(res);
+	}.bind(this));
 }
+
 
 
 saveMilestone() {

@@ -41,7 +41,6 @@ app.post('/create', function(req, res) {
 		obstacles: []
 	};
 
-
 console.log(goal);
 
 	new GoalModel(goal).save(function(err, data){
@@ -54,21 +53,14 @@ console.log(goal);
 	});
 });
 
-
-app.get('/summary', function(req, res) {
-		GoalModel.find(
-		{ 
-			_id: req.body._id
-		}, 
-		function(err, data) {
-			if(err) {
-				res.status(500);
-				res.send("Error Finding Goal");
-				return;
-			}
-			res.send(JSON.stringify(data));
-		}
-	);
+app.post('/create', function(req, res) {
+	var milestone = {
+		description: req.body.milestone.description,
+		deadline: req.body.milestone.deadline,
+		// resources: 
+		// team: 
+		// obstacles:
+	};
 });
 
 app.get('/all', function(req, res) {
@@ -84,8 +76,6 @@ app.get('/all', function(req, res) {
 		}
 	);
 });
-
-
 
 app.use(function(req, res, next) {
 	res.status(404);

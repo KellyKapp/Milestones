@@ -7,26 +7,21 @@ import { ApiService } from "./api.service";
 
 @Component({
 	selector: "goal-summary",
-	template: `
-		<div class="goal-summary">
-			<h5>Goal</h5>
-			<input [(ngModel)]="goal.name">
-
-			<h5>Start Date</h5>
-			<input [(ngModel)]="goal.startDate">
-
-			<h5>Completion Date</h5>
-			<input [(ngModel)]="goal.completionDate">
-		</div>
-	`,
+	templateUrl: 'app/html_files/goal-summary-component.html',
 	styles: [`
-
+		.col-md-3 {
+			border-right: 1px solid grey;
+		}
 	`]
 })
 
 export class GoalSummaryComponent {
 
 	@Input() goal;
+	@Input() milestone;
+	@Input() resource;
+	@Input() team;
+	@Input() obstacle;
 
 	constructor (private goalBuilderService: GoalBuilderService, private router: Router) {}
 

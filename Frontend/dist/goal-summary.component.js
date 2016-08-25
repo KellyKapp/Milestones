@@ -20,11 +20,27 @@ var GoalSummaryComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], GoalSummaryComponent.prototype, "goal", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], GoalSummaryComponent.prototype, "milestone", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], GoalSummaryComponent.prototype, "resource", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], GoalSummaryComponent.prototype, "team", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], GoalSummaryComponent.prototype, "obstacle", void 0);
     GoalSummaryComponent = __decorate([
         core_1.Component({
             selector: "goal-summary",
-            template: "\n\t\t<div class=\"goal-summary\">\n\t\t\t<h5>Goal</h5>\n\t\t\t<input [(ngModel)]=\"goal.name\">\n\n\t\t\t<h5>Start Date</h5>\n\t\t\t<input [(ngModel)]=\"goal.startDate\">\n\n\t\t\t<h5>Completion Date</h5>\n\t\t\t<input [(ngModel)]=\"goal.completionDate\">\n\t\t</div>\n\t",
-            styles: ["\n\n\t"]
+            templateUrl: 'app/html_files/goal-summary-component.html',
+            styles: ["\n\t\t.col-md-3 {\n\t\t\tborder-right: 1px solid grey;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService, router_1.Router])
     ], GoalSummaryComponent);

@@ -2,32 +2,28 @@ import { Component, Input, Output, EventEmitter, ViewChild } from "@angular/core
 
 @Component({
 	selector: "timeline",
-	template: `
-		<div class="timeline">
-			<div class="date start">
-				{{goal.startDate}}
-	        </div>
-	        <canvas #canvas width="300" height="400" style="border:solid 1px #000000;">
-			</canvas>
-
-			<div class="date end">
-				{{goal.completionDate}}
-	        </div>
-
-	        <button class="btn btn-default"
-    			data-toggle="modal" data-target=".modal"
-			>Add Milestone</button>
-
-		</div>
-	`,
+	templateUrl: 'app/html_files/timeline-component.html',
 	styles: [`
-		.line {
-			z-index: -1;
+		canvas {
+			display: block;
+			margin: 0 auto;
 		}
 		.date {
 			height: 30px;
 			width: 80px;
-			border: 1px solid black;
+			border: 1px dotted grey;
+			margin: 0 auto;
+		}
+		.add-milestone {
+			height: 40px;
+		    width: 150px;
+		    margin: 15px 55px;
+		    font-family: Helvetica;
+		    font-size: 1.25em;
+		    background-color: #32C5D2;
+		    border-radius: 0;
+		    border: none;
+		    color: white;
 		}
 	`]
 })
@@ -48,9 +44,11 @@ export class TimelineComponent {
 
     	function Vertical_line() {
     		ctx.beginPath();
-		    ctx.moveTo(150, 10);
-		    ctx.lineTo(150, 390);
+		    ctx.moveTo(50, 0);
+		    ctx.lineTo(50, 400);
 		    ctx.closePath();
+
+		    ctx.strokeStyle = "#32C5D2";
 		    ctx.stroke();
 		}
 
