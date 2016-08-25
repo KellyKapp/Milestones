@@ -8,19 +8,21 @@
     padding: none;
     height: 60px;
 }
+.navbar-fixed-top {
+    top: 8px;
+    right: 28px;
+    left: 28px;
+}
 nav.navbar.navbar-default {
     border-radius: 0;
     border: none;
     background-color: #2F353B;
-    position: fixed;
-    z-index: 1;
-    width: 1360px;
+
+/*    z-index: 1;*/
 }
 .pull-right {
-    margin: 6px 0 0 250px;
     font-size: 1.2em;
     color: white;
-
 }
 .navbar-default .navbar-nav>li>a {
     color: #32C5D2;

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var api_service_1 = require("./api.service");
+var observable_1 = require("rxjs/observable");
 var GoalBuilderService = (function () {
     function GoalBuilderService(apiService) {
         this.apiService = apiService;
@@ -18,7 +19,6 @@ var GoalBuilderService = (function () {
         this.resources = [];
         this.team = [];
         this.obstacles = [];
-        this.getAllGoals().subscribe();
     }
     GoalBuilderService.prototype.getAllGoals = function () {
         console.log("calling getAllGoals");
@@ -101,16 +101,32 @@ var GoalBuilderService = (function () {
             _id: _id,
             goal: newValue
         })).do(function (res) {
-            this.overwrite(this.findItemById(id), res);
+            this.overwrite(this.findItemById(_id), res);
         }.bind(this));
     };
-    GoalBuilderService.prototype.findGoalById = function (_id) {
+    GoalBuilderService.prototype.findGoalInCache = function (_id) {
         for (var _i = 0, _a = this.goals; _i < _a.length; _i++) {
             var goal = _a[_i];
             if (goal._id === _id) {
                 return goal;
             }
         }
+    };
+    GoalBuilderService.prototype.findGoalById = function (_id) {
+        return observable_1.Observable.create(function (observer) {
+            // return a goal in cache
+            var goal = this.findGoalInCache(_id);
+            if (goal) {
+                observer.next(goal);
+                observer.complete();
+            }
+            // otherwise, return a goal from the server
+            this.getAllGoals().subscribe(function (goals) {
+                var goal = this.findGoalInCache(_id);
+                observer.next(goal);
+                observer.complete();
+            }.bind(this));
+        }.bind(this));
     };
     GoalBuilderService.prototype.overwrite = function (orig, newValues) {
         for (var i in newValues) {

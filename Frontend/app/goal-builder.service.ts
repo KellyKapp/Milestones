@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
+import { Observable } from "rxjs/observable";
 
 @Injectable ()
 
@@ -12,7 +13,6 @@ export class GoalBuilderService {
     obstacles = [];
 
 	constructor(private apiService: ApiService) {
-        this.getAllGoals().subscribe();
 }
 
 getAllGoals() {
@@ -107,16 +107,34 @@ updateGoal(_id, newValue) {
         _id: _id,
         goal: newValue
     })).do(function(res){
-        this.overwrite(this.findItemById(id), res);
+        this.overwrite(this.findItemById(_id), res);
     }.bind(this));
 }
 
-findGoalById(_id) {
+findGoalInCache(_id) {
     for (let goal of this.goals) {
         if (goal._id === _id) {
             return goal;
         }
     }
+}
+
+findGoalById (_id) {
+    return Observable.create(function(observer){
+        // return a goal in cache
+        let goal = this.findGoalInCache(_id);
+        if (goal) {
+            observer.next(goal);
+            observer.complete();
+        }
+
+        // otherwise, return a goal from the server
+        this.getAllGoals().subscribe(function(goals) {
+            let goal = this.findGoalInCache(_id);
+            observer.next(goal);
+            observer.complete();
+        }.bind(this));
+    }.bind(this));
 }
 
 overwrite(orig, newValues) {

@@ -10,16 +10,17 @@ import { Component, Input, Output, EventEmitter, ViewChild } from "@angular/core
 		}
 		.date {
 			height: 30px;
-			width: 80px;
-			border: 1px dotted grey;
+			width: 150px;
 			margin: 0 auto;
+			text-align: center;
+			font-size: 1.15em;
 		}
 		.add-milestone {
 			height: 40px;
 		    width: 150px;
-		    margin: 15px 55px;
+		    margin: 15px 58px;
 		    font-family: Helvetica;
-		    font-size: 1.25em;
+		    font-size: 1em;
 		    background-color: #32C5D2;
 		    border-radius: 0;
 		    border: none;

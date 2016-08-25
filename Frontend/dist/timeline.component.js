@@ -41,7 +41,7 @@ var TimelineComponent = (function () {
         core_1.Component({
             selector: "timeline",
             templateUrl: 'app/html_files/timeline-component.html',
-            styles: ["\n\t\tcanvas {\n\t\t\tdisplay: block;\n\t\t\tmargin: 0 auto;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 80px;\n\t\t\tborder: 1px dotted grey;\n\t\t\tmargin: 0 auto;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t    width: 150px;\n\t\t    margin: 15px 55px;\n\t\t    font-family: Helvetica;\n\t\t    font-size: 1.25em;\n\t\t    background-color: #32C5D2;\n\t\t    border-radius: 0;\n\t\t    border: none;\n\t\t    color: white;\n\t\t}\n\t"]
+            styles: ["\n\t\tcanvas {\n\t\t\tdisplay: block;\n\t\t\tmargin: 0 auto;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t    width: 150px;\n\t\t    margin: 15px 58px;\n\t\t    font-family: Helvetica;\n\t\t    font-size: 1em;\n\t\t    background-color: #32C5D2;\n\t\t    border-radius: 0;\n\t\t    border: none;\n\t\t    color: white;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], TimelineComponent);

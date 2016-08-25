@@ -29,8 +29,14 @@ export class IndividualGoalBuilderComponent {
     }
     ngOnInit() {
       this.route.params.subscribe(function(params) {
-        this.goal = this.goalBuilderService.findGoalById(params["_id"]);
-        console.log(this.goal);
+          this.goalBuilderService.findGoalById(params["_id"]).subscribe(function(goal) {
+              this.goal = goal;
+          }.bind(this));
       }.bind(this));
     } 
+
+    saveGoal() {
+        // save to goal model/Mongo
+    }
 }
+

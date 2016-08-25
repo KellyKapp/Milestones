@@ -40,16 +40,27 @@
 		        [(ngModel)]="resourceObject.cost"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="addResource(resource.value, resourceCost.value)"
+		    	(click)="goalBuilderServce.buildNewResource(resourceObject)"
 			>SAVE RESOURCE</button>
 		</div>
 		<div class="col col-md-4">
 			<h5 class="output"> RESOURCES:</h5>
-			<ul>
-		        <li *ngFor="let resource of resources">
-		        	{{resource.description}}
-		        </li>
-		    </ul>
+			<div class="row">
+				<div class="col-md-7">
+					<ul>
+				        <li *ngFor="let resource of resources">
+				        	{{resourceObject.description}}
+				        </li>
+				    </ul>
+				</div>
+				<div class="col-md-4">
+				    <ul>
+				        <li *ngFor="let resource of resources">
+				        	{{resourceObject.cost}}
+				        </li>
+				    </ul>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -69,21 +80,27 @@
 		        [(ngModel)]="teamObject.role"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="addTeamMember(teamMember.value, teamMemberRole.value)"
+		    	(click)="goalBuilderServce.buildNewTeam(teamObject)"
 			>SAVE TEAM MEMBER</button>
 		</div>
 		<div class="col col-md-4">
 			<h5 class="output"> TEAM:</h5>
-			<ul>
-				<li *ngFor="let team of teams">
-					{{team.member}}
-				</li>
-			</ul>
-			<ul>
-				<li *ngFor="let team of teams">
-					{{team.role}}
-				</li>
-			</ul>
+			<div class="row">
+				<div class="col-md-6">
+					<ul>
+						<li *ngFor="let team of teams">
+							{{teamObject.member}}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-5">
+					<ul>
+						<li *ngFor="let team of teams">
+							{{teamObject.role}}
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -103,19 +120,14 @@
 		        [(ngModel)]="obstacleObject.solution"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="addObstacle(obstacle.value, solution.value)"
+		    	(click)="goalBuilderServce.buildNewObstacle(obstacleObject)"
 			>SAVE OBSTACLE</button>
 		</div>
 		<div class="col col-md-4">
-			<h5 class="output"> OBSTACLES & SOLUTIONS:</h5>
+			<h5 class="output"> OBSTACLES:</h5>
 			<ul>
 				<li *ngFor="let obstacle of obstacles">
-					{{obstacle.description}}
-				</li>
-			</ul>
-			<ul>
-				<li *ngFor="let obstacle of obstacles">
-					{{obstacle.solution}}
+					{{obstacleObject.description}}
 				</li>
 			</ul>
 		</div>
@@ -133,3 +145,5 @@
 </div>
 
 
+<!-- {{resource.cost | currency:'USD':true:'1.2-2'}} -->
+				 

@@ -11,6 +11,16 @@ import { ApiService } from "./api.service";
 	styles: [`
 		.col-md-3 {
 			border-right: 1px solid grey;
+			font-size: 1.15em
+		}
+		.col-md-9 {
+			font-size: 1.15em;
+			margin: 7px 0;
+		}
+		.small-line {
+		    height: 1.5px;
+		    width: 40px;
+		    background-color: #32C5D2;
 		}
 	`]
 })

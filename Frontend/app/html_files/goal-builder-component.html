@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container-fluid">
 		    <div class="navbar-header">
 			      <a class="navbar-brand" routerLink="/">
@@ -6,7 +6,7 @@
 			      </a>
 		    </div>
 		    <div class="pull-right">
-				    <ul class="nav navbar-nav">
+				    <ul class="nav navbar-nav navbar-right">
 						    <li>
 							      <a routerLink="/contact">DASHBOARD</a>
 						    </li>
@@ -18,7 +18,8 @@
 	  </div>
 </nav>
 
-<div class="container">
+
+<div class="container" *ngIf="goal">
 		<div class="row goal-builder">
 				<div class="col-md-9 col-sm-12 goal-detail">
 						<goal-summary 
@@ -48,5 +49,8 @@
 						</div>
 				</div>
 		</div>
-
+		<div class="save-goal">
+			<button class="btn btn-default save" (click)="saveGoal"
+			>SAVE GOAL</button>
+		</div>
 </div>

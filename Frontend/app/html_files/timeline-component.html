@@ -1,17 +1,17 @@
 <div class="timeline">
 	<div class="date start">
-		{{goal.startDate}}
+		{{goal.startDate | date:"longDate"}}
     </div>
     <canvas #canvas width="100" height="400">
 	</canvas>
 
 	<div class="date end">
-		{{goal.completionDate}}
+		{{goal.completionDate | date:"longDate"}}
     </div>
 
     <button class="btn btn-default add-milestone"
 		data-toggle="modal" data-target=".modal"
-	>Add Milestone</button>
+	>ADD MILESTONE</button>
 </div>
 
 <!-- 			<div>
