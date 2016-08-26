@@ -19,10 +19,7 @@ import { GoalBuilderService } from "./goal-builder.service";
 export class IndividualGoalBuilderComponent {
 
     private goal;
-    private milestone;
-    private resource;
-    private team;
-    private obstacle;
+
 
     constructor(private route: ActivatedRoute, private goalBuilderService: GoalBuilderService) {
 

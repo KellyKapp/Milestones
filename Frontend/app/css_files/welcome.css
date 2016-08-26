@@ -105,3 +105,16 @@ p {
     text-align: left;
     line-height: 3em;
 }
+.profile {
+    border-radius: 50%;
+}
+.footer {
+    background-color: #2F353B;
+    color: white;
+    font-size: 1.3em;
+    line-height: 2.6em;
+    height: 50px;
+}
+.navbar-footer {
+    float: right;
+}

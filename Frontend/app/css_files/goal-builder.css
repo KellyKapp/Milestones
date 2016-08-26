@@ -1,13 +1,13 @@
 .goal-builder {
-	margin-top: 80px;
+	margin-top: 65px;
 }
 .goal-detail {
 	border: 1px solid lightgrey;
-	height: 550px;
+	height: 530px;
 }
 .timeline-div {
 	border: 1px solid lightgrey;
-	height: 550px;
+	height: 530px;
 }
 .save-goal {
 	text-align: center;
@@ -16,8 +16,9 @@ button.btn.btn-default.save {
 	height: 40px;
     font-family: Helvetica;
     font-size: 1.25em;
-    background-color: #2F353B;
+    background-color: #B1B1B1;
     border-radius: 0;
     border: none;
-    color: #32C5D2;
+    color: white;
+    margin-bottom: 5px;
 }

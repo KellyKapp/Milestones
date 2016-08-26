@@ -6,12 +6,9 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost");
 
 var GoalModel = require("./goal.model")(mongoose);
-var MilestoneModel = require("./milestone.model")(mongoose);
-var ObstacleModel = require("./obstacle.model")(mongoose);
+
+
 var OrganizationModel = require("./organization.model")(mongoose);
-var ResourceModel = require("./resource.model")(mongoose);
-var TeamModel = require("./team.model")(mongoose);
-var TimelineModel = require("./timeline.model")(mongoose);
 var UserModel = require("./user.model")(mongoose);
 
 
@@ -53,7 +50,9 @@ console.log(goal);
 	});
 });
 
-app.post('/create', function(req, res) {
+
+
+app.post('/milestone', function(req, res) {
 	var milestone = {
 		description: req.body.milestone.description,
 		deadline: req.body.milestone.deadline,
