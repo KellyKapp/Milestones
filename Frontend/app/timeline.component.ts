@@ -56,9 +56,6 @@ export class TimelineComponent {
 		Vertical_line();
 	}
 
-	timelineObject = {
-		milestones: []
-	};
 
 }
 

@@ -28,10 +28,6 @@ import { ApiService } from "./api.service";
 export class GoalSummaryComponent {
 
 	@Input() goal;
-	@Input() milestone;
-	@Input() resource;
-	@Input() team;
-	@Input() obstacle;
 
 	constructor (private goalBuilderService: GoalBuilderService, private router: Router) {}
 

@@ -20,22 +20,6 @@ var GoalSummaryComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], GoalSummaryComponent.prototype, "goal", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], GoalSummaryComponent.prototype, "milestone", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], GoalSummaryComponent.prototype, "resource", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], GoalSummaryComponent.prototype, "team", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], GoalSummaryComponent.prototype, "obstacle", void 0);
     GoalSummaryComponent = __decorate([
         core_1.Component({
             selector: "goal-summary",

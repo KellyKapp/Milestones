@@ -21,7 +21,9 @@ export class IndividualGoalBuilderComponent {
     private goal;
 
 
-    constructor(private route: ActivatedRoute, private goalBuilderService: GoalBuilderService) {
+    constructor(
+        private route: ActivatedRoute, 
+        private goalBuilderService: GoalBuilderService) {
 
     }
     ngOnInit() {

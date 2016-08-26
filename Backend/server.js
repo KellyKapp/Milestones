@@ -33,12 +33,10 @@ app.post('/create', function(req, res) {
 		name: req.body.goal.name,
 		startDate: req.body.goal.startDate,
 		completionDate: req.body.goal.completionDate,
-		resources: [],
-		team: [],
-		obstacles: []
+		milestones: []
 	};
 
-console.log(goal);
+	console.log(goal);
 
 	new GoalModel(goal).save(function(err, data){
 		if (err) {
