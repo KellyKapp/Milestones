@@ -54,10 +54,30 @@ app.post('/milestone', function(req, res) {
 	var milestone = {
 		description: req.body.milestone.description,
 		deadline: req.body.milestone.deadline,
-		// resources: 
-		// team: 
-		// obstacles:
+		resources: [],
+		team: [],
+		obstacles: []
 	};
+
+    GoalModel.findOneAndUpdate(
+    { "_id": req.body.goalId },
+    {
+        "$push": {
+            "milestones" : milestone
+        }
+    },
+    function(err, doc) {
+    	if (err) {
+			res.status(500);
+			res.send("Error creating new Milestone");
+			console.log(err);
+			return;
+
+		}
+    	res.send(doc);
+    }
+
+    );
 });
 
 app.get('/all', function(req, res) {

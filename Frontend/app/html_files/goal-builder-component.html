@@ -21,15 +21,31 @@
 
 <div class="container" *ngIf="goal">
 		<div class="row goal-builder">
-				<div class="col-md-9 col-sm-12 goal-detail">
+				<div class="col-md-7 col-sm-12 goal-detail">
 						<goal-summary 
 								[goal]="goal"> 
 								 
 						</goal-summary>
 				</div>
 
-				<div class="col-md-3 col-sm-12 timeline-div">
+				<div class="col-md-2 col-sm-12 timeline-div">
 						<timeline [goal]="goal"></timeline>
+				</div>
+				<div class="col-md-3 col-sm-12 create-milestone">
+					<input
+				        class="form-control"
+				        type="text"
+				        [(ngModel)]="milestoneObject.description"
+				    />
+				    <input
+				        class="form-control"
+				        type="date"
+				        [(ngModel)]="milestoneObject.deadline"
+				    />
+					<button class="btn btn-default add-milestone"
+
+						(click)="buildNewMilestone()"
+					>ADD MILESTONE</button>
 				</div>
 		</div>
 
@@ -41,7 +57,9 @@
 										<h3 class="modal-title">MILESTONE</h3>
 								</div>
 								<div class="modal-body">
-										<individual-milestone></individual-milestone>
+										<individual-milestone 
+										[activeMilestone]="activeMilestone"
+										*ngIf="activeMilestone"></individual-milestone>
 								</div>
 						</div>
 				</div>

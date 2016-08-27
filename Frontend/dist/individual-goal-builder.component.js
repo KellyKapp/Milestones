@@ -15,15 +15,30 @@ var individual_milestone_component_1 = require("./individual-milestone.component
 var router_1 = require("@angular/router");
 var goal_builder_service_1 = require("./goal-builder.service");
 var IndividualGoalBuilderComponent = (function () {
-    function IndividualGoalBuilderComponent(route, goalBuilderService) {
+    function IndividualGoalBuilderComponent(route, goalBuilderService, router) {
         this.route = route;
         this.goalBuilderService = goalBuilderService;
+        this.router = router;
+        this.milestoneObject = {
+            description: "",
+            deadline: "",
+        };
+        this.activeMilestone = null;
     }
     IndividualGoalBuilderComponent.prototype.ngOnInit = function () {
         this.route.params.subscribe(function (params) {
             this.goalBuilderService.findGoalById(params["_id"]).subscribe(function (goal) {
                 this.goal = goal;
             }.bind(this));
+        }.bind(this));
+    };
+    IndividualGoalBuilderComponent.prototype.buildNewMilestone = function () {
+        this.goalBuilderService
+            .buildNewMilestone(this.milestoneObject, this.goal._id)
+            .subscribe(function (res) {
+            console.log(res.milestones);
+            this.activeMilestone = res.milestones[res.milestones.length - 1];
+            $(".modal").modal();
         }.bind(this));
     };
     IndividualGoalBuilderComponent.prototype.saveGoal = function () {
@@ -40,7 +55,7 @@ var IndividualGoalBuilderComponent = (function () {
                 individual_milestone_component_1.IndividualMilestoneComponent
             ]
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, goal_builder_service_1.GoalBuilderService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, goal_builder_service_1.GoalBuilderService, router_1.Router])
     ], IndividualGoalBuilderComponent);
     return IndividualGoalBuilderComponent;
 }());

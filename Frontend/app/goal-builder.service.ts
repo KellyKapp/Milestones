@@ -7,20 +7,14 @@ import { Observable } from "rxjs/observable";
 
 export class GoalBuilderService {
 	goals = [];
-    milestones = [];
-    resources = [];
-    team = [];
-    obstacles = [];
 
 	constructor(private apiService: ApiService) {
 }
 
 getAllGoals() {
-    console.log("calling getAllGoals");
     return this.apiService.get("/all")
         .do(function(res) {
             this.goals = res;
-            console.log("got all goals");
         }.bind(this));
 }
 
@@ -31,26 +25,27 @@ buildNewGoal(individualGoalStartObject) {
             startDate: individualGoalStartObject.startDate,
             completionDate: individualGoalStartObject.completionDate,
             milestones: [],
-            resources: [],
-			team: [],
-			obstacles: []
         }
     })).do(function(res) {
         this.goals.push(res);
     }.bind(this));
 }
 
-buildNewMilestone(milestoneObject) {
+buildNewMilestone(milestoneObject, goalId) {
+
     return this.apiService.post("/milestone", JSON.stringify({
         milestone : {
             description: milestoneObject.description,
-            deadline: milestoneObject.deadline
-            // resources: 
-            // team: 
-            // obstacles:
-        }
+            deadline: milestoneObject.deadline,
+            resources: [],
+            team: [],
+            obstacles: []
+        },
+        goalId: goalId,
+
     })).do(function(res) {
-        this.milestones.push(res);
+        var goal = this.findGoalById(goalId);
+        goal.milestones = res.milestones;
     }.bind(this));
 }
 
@@ -87,29 +82,29 @@ buildNewObstacle(obstacleObject) {
     }.bind(this));
 }
 
-getSummaryData() {
-    return this.apiService.get("/summary")
-        .do(function(res) {
-            this.goals = res;
-        }.bind(this));
-}
+// getSummaryData() {
+//     return this.apiService.get("/summary")
+//         .do(function(res) {
+//             this.goals = res;
+//         }.bind(this));
+// }
 
-deleteGoal(_id) {
-    return this.apiService.post("/delete", JSON.stringify({
-        _id: _id
-    })).do(function(res) {
-        this.goals = res;
-    }.bind(this));
-}
+// deleteGoal(_id) {
+//     return this.apiService.post("/delete", JSON.stringify({
+//         _id: _id
+//     })).do(function(res) {
+//         this.goals = res;
+//     }.bind(this));
+// }
 
-updateGoal(_id, newValue) {
-    return this.apiService.post("/update", JSON.stringify({
-        _id: _id,
-        goal: newValue
-    })).do(function(res){
-        this.overwrite(this.findItemById(_id), res);
-    }.bind(this));
-}
+// updateGoal(_id, newValue) {
+//     return this.apiService.post("/update", JSON.stringify({
+//         _id: _id,
+//         goal: newValue
+//     })).do(function(res){
+//         this.overwrite(this.findItemById(_id), res);
+//     }.bind(this));
+// }
 
 findGoalInCache(_id) {
     for (let goal of this.goals) {

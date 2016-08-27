@@ -3,9 +3,7 @@
 		<div class="row milestone-description">
 			<h5><img src="../media/description.svg" height="30px" width="30px" alt="Description"> | DESCRIPTION</h5>
 			<input
-		        class="form-control"
-		        type="text"
-		        [(ngModel)]="milestoneObject.description"
+		        [(ngModel)]="activeMilestone.description"
 		    />
 		</div>
 	</div>
@@ -13,9 +11,7 @@
 		<div class="row milestone-deadline">
 			<h5><img src="../media/deadline.svg" height="30px" width="30px" alt="Deadline"> | DEADLINE</h5>
 			<input
-		        class="form-control"
-		        type="date"
-		        [(ngModel)]="milestoneObject.deadline"
+		        [(ngModel)]="activeMilestone.deadline"
 		    />
 		</div>
 	</div>
@@ -40,7 +36,7 @@
 		        [(ngModel)]="resourceObject.cost"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="buildNewResource(resourceObject)"
+		    	(click)="buildNewResource()"
 			>SAVE RESOURCE</button>
 		</div>
 		<div class="col col-md-4">

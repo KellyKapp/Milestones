@@ -16,33 +16,26 @@ var IndividualMilestoneComponent = (function () {
     function IndividualMilestoneComponent(goalBuilderService, router) {
         this.goalBuilderService = goalBuilderService;
         this.router = router;
-        this.milestoneObject = {
-            description: "",
-            deadline: "",
-            resources: [],
-            teams: [],
-            obstacles: []
-        };
         this.resourceObject = {
             description: "",
             cost: ""
         };
         this.teamObject = {
-            members: [],
-            roles: [],
+            member: "",
+            role: ""
         };
         this.obstacleObject = {
             description: "",
             solution: ""
         };
     }
-    IndividualMilestoneComponent.prototype.buildNewMilestone = function () {
-        this.goalBuilderService
-            .buildNewMilestone(this.milestoneObject)
-            .subscribe(function (res) {
-            console.log(res);
-        }.bind(this));
-    };
+    // buildNewMilestone() {
+    // 	this.goalBuilderService
+    // 	.buildNewMilestone(this.milestoneObject)
+    // 	.subscribe(function(res) {
+    // 		console.log(res);
+    // 	}.bind(this));
+    // }
     IndividualMilestoneComponent.prototype.buildNewResource = function () {
         this.goalBuilderService
             .buildNewResource(this.resourceObject)
@@ -67,6 +60,10 @@ var IndividualMilestoneComponent = (function () {
     IndividualMilestoneComponent.prototype.saveMilestone = function () {
         // save data to Mongo
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], IndividualMilestoneComponent.prototype, "activeMilestone", void 0);
     IndividualMilestoneComponent = __decorate([
         core_1.Component({
             selector: 'individual-milestone',

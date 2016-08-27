@@ -25,6 +25,9 @@ export class IndividualDashboardComponent {
 	constructor (private goalBuilderService: GoalBuilderService, private router: Router) {}
 
 	buildNewGoal() {
+		if (this.individualGoalStartObject.name === "") {
+			return;
+		}
 		this.goalBuilderService
 		.buildNewGoal(this.individualGoalStartObject)
 		.subscribe(function(res) {

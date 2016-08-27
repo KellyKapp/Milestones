@@ -24,6 +24,9 @@ var IndividualDashboardComponent = (function () {
         };
     }
     IndividualDashboardComponent.prototype.buildNewGoal = function () {
+        if (this.individualGoalStartObject.name === "") {
+            return;
+        }
         this.goalBuilderService
             .buildNewGoal(this.individualGoalStartObject)
             .subscribe(function (res) {

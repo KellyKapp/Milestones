@@ -12,13 +12,7 @@ import { GoalBuilderService } from "./goal-builder.service";
 
 export class IndividualMilestoneComponent {
 
-milestoneObject = {
-	description: "",
-	deadline: "",
-	resources: [],
-	teams: [],
-	obstacles: []
-};
+@Input() activeMilestone;
 
 resourceObject = {
 	description: "",
@@ -26,8 +20,8 @@ resourceObject = {
 };
 
 teamObject = {
-	members: [],
-	roles: [],
+	member: "",
+	role: ""
 };
 
 obstacleObject = {
@@ -37,13 +31,13 @@ obstacleObject = {
 
 constructor (private goalBuilderService: GoalBuilderService, private router: Router) {}
 
-buildNewMilestone() {
-	this.goalBuilderService
-	.buildNewMilestone(this.milestoneObject)
-	.subscribe(function(res) {
-		console.log(res);
-	}.bind(this));
-}
+// buildNewMilestone() {
+// 	this.goalBuilderService
+// 	.buildNewMilestone(this.milestoneObject)
+// 	.subscribe(function(res) {
+// 		console.log(res);
+// 	}.bind(this));
+// }
 
 buildNewResource() {
 		this.goalBuilderService

@@ -18,7 +18,7 @@ module.exports = function(mongoose) {
 
 	var MilestoneSchema = new mongoose.Schema({
 		description: String,
-		completionDate: String,
+		deadline: String,
 		resources: [ResourceSchema],
 		team: [TeamSchema],
 		obstacles: [ObstacleSchema]
