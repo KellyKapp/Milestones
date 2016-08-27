@@ -1,4 +1,4 @@
-import { NgModule }      from "@angular/core";
+import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { provideRouter } from "@angular/router";
 import { routes } from "./routes";
@@ -7,10 +7,11 @@ import { ApiService } from "./api.service";
 import { HTTP_PROVIDERS } from "@angular/http";
 import { GoalBuilderService } from "./goal-builder.service";
 
-import { AppComponent }  from "./app.component";
+import { AppComponent } from "./app.component";
 import { WelcomeComponent } from "./welcome.component";
 import { DashboardComponent } from "./dashboard.component";
 import { GoalBuilderComponent } from "./goal-builder.component";
+import { DisplayGoalComponent } from "./display-goal.component";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { GoalBuilderComponent } from "./goal-builder.component";
     		AppComponent, 
     		WelcomeComponent, 
         DashboardComponent,
-        GoalBuilderComponent
+        GoalBuilderComponent,
+        DisplayGoalComponent
   	],
     bootstrap:    [ AppComponent ],
     providers:    [ 

@@ -20,6 +20,7 @@ var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./welcome.component");
 var dashboard_component_1 = require("./dashboard.component");
 var goal_builder_component_1 = require("./goal-builder.component");
+var display_goal_component_1 = require("./display-goal.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,7 +31,8 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 welcome_component_1.WelcomeComponent,
                 dashboard_component_1.DashboardComponent,
-                goal_builder_component_1.GoalBuilderComponent
+                goal_builder_component_1.GoalBuilderComponent,
+                display_goal_component_1.DisplayGoalComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [

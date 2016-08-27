@@ -74,15 +74,15 @@ app.post('/milestone', function(req, res) {
 	);
 });
 
-app.post('/resource', function(req,res) {
-	GoalModel.findOneAndUpdate(
-		{"_id": req.body.goalId},
-		{
-			"$push": {
+// app.post('/resource', function(req,res) {
+// 	GoalModel.findOneAndUpdate(
+// 		{"_id": req.body.goalId},
+// 		{
+// 			"$push": {
 
-			}
-		})
-})
+// 			}
+// 		})
+// })
 
 
 app.get('/all', function(req, res) {

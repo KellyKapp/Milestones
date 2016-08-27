@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var goal_builder_service_1 = require("./goal-builder.service");
+var display_goal_component_1 = require("./display-goal.component");
 var DashboardComponent = (function () {
     function DashboardComponent(goalBuilderService, router) {
         this.goalBuilderService = goalBuilderService;
@@ -21,6 +22,14 @@ var DashboardComponent = (function () {
             completionDate: "",
         };
     }
+    // showAllGoals() {
+    DashboardComponent.prototype.ngOnInit = function () {
+        this.goalBuilderService
+            .displayAllGoals()
+            .subscribe(function (res) {
+            console.log(res);
+        }.bind(this));
+    };
     DashboardComponent.prototype.buildNewGoal = function () {
         if (this.GoalStartObject.name === "") {
             return;
@@ -35,6 +44,7 @@ var DashboardComponent = (function () {
     DashboardComponent = __decorate([
         core_1.Component({
             selector: "dashboard",
+            directives: [display_goal_component_1.DisplayGoalComponent],
             templateUrl: 'app/html_files/dashboard-component.html',
             styleUrls: ['app/css_files/dashboard.css', 'app/css_files/welcome.css']
         }), 

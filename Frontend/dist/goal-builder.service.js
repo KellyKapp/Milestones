@@ -132,15 +132,23 @@ var GoalBuilderService = (function () {
             }.bind(this));
         }.bind(this));
     };
-    GoalBuilderService.prototype.findMilestoneById = function (_id) {
+    GoalBuilderService.prototype.displayAllGoals = function () {
         return observable_1.Observable.create(function (observer) {
-            var activeMilestone = this.findMilestone(_id);
-            console.log(activeMilestone);
-            observer.next(goal);
-            obeserver.complete();
+            var goals = this.getAllGoals();
+            if (goals) {
+                observer.next(goals);
+                observer.complete();
+            }
         }.bind(this));
     };
-    ;
+    // findMilestoneById (_id) {
+    // 	return Observable.create(function(observer) {
+    // 		let activeMilestone = this.findMilestone(_id);
+    // 		console.log(activeMilestone);
+    // 		observer.next(goal);
+    // 		obeserver.complete();
+    // 	}.bind(this));
+    // };
     GoalBuilderService.prototype.overwrite = function (orig, newValues) {
         for (var i in newValues) {
             if (newValues.hasOwnProperty(i)) {
