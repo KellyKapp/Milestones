@@ -22,12 +22,12 @@ var GoalBuilderService = (function () {
             this.goals = res;
         }.bind(this));
     };
-    GoalBuilderService.prototype.buildNewGoal = function (individualGoalStartObject) {
+    GoalBuilderService.prototype.buildNewGoal = function (GoalStartObject) {
         return this.apiService.post("/create", JSON.stringify({
             goal: {
-                name: individualGoalStartObject.name,
-                startDate: individualGoalStartObject.startDate,
-                completionDate: individualGoalStartObject.completionDate,
+                name: GoalStartObject.name,
+                startDate: GoalStartObject.startDate,
+                completionDate: GoalStartObject.completionDate,
                 milestones: [],
             }
         })).do(function (res) {
@@ -49,36 +49,36 @@ var GoalBuilderService = (function () {
             goal.milestones = res.milestones;
         }.bind(this));
     };
-    GoalBuilderService.prototype.buildNewResource = function (resourceObject) {
-        return this.apiService.post("/milestone", JSON.stringify({
+    GoalBuilderService.prototype.addResource = function (activeMilestone) {
+        return this.apiService.post("/resource", JSON.stringify({
             resource: {
                 description: resourceObject.description,
                 cost: resourceObject.cost
             }
         })).do(function (res) {
-            this.resources.push(res);
+            activeMilestone.resources = res.resources;
         }.bind(this));
     };
-    GoalBuilderService.prototype.buildNewTeam = function (teamObject) {
-        return this.apiService.post("/milestone", JSON.stringify({
-            team: {
-                members: teamObject.members,
-                roles: teamObject.roles,
-            }
-        })).do(function (res) {
-            this.team.push(res);
-        }.bind(this));
-    };
-    GoalBuilderService.prototype.buildNewObstacle = function (obstacleObject) {
-        return this.apiService.post("/milestone", JSON.stringify({
-            obstacle: {
-                description: obstacleObject.description,
-                solution: obstacleObject.solution
-            }
-        })).do(function (res) {
-            this.obstacles.push(res);
-        }.bind(this));
-    };
+    // buildNewTeam(teamObject) {
+    //     return this.apiService.post("/milestone", JSON.stringify({
+    //         team : {
+    //             members: teamObject.members,
+    //             roles: teamObject.roles,
+    //         }
+    //     })).do(function(res) {
+    //         this.team.push(res);
+    //     }.bind(this));
+    // }
+    // buildNewObstacle(obstacleObject) {
+    //     return this.apiService.post("/milestone", JSON.stringify({
+    //         obstacle : {
+    //             description: obstacleObject.description,
+    //             solution: obstacleObject.solution
+    //         }
+    //     })).do(function(res) {
+    //         this.obstacles.push(res);
+    //     }.bind(this));
+    // }
     // getSummaryData() {
     //     return this.apiService.get("/summary")
     //         .do(function(res) {
@@ -108,6 +108,14 @@ var GoalBuilderService = (function () {
             }
         }
     };
+    GoalBuilderService.prototype.findMilestone = function (_id) {
+        for (var _i = 0, _a = this.goals.milestones; _i < _a.length; _i++) {
+            var milestone = _a[_i];
+            if (milestone._id === _id) {
+                return milestone;
+            }
+        }
+    };
     GoalBuilderService.prototype.findGoalById = function (_id) {
         return observable_1.Observable.create(function (observer) {
             // return a goal in cache
@@ -124,6 +132,15 @@ var GoalBuilderService = (function () {
             }.bind(this));
         }.bind(this));
     };
+    GoalBuilderService.prototype.findMilestoneById = function (_id) {
+        return observable_1.Observable.create(function (observer) {
+            var activeMilestone = this.findMilestone(_id);
+            console.log(activeMilestone);
+            observer.next(goal);
+            obeserver.complete();
+        }.bind(this));
+    };
+    ;
     GoalBuilderService.prototype.overwrite = function (orig, newValues) {
         for (var i in newValues) {
             if (newValues.hasOwnProperty(i)) {

@@ -29,7 +29,9 @@ export class GoalSummaryComponent {
 
 	@Input() goal;
 
-	constructor (private goalBuilderService: GoalBuilderService, private router: Router) {}
+	constructor (
+		private goalBuilderService: GoalBuilderService, 
+		private router: Router) {}
 
 }
 

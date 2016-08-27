@@ -30,8 +30,6 @@ module.exports = function(mongoose) {
 		startDate: String,
 		completionDate: String,
 		milestones: [MilestoneSchema],
-		typeIndividual: Boolean,
-		typeCorporate: Boolean
 	});
 
 	return GoalModel;

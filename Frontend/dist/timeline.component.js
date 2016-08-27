@@ -12,11 +12,9 @@ var core_1 = require("@angular/core");
 var TimelineComponent = (function () {
     function TimelineComponent() {
     }
-    TimelineComponent.prototype.DrawTimeline = function () {
-    };
     TimelineComponent.prototype.ngOnInit = function () {
         var ctx = this.canvas.nativeElement.getContext("2d");
-        function Vertical_line() {
+        function verticalLine() {
             ctx.beginPath();
             ctx.moveTo(50, 0);
             ctx.lineTo(50, 400);
@@ -24,7 +22,7 @@ var TimelineComponent = (function () {
             ctx.strokeStyle = "#32C5D2";
             ctx.stroke();
         }
-        Vertical_line();
+        verticalLine();
     };
     __decorate([
         core_1.Input(), 
@@ -37,8 +35,8 @@ var TimelineComponent = (function () {
     TimelineComponent = __decorate([
         core_1.Component({
             selector: "timeline",
-            templateUrl: 'app/html_files/timeline-component.html',
-            styles: ["\n\t\tcanvas {\n\t\t\tdisplay: block;\n\t\t\tmargin: 0 auto;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t    width: 150px;\n\t\t    margin: 15px 58px;\n\t\t    font-family: Helvetica;\n\t\t    font-size: 1em;\n\t\t    background-color: #32C5D2;\n\t\t    border-radius: 0;\n\t\t    border: none;\n\t\t    color: white;\n\t\t}\n\t"]
+            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\">\n\t\t\t\t{{goal.startDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t\t<canvas #canvas width=\"100\" height=\"400\">\n\t\t\t</canvas>\n\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
+            styles: ["\n\t\tcanvas {\n\t\t\tdisplay: block;\n\t\t\tmargin: 0 auto;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 15px 58px;\n\t\t\tfont-family: Helvetica;\n\t\t\tfont-size: 1em;\n\t\t\tbackground-color: #32C5D2;\n\t\t\tborder-radius: 0;\n\t\t\tborder: none;\n\t\t\tcolor: white;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], TimelineComponent);

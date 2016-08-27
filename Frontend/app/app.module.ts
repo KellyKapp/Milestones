@@ -9,24 +9,24 @@ import { GoalBuilderService } from "./goal-builder.service";
 
 import { AppComponent }  from "./app.component";
 import { WelcomeComponent } from "./welcome.component";
-import { CorporateDashboardComponent } from "./corporate-dashboard.component";
-import { CorporateGoalBuilderComponent} from "./corporate-goal-builder.component";
-import { IndividualDashboardComponent } from "./individual-dashboard.component";
-import { IndividualGoalBuilderComponent } from "./individual-goal-builder.component";
+import { DashboardComponent } from "./dashboard.component";
+import { GoalBuilderComponent } from "./goal-builder.component";
 
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ 
-  		AppComponent, 
-  		WelcomeComponent, 
-  		CorporateDashboardComponent, 
-  		CorporateGoalBuilderComponent,
-  		IndividualDashboardComponent,
-  		IndividualGoalBuilderComponent
+    imports:      [ BrowserModule, FormsModule ],
+    declarations: [ 
+    		AppComponent, 
+    		WelcomeComponent, 
+        DashboardComponent,
+        GoalBuilderComponent
   	],
-  bootstrap:    [ AppComponent ],
-  providers:    [ provideRouter(routes), ApiService, ...HTTP_PROVIDERS, GoalBuilderService]
+    bootstrap:    [ AppComponent ],
+    providers:    [ 
+        provideRouter(routes), 
+        ApiService, 
+        ...HTTP_PROVIDERS, 
+        GoalBuilderService]
 })
 
 export class AppModule { }

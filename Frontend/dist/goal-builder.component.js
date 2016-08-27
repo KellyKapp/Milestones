@@ -12,21 +12,54 @@ var core_1 = require("@angular/core");
 var goal_summary_component_1 = require("./goal-summary.component");
 var timeline_component_1 = require("./timeline.component");
 var milestone_component_1 = require("./milestone.component");
+var router_1 = require("@angular/router");
+var goal_builder_service_1 = require("./goal-builder.service");
 var GoalBuilderComponent = (function () {
-    function GoalBuilderComponent() {
+    function GoalBuilderComponent(goalBuilderService, route, router) {
+        this.goalBuilderService = goalBuilderService;
+        this.route = route;
+        this.router = router;
+        this.milestoneObject = {
+            description: "",
+            deadline: "",
+        };
+        this.activeMilestone = null;
     }
+    GoalBuilderComponent.prototype.ngOnInit = function () {
+        this.route.params.subscribe(function (params) {
+            this.goalBuilderService.findGoalById(params["_id"])
+                .subscribe(function (goal) {
+                this.goal = goal;
+            }.bind(this));
+        }.bind(this));
+    };
+    GoalBuilderComponent.prototype.buildNewMilestone = function () {
+        this.goalBuilderService
+            .buildNewMilestone(this.milestoneObject, this.goal._id)
+            .subscribe(function (res) {
+            console.log(res.milestones);
+            this.activeMilestone = res.milestones[res.milestones.length - 1];
+            $(".modal").modal();
+        }.bind(this));
+    };
+    GoalBuilderComponent.prototype.saveGoal = function () {
+        // save to goal model/Mongo
+    };
     GoalBuilderComponent = __decorate([
         core_1.Component({
             selector: "goal-builder",
-            template: "\n        <div class=\"row\">\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<goal-summary></goal-summary>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<timeline></timeline>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4 col-sm-12 divtest\">\n\t\t\t\t<milestone></milestone>\n\t\t\t</div>\n        </div>\n    ",
-            styles: ["\n    \t.divtest {\n\t\t\tborder: 1px solid black;\n\t\t\theight: 700px;\n\t\t\twidth: 400px;\n    \t}\n    "],
+            templateUrl: 'app/html_files/goal-builder-component.html',
+            styleUrls: [
+                'app/css_files/goal-builder.css',
+                'app/css_files/welcome.css'
+            ],
             directives: [
                 goal_summary_component_1.GoalSummaryComponent,
                 timeline_component_1.TimelineComponent,
                 milestone_component_1.MilestoneComponent
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService, router_1.ActivatedRoute, router_1.Router])
     ], GoalBuilderComponent);
     return GoalBuilderComponent;
 }());

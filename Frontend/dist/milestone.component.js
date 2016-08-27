@@ -10,56 +10,60 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
+var goal_builder_service_1 = require("./goal-builder.service");
 var MilestoneComponent = (function () {
-    function MilestoneComponent() {
-        this.milestoneDescription = "";
-        this.milestoneDeadline = "";
-        this.milestoneResources = [];
-        this.milestoneResourcesCost = [];
-        this.milestoneTeamMembers = [];
-        this.milestoneTeamMemberRoles = [];
-        this.milestoneTeamMembersHours = [];
-        this.milestoneTeamMembersCost = [];
-        this.milestoneObstacles = [];
-        this.milestoneSolutions = [];
+    function MilestoneComponent(goalBuilderService, router) {
+        this.goalBuilderService = goalBuilderService;
+        this.router = router;
+        this.resourceObject = {
+            description: "",
+            cost: ""
+        };
+        this.teamObject = {
+            member: "",
+            role: ""
+        };
+        this.obstacleObject = {
+            description: "",
+            solution: ""
+        };
     }
-    MilestoneComponent.prototype.addResource = function (resource, resourceCost) {
-        // add new resource to Milestone component
-        if (resource) {
-            this.milestoneResources.push(resource);
-        }
-        console.log(this.milestoneResources);
-        if (resourceCost) {
-            this.milestoneResourcesCost.push(resourceCost);
-        }
+    MilestoneComponent.prototype.addResource = function () {
+        this.goalBuilderService
+            .addResource(activeMilestone)
+            .subscribe(function (res) {
+            console.log(res.resources);
+        }.bind(this));
     };
-    MilestoneComponent.prototype.addTeamMember = function (teamMember, teamMemberRole, teamMemberHours, teamMemberSalary) {
-        // add new team member to Milestone component
-        if (teamMember) {
-            this.milestoneTeamMembers.push(teamMember);
-        }
-        if (teamMemberRole) {
-            this.milestoneTeamMemberRoles.push(teamMemberRole);
-        }
-        if (teamMemberHours) {
-            this.milestoneTeamMembersHours.push(teamMemberHours);
-        }
-        if (teamMemberSalary) {
-            this.milestoneTeamMembersCost.push((teamMemberSalary / 2080) * teamMemberHours);
-        }
+    // buildNewResource() {
+    // 		this.goalBuilderService
+    // 		.buildNewResource(this.resourceObject)
+    // 		.subscribe(function(res) {
+    // 			console.log(res);
+    // 		}.bind(this));
+    // 	}
+    MilestoneComponent.prototype.buildNewTeam = function () {
+        this.goalBuilderService
+            .buildNewTeam(this.teamObject)
+            .subscribe(function (res) {
+            console.log(res);
+        }.bind(this));
     };
-    MilestoneComponent.prototype.addObstacle = function (obstacle, solution) {
-        // add new obstacle to Milestone component
-        if (obstacle) {
-            this.milestoneObstacles.push(obstacle);
-        }
-        if (solution) {
-            this.milestoneSolutions.push(solution);
-        }
+    MilestoneComponent.prototype.buildNewObstacle = function () {
+        this.goalBuilderService
+            .buildNewObstacle(this.obstacleObject)
+            .subscribe(function (res) {
+            console.log(res);
+        }.bind(this));
     };
     MilestoneComponent.prototype.saveMilestone = function () {
-        // save data to Mongo
+        // add milestone to timeline
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MilestoneComponent.prototype, "activeMilestone", void 0);
     MilestoneComponent = __decorate([
         core_1.Component({
             selector: 'milestone',
@@ -67,7 +71,7 @@ var MilestoneComponent = (function () {
             templateUrl: 'app/html_files/milestone-component.html',
             styleUrls: ['app/css_files/milestone.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService, router_1.Router])
     ], MilestoneComponent);
     return MilestoneComponent;
 }());

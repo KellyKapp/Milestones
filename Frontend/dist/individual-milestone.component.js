@@ -29,13 +29,6 @@ var IndividualMilestoneComponent = (function () {
             solution: ""
         };
     }
-    // buildNewMilestone() {
-    // 	this.goalBuilderService
-    // 	.buildNewMilestone(this.milestoneObject)
-    // 	.subscribe(function(res) {
-    // 		console.log(res);
-    // 	}.bind(this));
-    // }
     IndividualMilestoneComponent.prototype.buildNewResource = function () {
         this.goalBuilderService
             .buildNewResource(this.resourceObject)
@@ -58,7 +51,7 @@ var IndividualMilestoneComponent = (function () {
         }.bind(this));
     };
     IndividualMilestoneComponent.prototype.saveMilestone = function () {
-        // save data to Mongo
+        // add milestone to timeline
     };
     __decorate([
         core_1.Input(), 

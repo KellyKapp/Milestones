@@ -9,15 +9,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var goal_builder_service_1 = require("./goal-builder.service");
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(goalBuilderService, router) {
+        this.goalBuilderService = goalBuilderService;
+        this.router = router;
+        this.GoalStartObject = {
+            name: "",
+            startDate: "",
+            completionDate: "",
+        };
     }
+    DashboardComponent.prototype.buildNewGoal = function () {
+        if (this.GoalStartObject.name === "") {
+            return;
+        }
+        this.goalBuilderService
+            .buildNewGoal(this.GoalStartObject)
+            .subscribe(function (res) {
+            console.log(res);
+            this.router.navigate(['/goal-builder', res._id]);
+        }.bind(this));
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: "dashboard",
-            template: "\n        <div class=\"dashboard\">\n\t\t\t<button class=\"btn btn-default\" (click)=\"newGoal()\">\n\t\t\t\t<a routerLink=\"/corporate-goal-builder\">Build a New Goal></a>\n\t\t\t</button>\n        </div>\n    "
+            templateUrl: 'app/html_files/dashboard-component.html',
+            styleUrls: ['app/css_files/dashboard.css', 'app/css_files/welcome.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService, router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
 }());
