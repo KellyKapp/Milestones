@@ -15,9 +15,11 @@ var routes_1 = require("./routes");
 var forms_1 = require("@angular/forms");
 var api_service_1 = require("./api.service");
 var http_1 = require("@angular/http");
+// import { LoginService} from "./login.service";
 var goal_builder_service_1 = require("./goal-builder.service");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./welcome.component");
+// import { LoginComponent } from "./login.component";
 var dashboard_component_1 = require("./dashboard.component");
 var goal_builder_component_1 = require("./goal-builder.component");
 var display_goal_component_1 = require("./display-goal.component");
@@ -30,6 +32,7 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 welcome_component_1.WelcomeComponent,
+                // LoginComponent, 
                 dashboard_component_1.DashboardComponent,
                 goal_builder_component_1.GoalBuilderComponent,
                 display_goal_component_1.DisplayGoalComponent
@@ -39,6 +42,7 @@ var AppModule = (function () {
                 router_1.provideRouter(routes_1.routes),
                 api_service_1.ApiService
             ].concat(http_1.HTTP_PROVIDERS, [
+                // LoginService, 
                 goal_builder_service_1.GoalBuilderService
             ])
         }), 
