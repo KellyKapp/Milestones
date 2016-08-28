@@ -46,9 +46,12 @@ var ApiService = (function () {
     };
     ApiService.prototype.post = function (path, body) {
         return this.http.post(this.url + path, body, { headers: this.postHeaders })
-            .map(this.checkForError)
-            .catch(function (err) { return Observable_1.Observable.throw(err); })
-            .map(this.getJSON);
+            .toPromise().then(function (data) {
+            return data.json();
+        }).catch(function (err) { return Observable_1.Observable.throw(err); });
+        // .map(this.checkForError)
+        // .catch(err => Observable.throw(err))
+        // .map(this.getJSON);
     };
     ApiService = __decorate([
         core_1.Injectable(), 

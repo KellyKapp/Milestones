@@ -3,7 +3,7 @@ var cors = require("cors");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var expressSession = require("express-session");
-var cookieParser = require("cookie-parser");
+// var cookieParser = require("cookie-parser");
 
 mongoose.connect("mongodb://localhost");
 
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use(expressSession({
 	secret: "milestones",
@@ -160,10 +160,9 @@ app.post("/signup", function(req, res) {
                     res.send("Error creating user");
                     return;
                 } 
-
                 res.send({
                     status: "success",
-                    userInfo: userInfo
+                    userInfo: newUser
                 });
             });
         }
