@@ -2,6 +2,8 @@ var express = require("express");
 var cors = require("cors");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var expressSession = require("express-session");
+var cookieParser = require("cookie-parser");
 
 mongoose.connect("mongodb://localhost");
 
@@ -11,12 +13,19 @@ var UserModel = require("./user.model")(mongoose);
 var app = express();
 
 app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
+app.use(cookieParser());
 
+app.use(expressSession({
+	secret: "milestones",
+	resave: false,
+	saveUninitialized: false
+}));
 
 app.use(function(req, res, next) {
 	console.log(req.url);
