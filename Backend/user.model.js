@@ -1,8 +1,7 @@
 module.exports = function(mongoose) {
 	var UserModel = mongoose.model("User", {
-		email: String,
+		username: String,
 		password: String,
-		teams: [],
 		goals: []
 	});
 
