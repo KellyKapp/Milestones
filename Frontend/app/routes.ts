@@ -20,6 +20,10 @@ export const routes: RouterConfig = [
         component: DashboardComponent
     },
     {
+        path: "dashboard",
+        component: DashboardComponent
+    }
+    {
         path: "goal-builder/:_id",
         component: GoalBuilderComponent
     }

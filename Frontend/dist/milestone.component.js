@@ -58,7 +58,8 @@ var MilestoneComponent = (function () {
         }.bind(this));
     };
     MilestoneComponent.prototype.saveMilestone = function () {
-        // add milestone to timeline
+        var dot = document.createElement("div");
+        canvas.appendChild(dot);
     };
     __decorate([
         core_1.Input(), 

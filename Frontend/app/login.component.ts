@@ -5,39 +5,16 @@ import { ApiService} from "./api.service";
 
 @Component ({
 	selector: "login",
-	template: `
-		 <form class="form-inline">
-            <div class="form-group">
-                <input 
-                    class="form-control" 
-                    type="text" 
-                    name="username"
-                    placeholder="Username" 
-                    [(ngModel)]="loginInfo.username" 
-                />
-            </div>
-            <div class="form-group">
-                <input 
-                    class="form-control" 
-                    type="password" 
-                    name="password"
-                    placeholder="Password" 
-                    [(ngModel)]="loginInfo.password" 
-                />
-            </div>
-            <div class="form-group">
-                <button class="button" (click)="buttonHandler()">{{buttonText}}</button>
-                <button class="button" (click)="switchMode($event)">{{switchText}}</button>
-            </div>
-        </form>
-	`,
-	styles: ['']
+	templateUrl: 'app/html_files/login-component.html',
+	styleUrls: ['app/css_files/login.css', 'app/css_files/welcome.css']
 })
 
 export class LoginComponent {
 	mode: string = "login";
-    buttonText: string = "Login";
-    switchText: string = "Need to create an account?";
+	titleText: string = "WELCOME BACK!";
+    buttonText: string = "LOG IN";
+    userText: string = "Don't have an account yet?";
+    switchText: string = "SIGN UP";
 
     loginInfo = {
         username: '',
@@ -56,13 +33,20 @@ export class LoginComponent {
         evt.preventDefault();
         if (this.mode === "login") {
             this.mode = "signup";
-            this.buttonText = "Sign Up";
-            this.switchText = "Already have an account?";
+            this.buttonText = "SIGN UP";
+            this.switchText = "LOG IN";
+            this.titleText = "CREATE A NEW ACCOUNT";
+            this.userText = "Already have an account?";
+            // document.getElementById("change").style.color = "red";
         } else {
             this.mode = "login";
-            this.buttonText = "Login";
-            this.switchText = "Need to create and account?";
+            this.buttonText = "LOG IN";
+            this.switchText = "SIGN UP";
+            this.titleText = "WELCOME BACK!";
+            this.userText = "Don't have an account yet?";
+            // document.getElementById("change").style.color = "blue";
         }
+
         this.ref.detectChanges();
     }
 

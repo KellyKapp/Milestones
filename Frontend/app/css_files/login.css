@@ -1,0 +1,76 @@
+.row {
+	margin: 30px 0;
+}
+
+img {
+	margin: 25px auto;
+}
+
+div.label {
+	color: #32C5D2;
+	font-size: 1.25em;
+}
+
+div.form-group {
+	margin: 15px;
+}
+
+.form-title {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+input {
+	margin: 20px 0;
+	border-radius: 0;
+}
+
+.login {
+	margin-left: 410px;
+	height: 45px;
+	width: 100px;
+	font-size: 1.25em;
+	border: none;
+	background-color: #32C5D2;
+	color: white;
+}
+
+.divider {
+	border-bottom: 1px solid lightgrey;
+	margin: 40px 0;
+}
+
+.new-user {
+	display: inline-block;
+	font-size: 1.25em;
+	color: grey;
+	width: 300px;
+}
+
+#change {
+	margin-left: 100px;
+	height: 45px;
+	width: 100px;
+	background-color: lightgrey;
+	color: #2F353B;
+	border: none;
+	border-radius: 0;
+}
+
+.carousel {
+	margin-top: 80px;
+	margin-left: 30px;
+	background-color: white;
+}
+
+a.right.carousel-control {
+	background-image: none;
+}
+
+a.left.carousel-control {
+	background-image: none;
+}
+
+.footer {
+	margin-top: 15px;
+}

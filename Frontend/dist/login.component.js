@@ -19,8 +19,10 @@ var LoginComponent = (function () {
         this.apiService = apiService;
         this.ref = ref;
         this.mode = "login";
-        this.buttonText = "Login";
-        this.switchText = "Need to create an account?";
+        this.titleText = "WELCOME BACK!";
+        this.buttonText = "LOG IN";
+        this.userText = "Don't have an account yet?";
+        this.switchText = "SIGN UP";
         this.loginInfo = {
             username: '',
             password: ''
@@ -30,13 +32,17 @@ var LoginComponent = (function () {
         evt.preventDefault();
         if (this.mode === "login") {
             this.mode = "signup";
-            this.buttonText = "Sign Up";
-            this.switchText = "Already have an account?";
+            this.buttonText = "SIGN UP";
+            this.switchText = "LOG IN";
+            this.titleText = "CREATE A NEW ACCOUNT";
+            this.userText = "Already have an account?";
         }
         else {
             this.mode = "login";
-            this.buttonText = "Login";
-            this.switchText = "Need to create and account?";
+            this.buttonText = "LOG IN";
+            this.switchText = "SIGN UP";
+            this.titleText = "WELCOME BACK!";
+            this.userText = "Don't have an account yet?";
         }
         this.ref.detectChanges();
     };
@@ -75,8 +81,8 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         core_1.Component({
             selector: "login",
-            template: "\n\t\t <form class=\"form-inline\">\n            <div class=\"form-group\">\n                <input \n                    class=\"form-control\" \n                    type=\"text\" \n                    name=\"username\"\n                    placeholder=\"Username\" \n                    [(ngModel)]=\"loginInfo.username\" \n                />\n            </div>\n            <div class=\"form-group\">\n                <input \n                    class=\"form-control\" \n                    type=\"password\" \n                    name=\"password\"\n                    placeholder=\"Password\" \n                    [(ngModel)]=\"loginInfo.password\" \n                />\n            </div>\n            <div class=\"form-group\">\n                <button class=\"button\" (click)=\"buttonHandler()\">{{buttonText}}</button>\n                <button class=\"button\" (click)=\"switchMode($event)\">{{switchText}}</button>\n            </div>\n        </form>\n\t",
-            styles: ['']
+            templateUrl: 'app/html_files/login-component.html',
+            styleUrls: ['app/css_files/login.css', 'app/css_files/welcome.css']
         }), 
         __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router, api_service_1.ApiService, core_1.ChangeDetectorRef])
     ], LoginComponent);

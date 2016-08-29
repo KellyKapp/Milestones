@@ -17,6 +17,10 @@ exports.routes = [
         component: dashboard_component_1.DashboardComponent
     },
     {
+        path: "dashboard",
+        component: dashboard_component_1.DashboardComponent
+    },
+    {
         path: "goal-builder/:_id",
         component: goal_builder_component_1.GoalBuilderComponent
     }

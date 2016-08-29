@@ -74,7 +74,9 @@ export class MilestoneComponent {
 	}
 
 	saveMilestone() {
-		// add milestone to timeline
+		var dot = document.createElement("div");
+
+		canvas.appendChild(dot);
 	}
 
 }
