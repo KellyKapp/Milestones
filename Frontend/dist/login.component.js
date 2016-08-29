@@ -70,13 +70,13 @@ var LoginComponent = (function () {
         }.bind(this));
     };
     LoginComponent.prototype.signup = function () {
-        console.log(this.loginInfo);
-        if (!this.loginInfo.username || !this.loginInfo.password) {
-            return;
-        }
-        this.apiService.post('/signup', this.loginInfo).then(function (data) {
-            this.router.navigate(['/dashboard', data.userInfo._id]);
-        }.bind(this));
+        //     	console.log(this.loginInfo);
+        //     	if (!this.loginInfo.username || !this.loginInfo.password) {
+        //     		return;
+        //     	}
+        //     	this.apiService.post('/signup', this.loginInfo).then(function(data) {
+        //     		this.router.navigate(['/dashboard', data.userInfo._id]);
+        //     	}.bind(this));
     };
     LoginComponent = __decorate([
         core_1.Component({

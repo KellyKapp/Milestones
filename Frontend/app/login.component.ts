@@ -37,14 +37,12 @@ export class LoginComponent {
             this.switchText = "LOG IN";
             this.titleText = "CREATE A NEW ACCOUNT";
             this.userText = "Already have an account?";
-            // document.getElementById("change").style.color = "red";
         } else {
             this.mode = "login";
             this.buttonText = "LOG IN";
             this.switchText = "SIGN UP";
             this.titleText = "WELCOME BACK!";
             this.userText = "Don't have an account yet?";
-            // document.getElementById("change").style.color = "blue";
         }
 
         this.ref.detectChanges();
@@ -76,13 +74,13 @@ export class LoginComponent {
     }
 
     signup() {
-    	console.log(this.loginInfo);
-    	if (!this.loginInfo.username || !this.loginInfo.password) {
-    		return;
-    	}
-    	this.apiService.post('/signup', this.loginInfo).then(function(data) {
-    		this.router.navigate(['/dashboard', data.userInfo._id]);
-    	}.bind(this));
+//     	console.log(this.loginInfo);
+//     	if (!this.loginInfo.username || !this.loginInfo.password) {
+//     		return;
+//     	}
+//     	this.apiService.post('/signup', this.loginInfo).then(function(data) {
+//     		this.router.navigate(['/dashboard', data.userInfo._id]);
+//     	}.bind(this));
     }
 }
 

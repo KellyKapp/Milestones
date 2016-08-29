@@ -16,8 +16,10 @@
 </nav>
 
 <div class="container goal-dashboard">
-	<display-goal>
-	</display-goal>
+	<display-goal
+		*ngFor="let goalItem of this.goalBuilderService.goals; let i = index;"
+		[goalItem]="goalItem"
+	></display-goal>
 
 <!-- *ngFor="let description in testing" [nameVariable]="description" -->
 <!-- 	<div class="row dashboard">

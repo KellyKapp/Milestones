@@ -3,26 +3,48 @@ import { GoalBuilderService } from "./goal-builder.service";
 
 @Component ({
 	selector: "display-goal",
-	template: `<div>
+	template: `
+		<div>
 			{{titles | json}}
-		</div>`
+		</div>
+		<div class="row">
+			<div class="col-xs-2">
+				<input
+					class="form-control"
+					type="text"
+					[ngModel]="goalItem.name"
+				/>
+			</div>
+			<div class="col-xs-2">
+				<input
+					class="form-control"
+					type="text"
+					[ngModel]="goalItem.completionDate"
+				/>
+			</div>
+		</div>
+	`
 })
 
 export class DisplayGoalComponent {
-	// @Input() nameVariable;
 
-	goalsCopy = [];
+	@Input() goalItem;
 
-	titles = [];
+	// goalItem = [];
+
+	// titles = [];
 	constructor (private goalBuilderService: GoalBuilderService) {}
 
-	ngOnInit() {
-		this.goalBuilderService.getAllGoals().subscribe(function(res) {
-			this.goalsCopy = res;
-			for (var i = 0; i < res.length; i++) {
-				this.titles.push(res[i].name);
-			}
-			console.log(this.goalsCopy[0].name);
-		}.bind(this));
-	}
+	// ngOnInit() {
+	// 	console.log("in oninit of display-goal", this.goalItem);
+
+	// 	this.goalBuilderService.getAllGoals().subscribe(function(res) {
+	// 		this.goalItem = res;
+	// 		console.log(res);
+	// 		// for (var i = 0; i < res.length; i++) {
+	// 		// 	this.titles.push(res[i].name);
+	// 		// }
+	// 		// console.log(this.goalsCopy[0].name);
+	// 	}.bind(this));
+	// }
 }

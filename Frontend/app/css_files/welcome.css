@@ -23,9 +23,11 @@ nav.navbar.navbar-default {
 .pull-right {
     font-size: 1.2em;
     color: white;
+    margin-top: 5px;
 }
 .navbar-default .navbar-nav>li>a {
     color: #32C5D2;
+    margin: 0 10px;
 }
 #brand {
     margin: -28;
@@ -42,7 +44,7 @@ nav.navbar.navbar-default {
     color: white;
 }
 .buttons {
-    margin: 30px 475px;
+    margin: 30px 575px;
     width: 450px;
 }
 button.btn.btn-default {
@@ -64,6 +66,9 @@ button.btn.btn-default a {
     width: 80px;
     background-color: #32C5D2;
     margin: 0 650px 20px 0;
+}
+.About {
+    padding-top: 60px;
 }
 p {
     font-size: 1.25em;
@@ -99,6 +104,7 @@ p {
     text-align: center;
     margin: 8px 0;
     height: 40px;
+    padding-top: 20px;
 }
 .contact-text {
     font-size: 1.35em;

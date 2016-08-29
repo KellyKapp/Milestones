@@ -49,16 +49,16 @@ var GoalBuilderService = (function () {
             goal.milestones = res.milestones;
         }.bind(this));
     };
-    GoalBuilderService.prototype.addResource = function (activeMilestone) {
-        return this.apiService.post("/resource", JSON.stringify({
-            resource: {
-                description: resourceObject.description,
-                cost: resourceObject.cost
-            }
-        })).do(function (res) {
-            activeMilestone.resources = res.resources;
-        }.bind(this));
-    };
+    // addResource(activeMilestone) {
+    // 	return this.apiService.post("/resource", JSON.stringify({
+    // 		resource : {
+    // 			description: resourceObject.description,
+    // 			cost: resourceObject.cost
+    // 		}
+    // 	})).do(function(res) {
+    // 		activeMilestone.resources = res.resources;
+    // 	}.bind(this));
+    // }
     // buildNewTeam(teamObject) {
     //     return this.apiService.post("/milestone", JSON.stringify({
     //         team : {
@@ -92,14 +92,14 @@ var GoalBuilderService = (function () {
     //         this.goals = res;
     //     }.bind(this));
     // }
-    // updateGoal(_id, newValue) {
-    //     return this.apiService.post("/update", JSON.stringify({
-    //         _id: _id,
-    //         goal: newValue
-    //     })).do(function(res){
-    //         this.overwrite(this.findItemById(_id), res);
-    //     }.bind(this));
-    // }
+    GoalBuilderService.prototype.updateGoal = function (_id, newValue) {
+        return this.apiService.post("/update", JSON.stringify({
+            _id: _id,
+            goal: newValue
+        })).do(function (res) {
+            this.overwrite(this.findItemById(_id), res);
+        }.bind(this));
+    };
     GoalBuilderService.prototype.findGoalInCache = function (_id) {
         for (var _i = 0, _a = this.goals; _i < _a.length; _i++) {
             var goal = _a[_i];
@@ -108,14 +108,13 @@ var GoalBuilderService = (function () {
             }
         }
     };
-    GoalBuilderService.prototype.findMilestone = function (_id) {
-        for (var _i = 0, _a = this.goals.milestones; _i < _a.length; _i++) {
-            var milestone = _a[_i];
-            if (milestone._id === _id) {
-                return milestone;
-            }
-        }
-    };
+    // findMilestone(_id) {
+    // 	for (let milestone of this.goals.milestones) {
+    // 		if (milestone._id === _id) {
+    // 			return milestone;
+    // 		}
+    // 	}
+    // }
     GoalBuilderService.prototype.findGoalById = function (_id) {
         return observable_1.Observable.create(function (observer) {
             // return a goal in cache

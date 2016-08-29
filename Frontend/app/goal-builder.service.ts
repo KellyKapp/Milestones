@@ -50,16 +50,16 @@ export class GoalBuilderService {
 		}.bind(this));
 	}
 
-	addResource(activeMilestone) {
-		return this.apiService.post("/resource", JSON.stringify({
-			resource : {
-				description: resourceObject.description,
-				cost: resourceObject.cost
-			}
-		})).do(function(res) {
-			activeMilestone.resources = res.resources;
-		}.bind(this));
-	}
+	// addResource(activeMilestone) {
+	// 	return this.apiService.post("/resource", JSON.stringify({
+	// 		resource : {
+	// 			description: resourceObject.description,
+	// 			cost: resourceObject.cost
+	// 		}
+	// 	})).do(function(res) {
+	// 		activeMilestone.resources = res.resources;
+	// 	}.bind(this));
+	// }
 
 // buildNewTeam(teamObject) {
 //     return this.apiService.post("/milestone", JSON.stringify({
@@ -98,14 +98,14 @@ export class GoalBuilderService {
 //     }.bind(this));
 // }
 
-// updateGoal(_id, newValue) {
-//     return this.apiService.post("/update", JSON.stringify({
-//         _id: _id,
-//         goal: newValue
-//     })).do(function(res){
-//         this.overwrite(this.findItemById(_id), res);
-//     }.bind(this));
-// }
+updateGoal(_id, newValue) {
+    return this.apiService.post("/update", JSON.stringify({
+        _id: _id,
+        goal: newValue
+    })).do(function(res){
+        this.overwrite(this.findItemById(_id), res);
+    }.bind(this));
+}
 
 	findGoalInCache(_id) {
 		for (let goal of this.goals) {
@@ -115,13 +115,13 @@ export class GoalBuilderService {
 		}
 	}
 
-	findMilestone(_id) {
-		for (let milestone of this.goals.milestones) {
-			if (milestone._id === _id) {
-				return milestone;
-			}
-		}
-	}
+	// findMilestone(_id) {
+	// 	for (let milestone of this.goals.milestones) {
+	// 		if (milestone._id === _id) {
+	// 			return milestone;
+	// 		}
+	// 	}
+	// }
 
 	findGoalById (_id) {
 		return Observable.create(function(observer) {

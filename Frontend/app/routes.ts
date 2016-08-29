@@ -22,7 +22,7 @@ export const routes: RouterConfig = [
     {
         path: "dashboard",
         component: DashboardComponent
-    }
+    },
     {
         path: "goal-builder/:_id",
         component: GoalBuilderComponent

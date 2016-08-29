@@ -29,13 +29,13 @@ var MilestoneComponent = (function () {
             solution: ""
         };
     }
-    MilestoneComponent.prototype.addResource = function () {
-        this.goalBuilderService
-            .addResource(activeMilestone)
-            .subscribe(function (res) {
-            console.log(res.resources);
-        }.bind(this));
-    };
+    // addResource() {
+    // 	this.goalBuilderService
+    // 	.addResource(activeMilestone)
+    // 	.subscribe(function(res) {
+    // 			console.log(res.resources);
+    // 	}.bind(this));
+    // }
     // buildNewResource() {
     // 		this.goalBuilderService
     // 		.buildNewResource(this.resourceObject)
@@ -43,23 +43,21 @@ var MilestoneComponent = (function () {
     // 			console.log(res);
     // 		}.bind(this));
     // 	}
-    MilestoneComponent.prototype.buildNewTeam = function () {
-        this.goalBuilderService
-            .buildNewTeam(this.teamObject)
-            .subscribe(function (res) {
-            console.log(res);
-        }.bind(this));
-    };
-    MilestoneComponent.prototype.buildNewObstacle = function () {
-        this.goalBuilderService
-            .buildNewObstacle(this.obstacleObject)
-            .subscribe(function (res) {
-            console.log(res);
-        }.bind(this));
-    };
+    // buildNewTeam() {
+    // 	this.goalBuilderService
+    // 	.buildNewTeam(this.teamObject)
+    // 	.subscribe(function(res) {
+    // 		console.log(res);
+    // 	}.bind(this));
+    // }
+    // buildNewObstacle() {
+    // 	this.goalBuilderService
+    // 	.buildNewObstacle(this.obstacleObject)
+    // 	.subscribe(function(res) {
+    // 		console.log(res);
+    // 	}.bind(this));
+    // }
     MilestoneComponent.prototype.saveMilestone = function () {
-        var dot = document.createElement("div");
-        canvas.appendChild(dot);
     };
     __decorate([
         core_1.Input(), 

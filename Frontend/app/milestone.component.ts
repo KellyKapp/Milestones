@@ -39,13 +39,13 @@ export class MilestoneComponent {
 		private router: Router) {}
 
 
-	addResource() {
-		this.goalBuilderService
-		.addResource(activeMilestone)
-		.subscribe(function(res) {
-				console.log(res.resources);
-		}.bind(this));
-	}
+	// addResource() {
+	// 	this.goalBuilderService
+	// 	.addResource(activeMilestone)
+	// 	.subscribe(function(res) {
+	// 			console.log(res.resources);
+	// 	}.bind(this));
+	// }
 
 
 
@@ -57,26 +57,23 @@ export class MilestoneComponent {
 	// 		}.bind(this));
 	// 	}
 
-	buildNewTeam() {
-		this.goalBuilderService
-		.buildNewTeam(this.teamObject)
-		.subscribe(function(res) {
-			console.log(res);
-		}.bind(this));
-	}
+	// buildNewTeam() {
+	// 	this.goalBuilderService
+	// 	.buildNewTeam(this.teamObject)
+	// 	.subscribe(function(res) {
+	// 		console.log(res);
+	// 	}.bind(this));
+	// }
 
-	buildNewObstacle() {
-		this.goalBuilderService
-		.buildNewObstacle(this.obstacleObject)
-		.subscribe(function(res) {
-			console.log(res);
-		}.bind(this));
-	}
+	// buildNewObstacle() {
+	// 	this.goalBuilderService
+	// 	.buildNewObstacle(this.obstacleObject)
+	// 	.subscribe(function(res) {
+	// 		console.log(res);
+	// 	}.bind(this));
+	// }
 
 	saveMilestone() {
-		var dot = document.createElement("div");
-
-		canvas.appendChild(dot);
 	}
 
 }
