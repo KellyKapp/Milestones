@@ -18,6 +18,7 @@ import { GoalBuilderComponent } from "./goal-builder.component";
 export class MilestoneComponent {
 
 	@Input() activeMilestone;
+	@Input() goal;
 
 	resourceObject = {
 		description: "",
@@ -39,23 +40,15 @@ export class MilestoneComponent {
 		private router: Router) {}
 
 
-	// addResource() {
-	// 	this.goalBuilderService
-	// 	.addResource(activeMilestone)
-	// 	.subscribe(function(res) {
-	// 			console.log(res.resources);
-	// 	}.bind(this));
-	// }
-
-
-
-	// buildNewResource() {
-	// 		this.goalBuilderService
-	// 		.buildNewResource(this.resourceObject)
-	// 		.subscribe(function(res) {
-	// 			console.log(res);
-	// 		}.bind(this));
-	// 	}
+	addResource() {
+		this.goalBuilderService
+		.addResource(this.activeMilestone, this.resourceObject, this.goal)
+		.subscribe(function(res) {
+				console.log(res);
+				this.resourceObject = res;
+				console.log(this.resourceObject);
+		}.bind(this));
+	}
 
 	// buildNewTeam() {
 	// 	this.goalBuilderService

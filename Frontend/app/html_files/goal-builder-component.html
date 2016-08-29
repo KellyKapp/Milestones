@@ -8,10 +8,10 @@
 		    <div class="pull-right">
 				    <ul class="nav navbar-nav navbar-right">
 						    <li>
-							      <a routerLink="/contact">DASHBOARD</a>
+							      <a routerLink="dashboard">DASHBOARD</a>
 						    </li>
 						    <li>
-							      <a routerLink="/Dashboard">LOG OUT</a>
+							      <a routerLink="">LOG OUT</a>
 						    </li>
 				    </ul>
 		    </div>
@@ -59,7 +59,7 @@
 								<div class="modal-body">
 										<milestone 
 										[activeMilestone]="activeMilestone"
-										*ngIf="activeMilestone"></milestone>
+										*ngIf="activeMilestone" [goal]="goal"></milestone>
 								</div>
 						</div>
 				</div>

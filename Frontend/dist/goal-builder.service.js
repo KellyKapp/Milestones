@@ -34,7 +34,7 @@ var GoalBuilderService = (function () {
             this.goals.push(res);
         }.bind(this));
     };
-    GoalBuilderService.prototype.buildNewMilestone = function (milestoneObject, goalId) {
+    GoalBuilderService.prototype.buildNewMilestone = function (milestoneObject, goal) {
         return this.apiService.post("/milestone", JSON.stringify({
             milestone: {
                 description: milestoneObject.description,
@@ -43,22 +43,23 @@ var GoalBuilderService = (function () {
                 team: [],
                 obstacles: []
             },
-            goalId: goalId,
+            goalId: goal._id,
         })).do(function (res) {
-            var goal = this.findGoalById(goalId);
-            goal.milestones = res.milestones;
+            goal.milestones.push(res);
         }.bind(this));
     };
-    // addResource(activeMilestone) {
-    // 	return this.apiService.post("/resource", JSON.stringify({
-    // 		resource : {
-    // 			description: resourceObject.description,
-    // 			cost: resourceObject.cost
-    // 		}
-    // 	})).do(function(res) {
-    // 		activeMilestone.resources = res.resources;
-    // 	}.bind(this));
-    // }
+    GoalBuilderService.prototype.addResource = function (milestone, resourceObject, goal) {
+        return this.apiService.post("/resource", JSON.stringify({
+            resource: {
+                description: resourceObject.description,
+                cost: resourceObject.cost
+            },
+            goalId: goal._id,
+            milestoneId: milestone._id
+        })).do(function (res) {
+            milestone.resources.push(res);
+        }.bind(this));
+    };
     // buildNewTeam(teamObject) {
     //     return this.apiService.post("/milestone", JSON.stringify({
     //         team : {
@@ -84,13 +85,6 @@ var GoalBuilderService = (function () {
     //         .do(function(res) {
     //             this.goals = res;
     //         }.bind(this));
-    // }
-    // deleteGoal(_id) {
-    //     return this.apiService.post("/delete", JSON.stringify({
-    //         _id: _id
-    //     })).do(function(res) {
-    //         this.goals = res;
-    //     }.bind(this));
     // }
     GoalBuilderService.prototype.updateGoal = function (_id, newValue) {
         return this.apiService.post("/update", JSON.stringify({

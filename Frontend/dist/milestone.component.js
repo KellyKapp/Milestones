@@ -29,20 +29,15 @@ var MilestoneComponent = (function () {
             solution: ""
         };
     }
-    // addResource() {
-    // 	this.goalBuilderService
-    // 	.addResource(activeMilestone)
-    // 	.subscribe(function(res) {
-    // 			console.log(res.resources);
-    // 	}.bind(this));
-    // }
-    // buildNewResource() {
-    // 		this.goalBuilderService
-    // 		.buildNewResource(this.resourceObject)
-    // 		.subscribe(function(res) {
-    // 			console.log(res);
-    // 		}.bind(this));
-    // 	}
+    MilestoneComponent.prototype.addResource = function () {
+        this.goalBuilderService
+            .addResource(this.activeMilestone, this.resourceObject, this.goal)
+            .subscribe(function (res) {
+            console.log(res);
+            this.resourceObject = res;
+            console.log(this.resourceObject);
+        }.bind(this));
+    };
     // buildNewTeam() {
     // 	this.goalBuilderService
     // 	.buildNewTeam(this.teamObject)
@@ -63,6 +58,10 @@ var MilestoneComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], MilestoneComponent.prototype, "activeMilestone", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MilestoneComponent.prototype, "goal", void 0);
     MilestoneComponent = __decorate([
         core_1.Component({
             selector: 'milestone',

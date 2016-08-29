@@ -78,20 +78,30 @@ app.post('/milestone', function(req, res) {
 				return;
 
 			}
-			res.send(doc);
+			res.send(milestone);
 		}
 	);
 });
 
-// app.post('/resource', function(req,res) {
-// 	GoalModel.findOneAndUpdate(
-// 		{"_id": req.body.goalId},
-// 		{
-// 			"$push": {
+app.post('/resource', function(req,res) {
+	GoalModel.findOneAndUpdate(
+		{"_id": req.body.goalId, "milestones._id": req.body.milestoneId},
+		{
+			"$push": {
+				"milestones.$": req.body.resource
+			}
+		},
+		function(err, doc) {
+			if (err) {
+				res.status(500);
+				res.send("Error creating new Resource");
+				console.log(err);
+				return;
 
-// 			}
-// 		})
-// })
+			}
+			res.send(req.body.resource);
+		});
+});
 
 
 app.get('/all', function(req, res) {

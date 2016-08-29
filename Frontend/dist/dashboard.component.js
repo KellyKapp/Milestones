@@ -21,32 +21,18 @@ var DashboardComponent = (function () {
             startDate: "",
             completionDate: "",
         };
-        // goalItems = ["Goal1", "Goal2", "Goal3"];
         this.goalItems = [];
     }
-    DashboardComponent.prototype.getGoals = function () {
-        // ultimately need to pull goal data from wherever it is
-        // this.goalItems = ["Goal1", "Goal2", "Goal3"];
-    };
     DashboardComponent.prototype.ngOnInit = function () {
-        console.log("in onInit of dashboard.component, with:", this.goalItems);
         this.goalBuilderService
             .displayAllGoals()
             .subscribe(function (res) {
             console.log(res);
         }.bind(this));
-        // console.log("in oninit of display-goal", this.goalItem);
         this.goalBuilderService.getAllGoals().subscribe(function (res) {
             this.goalItem = res;
             console.log(res);
-            // for (var i = 0; i < res.length; i++) {
-            // 	this.titles.push(res[i].name);
-            // }
-            // console.log(this.goalsCopy[0].name);
         }.bind(this));
-        // need to populate goalItems with data from Mongo
-        // this.goalBuilderService.getAllGoals().subscribe(function(res) {
-        // this.goalItems = 
     };
     DashboardComponent.prototype.buildNewGoal = function () {
         if (this.GoalStartObject.name === "") {

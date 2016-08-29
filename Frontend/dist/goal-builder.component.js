@@ -35,10 +35,10 @@ var GoalBuilderComponent = (function () {
     };
     GoalBuilderComponent.prototype.buildNewMilestone = function () {
         this.goalBuilderService
-            .buildNewMilestone(this.milestoneObject, this.goal._id)
+            .buildNewMilestone(this.milestoneObject, this.goal)
             .subscribe(function (res) {
-            console.log(res.milestones);
-            this.activeMilestone = res.milestones[res.milestones.length - 1];
+            console.log(res);
+            this.activeMilestone = res;
             $(".modal").modal();
         }.bind(this));
     };
