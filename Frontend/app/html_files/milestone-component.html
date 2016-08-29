@@ -76,7 +76,7 @@
 		        [(ngModel)]="teamObject.role"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="goalBuilderServce.buildNewTeam(teamObject)"
+		    	(click)="addTeamMember()"
 			>SAVE TEAM MEMBER</button>
 		</div>
 		<div class="col col-md-4">
@@ -116,7 +116,7 @@
 		        [(ngModel)]="obstacleObject.solution"
 		    />
 		    <button class="btn btn-default"
-		    	(click)="goalBuilderServce.buildNewObstacle(obstacleObject)"
+		    	(click)="addObstacle()"
 			>SAVE OBSTACLE</button>
 		</div>
 		<div class="col col-md-4">

@@ -38,20 +38,22 @@ var MilestoneComponent = (function () {
             console.log(this.resourceObject);
         }.bind(this));
     };
-    // buildNewTeam() {
-    // 	this.goalBuilderService
-    // 	.buildNewTeam(this.teamObject)
-    // 	.subscribe(function(res) {
-    // 		console.log(res);
-    // 	}.bind(this));
-    // }
-    // buildNewObstacle() {
-    // 	this.goalBuilderService
-    // 	.buildNewObstacle(this.obstacleObject)
-    // 	.subscribe(function(res) {
-    // 		console.log(res);
-    // 	}.bind(this));
-    // }
+    MilestoneComponent.prototype.addTeamMember = function () {
+        this.goalBuilderService
+            .addTeamMember(this.activeMilestone, this.teamObject, this.goal)
+            .subscribe(function (res) {
+            console.log(res);
+            this.teamObject = res;
+        }.bind(this));
+    };
+    MilestoneComponent.prototype.addObstacle = function () {
+        this.goalBuilderService
+            .addObstacle(this.activeMilestone, this.obstacleObject, this.goal)
+            .subscribe(function (res) {
+            console.log(res);
+            this.obstacleObject = res;
+        }.bind(this));
+    };
     MilestoneComponent.prototype.saveMilestone = function () {
     };
     __decorate([

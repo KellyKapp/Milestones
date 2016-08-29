@@ -62,27 +62,31 @@ export class GoalBuilderService {
 		}.bind(this));
 	}
 
-// buildNewTeam(teamObject) {
-//     return this.apiService.post("/milestone", JSON.stringify({
-//         team : {
-//             members: teamObject.members,
-//             roles: teamObject.roles,
-//         }
-//     })).do(function(res) {
-//         this.team.push(res);
-//     }.bind(this));
-// }
+addTeamMember(milestone, teamObject, goal) {
+    return this.apiService.post("/team", JSON.stringify({
+        team : {
+            member: teamObject.member,
+            role: teamObject.role,
+        },
+        goalId: goal._id,
+        milestoneId: milestone._id
+    })).do(function(res) {
+        milestone.team.push(res);
+    }.bind(this));
+}
 
-// buildNewObstacle(obstacleObject) {
-//     return this.apiService.post("/milestone", JSON.stringify({
-//         obstacle : {
-//             description: obstacleObject.description,
-//             solution: obstacleObject.solution
-//         }
-//     })).do(function(res) {
-//         this.obstacles.push(res);
-//     }.bind(this));
-// }
+addObstacle(milestone, obstacleObject, goal) {
+    return this.apiService.post("/obstacle", JSON.stringify({
+        obstacle : {
+            description: obstacleObject.description,
+            solution: obstacleObject.solution
+        },
+        goalId: goal._id,
+        milestoneId: milestone._id
+    })).do(function(res) {
+        milestone.obstacles.push(res);
+    }.bind(this));
+}
 
 // getSummaryData() {
 //     return this.apiService.get("/summary")

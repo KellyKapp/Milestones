@@ -83,12 +83,18 @@ app.post('/milestone', function(req, res) {
 	);
 });
 
+
 app.post('/resource', function(req,res) {
+	var resource = {
+		description: req.body.resource.description,
+		cost: req.body.resource.cost
+	};
+	
 	GoalModel.findOneAndUpdate(
-		{"_id": req.body.goalId, "milestones._id": req.body.milestoneId},
+		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
 		{
 			"$push": {
-				"milestones.$": req.body.resource
+				"milestone.$": req.body.resource
 			}
 		},
 		function(err, doc) {
@@ -97,9 +103,47 @@ app.post('/resource', function(req,res) {
 				res.send("Error creating new Resource");
 				console.log(err);
 				return;
-
 			}
 			res.send(req.body.resource);
+		});
+});
+
+app.post('/team', function(req,res) {
+	GoalModel.findOneAndUpdate(
+		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
+		{
+			"$push": {
+				"milestone.$": req.body.team
+			}
+		},
+		function(err, doc) {
+			if (err) {
+				res.status(500);
+				res.send("Error creating new team member");
+				console.log(err);
+				return;
+			}
+			res.send(req.body.team);
+		});
+});
+
+
+app.post('/obstacle', function(req,res) {
+	GoalModel.findOneAndUpdate(
+		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
+		{
+			"$push": {
+				"milestone.$": req.body.obstacle
+			}
+		},
+		function(err, doc) {
+			if (err) {
+				res.status(500);
+				res.send("Error creating new obstacle");
+				console.log(err);
+				return;
+			}
+			res.send(req.body.obstacle);
 		});
 });
 
@@ -118,6 +162,7 @@ app.get('/all', function(req, res) {
 		}
 	);
 });
+
 
 app.post("/login", function(req, res) {
 	UserModel.findOne({
@@ -182,9 +227,9 @@ app.post("/signup", function(req, res) {
 
 app.use(function(req, res, next) {
 	res.status(404);
-	res.send("Error");
+	res.send("Page Not Found");
 });
 
 app.listen(3000, function() {
-	console.log("yes: 3000");
+	console.log("Yipee!");
 }); 
