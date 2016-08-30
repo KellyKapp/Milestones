@@ -23,6 +23,10 @@ export class MilestoneComponent {
 	@Input() activeMilestone;
 	@Input() goal;
 
+	start;
+	end; 
+	deadline;
+
 	resourceObject = {
 		description: "",
 		cost: ""
@@ -42,6 +46,13 @@ export class MilestoneComponent {
 		private goalBuilderService: GoalBuilderService, 
 		private router: Router) {}
 
+	ngOnInit() {
+		console.log("In milestone component ngOnInit", this.goal);
+
+		this.start = this.goal.startDate;
+		this.end = this.goal.completionDate;
+		this.deadline = this.activeMilestone.deadline;
+	}
 
 	addResource() {
 		this.goalBuilderService
@@ -71,19 +82,15 @@ export class MilestoneComponent {
 		}.bind(this));
 	}
 
-	// start = this.goal.startDate;
-	// end = this.goal.completionDate;
-	// deadline = this.activeMilestone.deadline;
-
 	saveMilestone() {
 		$('.svg').append('<div class="milestone-dot"></div>');
-		// $('.milestone-dot').css("margin-top", function(start, end, deadline){
-		// 	var ms = Math.abs(end.getTime() - start.getTime());
-		// 	var pixelsPerMs = 400 / ms;
-		// 	var milestoneMargin = Math.round((deadline.getTime() - start.getTime()) * pixelsPerMs);
+		$('.milestone-dot').css("margin-top", function(start, end, deadline){
+			var ms = Math.abs(end.getTime() - start.getTime());
+			var pixelsPerMs = 400 / ms;
+			var milestoneMargin = (Math.round((deadline.getTime() - start.getTime()) * pixelsPerMs)) + "px";
 
-		// 	return milestoneMargin;
-		// });
+			return milestoneMargin;
+		});
 	}
 }
 

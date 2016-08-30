@@ -29,6 +29,12 @@ var MilestoneComponent = (function () {
             solution: ""
         };
     }
+    MilestoneComponent.prototype.ngOnInit = function () {
+        console.log("In milestone component ngOnInit", this.goal);
+        this.start = this.goal.startDate;
+        this.end = this.goal.completionDate;
+        this.deadline = this.activeMilestone.deadline;
+    };
     MilestoneComponent.prototype.addResource = function () {
         this.goalBuilderService
             .addResource(this.activeMilestone, this.resourceObject, this.goal)
@@ -54,17 +60,14 @@ var MilestoneComponent = (function () {
             this.obstacleObject = res;
         }.bind(this));
     };
-    // start = this.goal.startDate;
-    // end = this.goal.completionDate;
-    // deadline = this.activeMilestone.deadline;
     MilestoneComponent.prototype.saveMilestone = function () {
         $('.svg').append('<div class="milestone-dot"></div>');
-        // $('.milestone-dot').css("margin-top", function(start, end, deadline){
-        // 	var ms = Math.abs(end.getTime() - start.getTime());
-        // 	var pixelsPerMs = 400 / ms;
-        // 	var milestoneMargin = Math.round((deadline.getTime() - start.getTime()) * pixelsPerMs);
-        // 	return milestoneMargin;
-        // });
+        $('.milestone-dot').css("margin-top", function (start, end, deadline) {
+            var ms = Math.abs(end.getTime() - start.getTime());
+            var pixelsPerMs = 400 / ms;
+            var milestoneMargin = (Math.round((deadline.getTime() - start.getTime()) * pixelsPerMs)) + "px";
+            return milestoneMargin;
+        });
     };
     __decorate([
         core_1.Input(), 
