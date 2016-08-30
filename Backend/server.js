@@ -89,12 +89,12 @@ app.post('/resource', function(req,res) {
 		description: req.body.resource.description,
 		cost: req.body.resource.cost
 	};
-	
+
 	GoalModel.findOneAndUpdate(
 		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
 		{
 			"$push": {
-				"milestone.$": req.body.resource
+				"milestone.$": resource
 			}
 		},
 		function(err, doc) {
@@ -104,7 +104,7 @@ app.post('/resource', function(req,res) {
 				console.log(err);
 				return;
 			}
-			res.send(req.body.resource);
+			res.send(resource);
 		});
 });
 

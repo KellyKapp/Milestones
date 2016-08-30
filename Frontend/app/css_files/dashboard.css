@@ -1,6 +1,14 @@
-.dashboard {
-	height: 350px;
-	border: 1px dotted lightgrey;
+display-goal {
+	display: inline-block;
+	margin: 20px 40px;
+}
+.goal-dashboard {
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+.goal-block {
+	height: 200px;
+	width: 250px;
 }
 h4 {
 	color: #2F353B;
@@ -19,10 +27,21 @@ h5 {
 }
 .goal-starter {
 	margin-left: 15px;
-}s
-.form-control {
-	color: lightgrey;
+}
+input {
+	border-radius: 0;
 }
 .build {
-	margin-top: 15px;
+	margin-top: 20px;
+}
+#new-goal {
+	height: 50px;
+    width: 200px;
+    margin: 0 20px;
+    font-family: Helvetica;
+    font-size: 1.35em;
+    background-color: #2F353B;
+    border-radius: 0;
+    border: none;
+    color: #32C5D2;
 }

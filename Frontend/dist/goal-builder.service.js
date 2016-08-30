@@ -55,8 +55,10 @@ var GoalBuilderService = (function () {
                 cost: resourceObject.cost
             },
             goalId: goal._id,
-            milestoneId: milestone._id
+            milestoneId: milestone._id,
         })).do(function (res) {
+            console.log(res);
+            console.log(milestone._id);
             milestone.resources.push(res);
         }.bind(this));
     };

@@ -1,13 +1,44 @@
 .goal-builder {
 	margin-top: 65px;
 }
+.title{
+	color: #32C5D2;
+	font-size: 1.5em;
+	margin: 5px 0 15px 0;
+}
 .goal-detail {
-	border: 1px solid lightgrey;
+	border-right: 2px solid lightgrey;
 	height: 530px;
 }
 .timeline-div {
-	border: 1px solid lightgrey;
 	height: 530px;
+}
+.create-milestone {
+	margin-top: 170px;
+}
+.small-line {
+    height: 1.5px;
+    width: 40px;
+    background-color: #32C5D2;
+    margin: 3px 0 5px 0;
+}
+input {
+	border-radius: 0;
+	margin: 10px 0;
+}
+.add-milestone {
+	text-align: center;
+	margin: 20px;
+}
+button.btn.btn-default.add-milestone {
+	font-size: 1.15em;
+	height: 40px;
+	width: 150px;
+	margin-left: 68px;
+}
+.divider {
+	border-top: 2px solid lightgrey;
+	margin-top: 5px;
 }
 .save-goal {
 	text-align: center;
@@ -16,9 +47,9 @@ button.btn.btn-default.save {
 	height: 40px;
     font-family: Helvetica;
     font-size: 1.25em;
-    background-color: #B1B1B1;
+    background-color: #2F353B;
     border-radius: 0;
     border: none;
-    color: white;
-    margin-bottom: 5px;
+    color: #32C5D2;
+    margin: 10px 0;
 }

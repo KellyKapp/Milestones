@@ -18,7 +18,7 @@ import { Component, Input, Output, EventEmitter, ViewChild } from "@angular/core
 	styles: [`
 		canvas {
 			display: block;
-			margin: 0 auto;
+			margin: 0 auto 7px auto;
 		}
 		.date {
 			height: 30px;

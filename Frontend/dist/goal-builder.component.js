@@ -39,11 +39,8 @@ var GoalBuilderComponent = (function () {
             .subscribe(function (res) {
             console.log(res);
             this.activeMilestone = res;
-            $(".modal").modal();
+            $(".milestone").modal();
         }.bind(this));
-    };
-    GoalBuilderComponent.prototype.saveGoal = function () {
-        // save to goal model/Mongo
     };
     GoalBuilderComponent = __decorate([
         core_1.Component({

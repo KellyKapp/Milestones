@@ -24,7 +24,7 @@ var GoalSummaryComponent = (function () {
         core_1.Component({
             selector: "goal-summary",
             templateUrl: 'app/html_files/goal-summary-component.html',
-            styles: ["\n\t\t.col-md-3 {\n\t\t\tborder-right: 1px solid grey;\n\t\t\tfont-size: 1.15em\n\t\t}\n\t\t.col-md-9 {\n\t\t\tfont-size: 1.15em;\n\t\t\tmargin: 7px 0;\n\t\t}\n\t\t.small-line {\n\t\t    height: 1.5px;\n\t\t    width: 40px;\n\t\t    background-color: #32C5D2;\n\t\t}\n\t"]
+            styles: ["\n\t\t.col-md-3 {\n\t\t\tborder-right: 1px solid grey;\n\t\t\tfont-size: 1.15em\n\t\t}\n\t\t.col-md-9 {\n\t\t\tfont-size: 1.25em;\n\t\t\tmargin: 7px 0;\n\t\t}\n\t\t.small-line {\n\t\t    height: 1.5px;\n\t\t    width: 40px;\n\t\t    background-color: #32C5D2;\n\t\t}\n\t\tinput {\n\t\t\tborder: none;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService, router_1.Router])
     ], GoalSummaryComponent);

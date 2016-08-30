@@ -55,12 +55,12 @@ export class GoalBuilderComponent {
 		.subscribe(function(res) {
 				console.log(res);
 				this.activeMilestone = res;
-				$(".modal").modal();
+				$(".milestone").modal();
 		}.bind(this));
 	}
 
-	saveGoal() {
-			// save to goal model/Mongo
-	}
+	// saveGoal() {
+	// 	$(".save").modal();
+	// }
 }
 

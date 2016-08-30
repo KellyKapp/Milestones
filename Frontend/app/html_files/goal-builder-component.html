@@ -2,7 +2,7 @@
 	  <div class="container-fluid">
 		    <div class="navbar-header">
 			      <a class="navbar-brand" routerLink="/">
-				        <img id="brand" alt="Brand" src="../media/Short_Logo-Grey.svg" height="80px">
+				        <img id="brand" alt="Brand" src="../media/Short_Logo-Grey.svg" height="90px">
 			      </a>
 		    </div>
 		    <div class="pull-right">
@@ -20,55 +20,80 @@
 
 
 <div class="container" *ngIf="goal">
-		<div class="row goal-builder">
-				<div class="col-md-7 col-sm-12 goal-detail">
-						<goal-summary 
-								[goal]="goal"> 
-								 
-						</goal-summary>
-				</div>
+	<div class="row goal-builder">
+		<div class="col-md-7 col-sm-12 goal-detail">
+			<div class="title">GOAL SUMMARY</div>
+			<goal-summary [goal]="goal"></goal-summary>
+		</div>
 
-				<div class="col-md-2 col-sm-12 timeline-div">
-						<timeline [goal]="goal"></timeline>
-				</div>
-				<div class="col-md-3 col-sm-12 create-milestone">
-					<input
-				        class="form-control"
-				        type="text"
-				        [(ngModel)]="milestoneObject.description"
-				    />
-				    <input
-				        class="form-control"
-				        type="date"
-				        [(ngModel)]="milestoneObject.deadline"
-				    />
+		<div class="col-md-5">
+			<div class="col-md-5 timeline-div">
+				<div class="title">TIMELINE</div>
+				<timeline [goal]="goal"></timeline>
+			</div>
+			<div class="col-md-7 create-milestone">
+				<div class="header">DESCRIPTION</div>
+				<div class="small-line"></div>
+				<input
+			        class="form-control"
+			        type="text"
+			        [(ngModel)]="milestoneObject.description"
+			    />
+			    <div class="header">DEADLINE</div>
+			    <div class="small-line"></div>
+			    <input
+			        class="form-control"
+			        type="date"
+			        [(ngModel)]="milestoneObject.deadline"
+			    />
+			    <div class="add-milestone">
 					<button class="btn btn-default add-milestone"
 
 						(click)="buildNewMilestone()"
 					>ADD MILESTONE</button>
 				</div>
+			</div>
 		</div>
+	</div>
 
-		<div id="milestone" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-								<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h3 class="modal-title">MILESTONE</h3>
-								</div>
-								<div class="modal-body">
-										<milestone 
-										[activeMilestone]="activeMilestone"
-										*ngIf="activeMilestone" [goal]="goal"></milestone>
-								</div>
-						</div>
+	<div id="milestone" class="modal fade milestone" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title">MILESTONE</h3>
 				</div>
+				<div class="modal-body">
+					<milestone 
+					[activeMilestone]="activeMilestone"
+					*ngIf="activeMilestone" [goal]="goal"
+					>
+					</milestone>
+				</div>
+			</div>
 		</div>
-		<div class="save-goal">
-			<button class="btn btn-default save" (click)="saveGoal"
-			>SAVE GOAL</button>
+	</div>
+	<div class="divider"></div>
+	<div id="milestone" class="modal fade save" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<h4>Goal Saved Successfully!</h4>
+				</div>
+			</div>
 		</div>
+	</div>
+	<div class="save-goal">
+		<button class="btn btn-default save" (click)="saveGoal()">
+		SAVE GOAL
+		</button>
+	</div>
 </div>
+
+
 
 <div class="container-fluid footer">
     <div class="navbar-footer">

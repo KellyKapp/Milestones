@@ -16,6 +16,10 @@
 </nav>
 
 <div class="container goal-dashboard">
+	<div class="row create-header">
+		<h4>GOALS IN PROGRESS</h4>
+		<div class="line"></div>
+	</div>
 	<display-goal
 		*ngFor="let goalItem of this.goalBuilderService.goals; let i = index;"
 		[goalItem]="goalItem"
@@ -53,8 +57,8 @@
 	        />
 	    </div>
 	    <div class="col-md-3 build">
-			<button class="btn btn-default" (click)="buildNewGoal()">
-				BUILD GOAL
+			<button class="btn btn-default" id="new-goal" (click)="buildNewGoal()">
+				BUILD NEW GOAL
 			</button>
 		</div>
 	</div>

@@ -15,10 +15,10 @@ export const routes: RouterConfig = [
         path: "login",
         component: LoginComponent
     },
-    {
-        path: "dashboard/:_id",
-        component: DashboardComponent
-    },
+    // {
+    //     path: "dashboard/:_id",
+    //     component: DashboardComponent
+    // },
     {
         path: "dashboard",
         component: DashboardComponent

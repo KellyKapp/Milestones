@@ -12,10 +12,10 @@ exports.routes = [
         path: "login",
         component: login_component_1.LoginComponent
     },
-    {
-        path: "dashboard/:_id",
-        component: dashboard_component_1.DashboardComponent
-    },
+    // {
+    //     path: "dashboard/:_id",
+    //     component: DashboardComponent
+    // },
     {
         path: "dashboard",
         component: dashboard_component_1.DashboardComponent
