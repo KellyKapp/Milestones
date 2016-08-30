@@ -50,6 +50,7 @@ export class GoalBuilderComponent {
 	} 
 
 	buildNewMilestone() {
+		console.log(this.milestoneObject);
 		this.goalBuilderService
 		.buildNewMilestone(this.milestoneObject, this.goal)
 		.subscribe(function(res) {

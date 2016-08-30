@@ -31,9 +31,6 @@ var MilestoneComponent = (function () {
     }
     MilestoneComponent.prototype.ngOnInit = function () {
         console.log("In milestone component ngOnInit", this.goal);
-        this.start = this.goal.startDate;
-        this.end = this.goal.completionDate;
-        this.deadline = this.activeMilestone.deadline;
     };
     MilestoneComponent.prototype.addResource = function () {
         this.goalBuilderService
@@ -43,6 +40,8 @@ var MilestoneComponent = (function () {
             this.resourceObject = res;
             console.log(this.resourceObject);
         }.bind(this));
+        // let form = (<HTMLFormElement>document.getElementById("resource-form"));
+        // form.reset();
     };
     MilestoneComponent.prototype.addTeamMember = function () {
         this.goalBuilderService
@@ -61,11 +60,15 @@ var MilestoneComponent = (function () {
         }.bind(this));
     };
     MilestoneComponent.prototype.saveMilestone = function () {
-        $('.svg').append('<div class="milestone-dot"></div>');
-        $('.milestone-dot').css("margin-top", function (start, end, deadline) {
-            var ms = Math.abs(end.getTime() - start.getTime());
+        var start = this.goal.startDate;
+        var end = this.goal.completionDate;
+        var deadline = this.activeMilestone.deadline;
+        console.log(this.activeMilestone);
+        $('.svg').append('<div id="' + this.activeMilestone._id + '" class="milestone-dot"></div>');
+        $('#' + this.activeMilestone._id).css("margin-top", function () {
+            var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
             var pixelsPerMs = 400 / ms;
-            var milestoneMargin = (Math.round((deadline.getTime() - start.getTime()) * pixelsPerMs)) + "px";
+            var milestoneMargin = (Math.round((new Date(deadline).getTime() - new Date(start).getTime()) * pixelsPerMs)) + "px";
             return milestoneMargin;
         });
     };

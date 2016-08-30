@@ -78,7 +78,7 @@ app.post('/milestone', function(req, res) {
 				return;
 
 			}
-			res.send(milestone);
+			res.send(doc.milestones[doc.milestones.length - 1]);
 		}
 	);
 });

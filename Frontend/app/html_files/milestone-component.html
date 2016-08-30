@@ -23,21 +23,23 @@
 	<div class="row milestone-resources">
 		<div class="col col-md-7 left">
 			<h5><img src="../media/resources.svg" height="30px" width="30px" alt="Resource"> | RESOURCES</h5>
-			<input #resource
-		        class="form-control resource"
-		        type="text"
-		        placeholder="resource"
-		        [(ngModel)]="resourceObject.description"
-		    />
-		    <input #resourceCost
-		        class="form-control resource-cost"
-		        type="number"
-		        placeholder="cost"
-		        [(ngModel)]="resourceObject.cost"
-		    />
-		    <button class="btn btn-default"
-		    	(click)="addResource()"
-			>SAVE RESOURCE</button>
+<!-- 			<form id="resource-form"> -->
+				<input #resource
+			        class="form-control resource"
+			        type="text"
+			        placeholder="resource"
+			        [(ngModel)]="resourceObject.description"
+			    />
+			    <input #resourceCost
+			        class="form-control resource-cost"
+			        type="number"
+			        placeholder="cost"
+			        [(ngModel)]="resourceObject.cost"
+			    />
+			    <button class="btn btn-default"
+		    		(click)="addResource()" value="reset"
+				>SAVE RESOURCE</button>
+<!-- 			</form> -->
 		</div>
 		<div class="col col-md-4">
 			<h5 class="output"> RESOURCES:</h5>

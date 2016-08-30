@@ -64,31 +64,31 @@ export class GoalBuilderService {
 		}.bind(this));
 	}
 
-addTeamMember(milestone, teamObject, goal) {
-    return this.apiService.post("/team", JSON.stringify({
-        team : {
-            member: teamObject.member,
-            role: teamObject.role,
-        },
-        goalId: goal._id,
-        milestoneId: milestone._id
-    })).do(function(res) {
-        milestone.team.push(res);
-    }.bind(this));
-}
+	addTeamMember(milestone, teamObject, goal) {
+		return this.apiService.post("/team", JSON.stringify({
+			team : {
+				member: teamObject.member,
+				role: teamObject.role,
+			},
+			goalId: goal._id,
+			milestoneId: milestone._id
+		})).do(function(res) {
+			milestone.team.push(res);
+		}.bind(this));
+	}
 
-addObstacle(milestone, obstacleObject, goal) {
-    return this.apiService.post("/obstacle", JSON.stringify({
-        obstacle : {
-            description: obstacleObject.description,
-            solution: obstacleObject.solution
-        },
-        goalId: goal._id,
-        milestoneId: milestone._id
-    })).do(function(res) {
-        milestone.obstacles.push(res);
-    }.bind(this));
-}
+	addObstacle(milestone, obstacleObject, goal) {
+		return this.apiService.post("/obstacle", JSON.stringify({
+			obstacle : {
+				description: obstacleObject.description,
+				solution: obstacleObject.solution
+			},
+			goalId: goal._id,
+			milestoneId: milestone._id
+		})).do(function(res) {
+			milestone.obstacles.push(res);
+		}.bind(this));
+	}
 
 // getSummaryData() {
 //     return this.apiService.get("/summary")
@@ -98,12 +98,12 @@ addObstacle(milestone, obstacleObject, goal) {
 // }
 
 updateGoal(_id, newValue) {
-    return this.apiService.post("/update", JSON.stringify({
-        _id: _id,
-        goal: newValue
-    })).do(function(res){
-        this.overwrite(this.findItemById(_id), res);
-    }.bind(this));
+	return this.apiService.post("/update", JSON.stringify({
+		_id: _id,
+		goal: newValue
+	})).do(function(res){
+		this.overwrite(this.findItemById(_id), res);
+	}.bind(this));
 }
 
 	findGoalInCache(_id) {

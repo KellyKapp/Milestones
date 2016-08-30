@@ -34,6 +34,7 @@ var GoalBuilderComponent = (function () {
         }.bind(this));
     };
     GoalBuilderComponent.prototype.buildNewMilestone = function () {
+        console.log(this.milestoneObject);
         this.goalBuilderService
             .buildNewMilestone(this.milestoneObject, this.goal)
             .subscribe(function (res) {
