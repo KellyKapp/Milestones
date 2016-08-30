@@ -3,6 +3,9 @@ import { FORM_DIRECTIVES } from "@angular/common";
 import { Router } from "@angular/router";
 import { GoalBuilderService } from "./goal-builder.service";
 import { GoalBuilderComponent } from "./goal-builder.component";
+import { TimelineComponent } from "./timeline.component";
+
+declare let $;
 
 
 @Component ({
@@ -68,8 +71,19 @@ export class MilestoneComponent {
 		}.bind(this));
 	}
 
-	saveMilestone() {
-	}
+	// start = this.goal.startDate;
+	// end = this.goal.completionDate;
+	// deadline = this.activeMilestone.deadline;
 
+	saveMilestone() {
+		$('.svg').append('<div class="milestone-dot"></div>');
+		// $('.milestone-dot').css("margin-top", function(start, end, deadline){
+		// 	var ms = Math.abs(end.getTime() - start.getTime());
+		// 	var pixelsPerMs = 400 / ms;
+		// 	var milestoneMargin = Math.round((deadline.getTime() - start.getTime()) * pixelsPerMs);
+
+		// 	return milestoneMargin;
+		// });
+	}
 }
 

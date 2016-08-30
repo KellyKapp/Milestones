@@ -13,30 +13,21 @@ var TimelineComponent = (function () {
     function TimelineComponent() {
     }
     TimelineComponent.prototype.ngOnInit = function () {
-        var ctx = this.canvas.nativeElement.getContext("2d");
-        function verticalLine() {
-            ctx.beginPath();
-            ctx.moveTo(50, 0);
-            ctx.lineTo(50, 400);
-            ctx.closePath();
-            ctx.strokeStyle = "#32C5D2";
-            ctx.stroke();
-        }
-        verticalLine();
+        $('.svg').on('click', 'div.milestone-dot', function (event) {
+            // need to find a way to open a specific milestone by id
+            $(".milestone").modal();
+        });
     };
+    ;
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], TimelineComponent.prototype, "goal", void 0);
-    __decorate([
-        core_1.ViewChild('canvas'), 
-        __metadata('design:type', Object)
-    ], TimelineComponent.prototype, "canvas", void 0);
     TimelineComponent = __decorate([
         core_1.Component({
             selector: "timeline",
-            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\">\n\t\t\t\t{{goal.startDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t\t<canvas #canvas width=\"100\" height=\"400\">\n\t\t\t</canvas>\n\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
-            styles: ["\n\t\tcanvas {\n\t\t\tdisplay: block;\n\t\t\tmargin: 0 auto 7px auto;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 15px 58px;\n\t\t\tfont-family: Helvetica;\n\t\t\tfont-size: 1em;\n\t\t\tbackground-color: #32C5D2;\n\t\t\tborder-radius: 0;\n\t\t\tborder: none;\n\t\t\tcolor: white;\n\t\t}\n\t"]
+            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\" id=\"canvas\">\n\t\t\t\t{{goal.startDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t\t<div class=\"svg\">\n\t\t\t\t<svg height=\"400\" width=\"150\">\n  \t\t\t\t\t<line x1=\"75\" y1=\"0\" x2=\"75\" y2=\"400\" style=\"stroke:#32C5D2;stroke-width:2\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
+            styles: ["\n\t\tsvg {\n\t\t\tposition: absolute;\n\t\t\tz-index: -1;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 15px 58px;\n\t\t\tfont-family: Helvetica;\n\t\t\tfont-size: 1em;\n\t\t\tbackground-color: #32C5D2;\n\t\t\tborder-radius: 0;\n\t\t\tborder: none;\n\t\t\tcolor: white;\n\t\t}\n\t\t.svg {\n\t\t\theight: 400px;\n\t\t\twidth: 150px;\n\t\t}\n\t\t:host ::content .milestone-dot {\n\t\t\tposition: absolute;\n\t\t\tz-index: 1;\n\t\t\theight: 20px;\n\t\t\twidth: 20px;\n\t\t\tborder-radius: 50%;\n\t\t\tbackground-color: lightgrey;\n\t\t\tmargin-left: 65px;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], TimelineComponent);

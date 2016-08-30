@@ -54,7 +54,17 @@ var MilestoneComponent = (function () {
             this.obstacleObject = res;
         }.bind(this));
     };
+    // start = this.goal.startDate;
+    // end = this.goal.completionDate;
+    // deadline = this.activeMilestone.deadline;
     MilestoneComponent.prototype.saveMilestone = function () {
+        $('.svg').append('<div class="milestone-dot"></div>');
+        // $('.milestone-dot').css("margin-top", function(start, end, deadline){
+        // 	var ms = Math.abs(end.getTime() - start.getTime());
+        // 	var pixelsPerMs = 400 / ms;
+        // 	var milestoneMargin = Math.round((deadline.getTime() - start.getTime()) * pixelsPerMs);
+        // 	return milestoneMargin;
+        // });
     };
     __decorate([
         core_1.Input(), 
