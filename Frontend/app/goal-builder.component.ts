@@ -26,6 +26,7 @@ declare let $;
 export class GoalBuilderComponent {
 
 	private goal;
+	private milestone;
 
 
 	milestoneObject = {
@@ -47,9 +48,11 @@ export class GoalBuilderComponent {
 			this.goalBuilderService.findGoalById(params["_id"])
 			.subscribe(function(goal) {
 				this.goal = goal;
-				console.log(this.goal);
+				console.log("in ngOnInint of GoalBuilderComponent", this.goal);
 			}.bind(this));
 		}.bind(this));
+
+		
 	}
 
 	buildNewMilestone() {

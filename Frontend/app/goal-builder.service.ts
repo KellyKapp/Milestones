@@ -9,8 +9,11 @@ import { Observable } from "rxjs/observable";
 export class GoalBuilderService {
 
 	goals = [];
+	milestones = [];
 
 	constructor(private apiService: ApiService) {
+
+		this.getAllMilestones().subscribe();
 	}
 
 	getAllGoals() {
@@ -20,13 +23,19 @@ export class GoalBuilderService {
 			}.bind(this));
 	}
 
+	getAllMilestones() {
+		return this.apiService.get("/allmilestones")
+			.do(function(res) {
+				this.milestones = res;
+			}.bind(this));
+	}
+
 	buildNewGoal(GoalStartObject) {
 		return this.apiService.post("/create", JSON.stringify({
 			goal : {
 				name: GoalStartObject.name,
 				startDate: GoalStartObject.startDate,
 				completionDate: GoalStartObject.completionDate,
-				milestones: [],
 			}
 		})).do(function(res) {
 			this.goals.push(res);
@@ -39,23 +48,21 @@ export class GoalBuilderService {
 				description: milestoneObject.description,
 				deadline: milestoneObject.deadline,
 				resources: [],
-				team: [],
-				obstacles: []
+				people: [],
+				obstacles: [],
+				goalId: goal._id
 			},
-			goalId: goal._id,
-
 		})).do(function(res) {
-				goal.milestones.push(res);
+				this.milestones.push(res);
 		}.bind(this));
 	}
 
-	addResource(milestone, resourceObject, goal) {
+	addResource(milestone, resourceObject) {
 		return this.apiService.post('/resource', JSON.stringify({
 			resource : {
 				description: resourceObject.description,
 				cost: resourceObject.cost
 			},
-			goalId: goal._id,
 			milestoneId: milestone._id,
 		})).do(function(res) {
 			console.log(res);
@@ -64,30 +71,34 @@ export class GoalBuilderService {
 		}.bind(this));
 	}
 
-	addTeamMember(milestone, teamObject, goal) {
-		return this.apiService.post("/team", JSON.stringify({
-			team : {
+	addTeamMember(milestone, teamObject) {
+		return this.apiService.post("/people", JSON.stringify({
+			person : {
 				member: teamObject.member,
 				role: teamObject.role,
 			},
-			goalId: goal._id,
 			milestoneId: milestone._id
 		})).do(function(res) {
-			milestone.team.push(res);
+			milestone.people.push(res);
 		}.bind(this));
 	}
 
-	addObstacle(milestone, obstacleObject, goal) {
+	addObstacle(milestone, obstacleObject) {
 		return this.apiService.post("/obstacle", JSON.stringify({
 			obstacle : {
 				description: obstacleObject.description,
 				solution: obstacleObject.solution
 			},
-			goalId: goal._id,
 			milestoneId: milestone._id
 		})).do(function(res) {
 			milestone.obstacles.push(res);
 		}.bind(this));
+	}
+
+	getMilestonesForGoal(goalId) {
+		return this.milestones.filter(function(milestone) {
+			return milestone.goalId === goalId;
+		});
 	}
 
 // getSummaryData() {

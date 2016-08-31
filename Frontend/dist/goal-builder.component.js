@@ -30,7 +30,7 @@ var GoalBuilderComponent = (function () {
             this.goalBuilderService.findGoalById(params["_id"])
                 .subscribe(function (goal) {
                 this.goal = goal;
-                console.log(this.goal);
+                console.log("in ngOnInint of GoalBuilderComponent", this.goal);
             }.bind(this));
         }.bind(this));
     };

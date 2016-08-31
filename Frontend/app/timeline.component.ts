@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { GoalBuilderService } from "./goal-builder.service";
 
 declare let $;
 
@@ -62,19 +63,26 @@ export class TimelineComponent {
 
 	@Input() goal;
 
+	milestones = [];
+
+	constructor(private goalBuilderService: GoalBuilderService) {}
+
 	// ngOnInit() {
+	// 	this.milestones = this.goalBuilderService.getMilestonesForGoal(this.goal._id);
+	// 	console.log("in timeline with goal", this.goal, this.milestones);
 	// 	let start = this.goal.startDate;
 	// 	let end = this.goal.completionDate;
 
-	// 	for (let i = 0; i < this.goal.milestones.length; i++) {
+	// 	for (let i = 0; i < this.milestones.length; i++) {
+	// 		console.log("in for loop", this.milestones[i]);
 	// 		$('.svg').append
-	// 		('<div id="' + this.goal.milestones[i]._id + 
+	// 		('<div id="' + this.milestones[i]._id + 
 	// 			'" class="milestone-dot" (click)="openModal(this.id)"></div>');
-	// 		$('#' + this.goal.milestones[i]._id).css("margin-top", function(){
+	// 		$('#' + this.milestones[i]._id).css("margin-top", function(){
 	// 			var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
 	// 			var pixelsPerMs = 400 / ms;
 	// 			var milestoneMargin = (Math.round(
-	// 				(new Date(this.goal.milestones[i].deadline).getTime() - new Date(start).getTime()
+	// 				(new Date(this.milestones[i].deadline).getTime() - new Date(start).getTime()
 	// 			) * pixelsPerMs)) + "px";
 	// 			return milestoneMargin;
 	// 		});

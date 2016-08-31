@@ -48,7 +48,7 @@ export class MilestoneComponent {
 
 	addResource() {
 		this.goalBuilderService
-		.addResource(this.activeMilestone, this.resourceObject, this.goal)
+		.addResource(this.activeMilestone, this.resourceObject)
 		.subscribe(function(res) {
 				this.resourceObject = res;
 				console.log(this.resourceObject);
@@ -59,7 +59,7 @@ export class MilestoneComponent {
 
 	addTeamMember() {
 		this.goalBuilderService
-		.addTeamMember(this.activeMilestone, this.teamObject, this.goal)
+		.addTeamMember(this.activeMilestone, this.teamObject)
 		.subscribe(function(res) {
 			console.log(res);
 			this.teamObject = res;
@@ -68,7 +68,7 @@ export class MilestoneComponent {
 
 	addObstacle() {
 		this.goalBuilderService
-		.addObstacle(this.activeMilestone, this.obstacleObject, this.goal)
+		.addObstacle(this.activeMilestone, this.obstacleObject)
 		.subscribe(function(res) {
 			console.log(res);
 			this.obstacleObject = res;

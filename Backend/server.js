@@ -7,7 +7,9 @@ var expressSession = require("express-session");
 
 mongoose.connect("mongodb://localhost");
 
-var GoalModel = require("./goal.model")(mongoose);
+var dbModels = require("./goal.model")(mongoose);
+var GoalModel = dbModels.GoalModel;
+var MilestoneModel = dbModels.MilestoneModel;
 var UserModel = require("./user.model")(mongoose);
 
 var app = express();
@@ -38,7 +40,6 @@ app.post('/create', function(req, res) {
 		name: req.body.goal.name,
 		startDate: req.body.goal.startDate,
 		completionDate: req.body.goal.completionDate,
-		milestones: []
 	};
 
 	console.log(goal);
@@ -55,32 +56,28 @@ app.post('/create', function(req, res) {
 
 
 app.post('/milestone', function(req, res) {
-	var milestone = {
+	var milestoneData = {
 		description: req.body.milestone.description,
 		deadline: req.body.milestone.deadline,
 		resources: [],
-		team: [],
-		obstacles: []
+		people: [],
+		obstacles: [],
+		goalId: req.body.milestone.goalId
 	};
 
-	GoalModel.findOneAndUpdate(
-		{ "_id": req.body.goalId },
-		{
-			"$push": {
-				"milestones" : milestone
-			}
-		},
-		{ new: true },
-		function(err, doc) {
-			if (err) {
-				res.status(500);
-				res.send("Error creating new Milestone");
-				console.log(err);
-				return;
-			}
-			res.send(doc.milestones[doc.milestones.length - 1]);
+	console.log(milestoneData);
+
+	var milestone = new MilestoneModel (milestoneData);
+
+	milestone.save(function(err, doc) {
+		if (err) {
+			res.status(500);
+			res.send("Error creating new Milestone");
+			console.log(err);
+			return;
 		}
-	);
+		res.send(doc);
+	});
 });
 
 
@@ -90,11 +87,11 @@ app.post('/resource', function(req,res) {
 		cost: req.body.resource.cost
 	};
 
-	GoalModel.findOneAndUpdate(
-		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
+	MilestoneModel.findOneAndUpdate(
+		{"_id": req.body.milestoneId},
 		{
 			"$push": {
-				"milestones.$.resources": resource
+				"resources": resource
 			}
 		},
 		{ new : true },
@@ -106,17 +103,22 @@ app.post('/resource', function(req,res) {
 				return;
 			}
 			console.log(doc);
-			res.send(resource);
+			res.send(doc);
 		});
 });
 
 
-app.post('/team', function(req,res) {
-	GoalModel.findOneAndUpdate(
-		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
+app.post('/people', function(req,res) {
+	var person = {
+		name: req.body.person.name,
+		role: req.body.person.role
+	};
+
+	MilestoneModel.findOneAndUpdate(
+		{"_id": req.body.milestoneId},
 		{
 			"$push": {
-				"milestone.$": req.body.team
+				"people": person
 			}
 		},
 		{ new : true },
@@ -127,17 +129,22 @@ app.post('/team', function(req,res) {
 				console.log(err);
 				return;
 			}
-			res.send(req.body.team);
+			res.send(doc);
 		});
 });
 
 
 app.post('/obstacle', function(req,res) {
-	GoalModel.findOneAndUpdate(
-		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
+	var obstacle = {
+		description: req.body.description,
+		solution: req.body.solution
+	};
+
+	MilestoneModel.findOneAndUpdate(
+		{"_id": req.body.milestoneId},
 		{
 			"$push": {
-				"milestone.$": req.body.obstacle
+				"obstacles": obstacle
 			}
 		},
 		{ new : true },
@@ -148,13 +155,43 @@ app.post('/obstacle', function(req,res) {
 				console.log(err);
 				return;
 			}
-			res.send(req.body.obstacle);
+			res.send(doc);
 		});
 });
 
 
 app.get('/all', function(req, res) {
 	GoalModel.find(
+		{ }, 
+		function(err, data) {
+			if(err) {
+				res.status(500);
+				res.send("Error Finding Goals");
+				return;
+			}
+			res.send(JSON.stringify(data));
+			console.log(data);
+		}
+	);
+});
+
+app.get('/milestones', function(req, res) {
+	MilestoneModel.find(
+		{ "goalId": req.query.goalId },
+		function(err, data) {
+			if(err) {
+				res.status(500);
+				res.send("Error Finding Milestones");
+				return;
+			}
+			res.send(JSON.stringify(data));
+			console.log(data);
+		}
+		);
+});
+
+app.get('/allmilestones', function(req, res) {
+	MilestoneModel.find (
 		{ }, 
 		function(err, data) {
 			if(err) {

@@ -31,7 +31,7 @@ var MilestoneComponent = (function () {
     }
     MilestoneComponent.prototype.addResource = function () {
         this.goalBuilderService
-            .addResource(this.activeMilestone, this.resourceObject, this.goal)
+            .addResource(this.activeMilestone, this.resourceObject)
             .subscribe(function (res) {
             this.resourceObject = res;
             console.log(this.resourceObject);
@@ -41,7 +41,7 @@ var MilestoneComponent = (function () {
     };
     MilestoneComponent.prototype.addTeamMember = function () {
         this.goalBuilderService
-            .addTeamMember(this.activeMilestone, this.teamObject, this.goal)
+            .addTeamMember(this.activeMilestone, this.teamObject)
             .subscribe(function (res) {
             console.log(res);
             this.teamObject = res;
@@ -49,7 +49,7 @@ var MilestoneComponent = (function () {
     };
     MilestoneComponent.prototype.addObstacle = function () {
         this.goalBuilderService
-            .addObstacle(this.activeMilestone, this.obstacleObject, this.goal)
+            .addObstacle(this.activeMilestone, this.obstacleObject)
             .subscribe(function (res) {
             console.log(res);
             this.obstacleObject = res;

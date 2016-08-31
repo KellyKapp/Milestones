@@ -16,6 +16,8 @@ var GoalSummaryComponent = (function () {
         this.goalBuilderService = goalBuilderService;
         this.router = router;
     }
+    GoalSummaryComponent.prototype.ngOnInit = function () {
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
@@ -31,49 +33,4 @@ var GoalSummaryComponent = (function () {
     return GoalSummaryComponent;
 }());
 exports.GoalSummaryComponent = GoalSummaryComponent;
-// <h5>Milestones</h5>
-// <input [(ngModel)]="goal.milestones.description" disabled>
-// <h5>Resources</h5>
-// <ul>
-//        <li *ngFor="let resource.name of Resources">
-//        	{{resource.name}}
-//        </li>
-//    </ul>
-//    <ul>
-//    	<li *ngFor="let resource.cost of Resources">
-//    		{{resource.cost}}
-//    	</li>
-// </ul>
-// <h5>Team</h5>
-// <ul>
-// 	<li *ngFor="let team.member of Team">
-// 		{{team.member}}
-// 	</li>
-// </ul>
-// <ul>
-// 	<li *ngFor="let team.role of Team">
-// 		{{team.role}}
-// 	</li>
-// </ul>
-// <ul>
-// 	<li *ngFor="let team.hours of Team">
-// 		{{team.hours}}
-// 	</li>
-// </ul>
-// <ul>
-// 	<li *ngFor="let team.cost of Team">
-// 		{{team.cost.toFixed(2)}}
-// 	</li>
-// </ul>
-// <h5>Obstacles & Solutions</h5>
-// <ul>
-// 	<li *ngFor="let obstacle.description of Obstacles">
-// 		{{obstacle.name}}
-// 	</li>
-// </ul>
-// <ul>
-// 	<li *ngFor="let obstacle.solution of Obstacles">
-// 		{{obstacle.solution}}
-// 	</li>
-// </ul>
 //# sourceMappingURL=goal-summary.component.js.map

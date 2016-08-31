@@ -4,24 +4,23 @@ module.exports = function(mongoose) {
 		cost: String
 	});
 
-	var TeamSchema = new mongoose.Schema({
-		members: [String],
-		roles: [String],
-		hours: [Number],
-		cost: [Number]
-	});
-
 	var ObstacleSchema = new mongoose.Schema({
 		description: String,
 		solution: String
 	});
 
-	var MilestoneSchema = new mongoose.Schema({
+	var PeopleSchema = new mongoose.Schema({
+		name: String,
+		role: String,
+	});
+
+	var MilestoneModel = mongoose.model ("Milestone", {
 		description: String,
 		deadline: String,
 		resources: [ResourceSchema],
-		team: [TeamSchema],
-		obstacles: [ObstacleSchema]
+		people: [PeopleSchema],
+		obstacles: [ObstacleSchema],
+		goalId: String
 	});
 
 
@@ -29,8 +28,10 @@ module.exports = function(mongoose) {
 		name: String,
 		startDate: String,
 		completionDate: String,
-		milestones: [MilestoneSchema],
 	});
 
-	return GoalModel;
+	return {
+		GoalModel: GoalModel,
+		MilestoneModel: MilestoneModel
+	};
 };

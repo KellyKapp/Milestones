@@ -7,7 +7,7 @@ import { DisplayGoalComponent } from "./display-goal.component";
 
 @Component({
     selector: "dashboard",
-    directives: [DisplayGoalComponent],
+    directives: [ DisplayGoalComponent ],
     templateUrl: 'app/html_files/dashboard-component.html',
     styleUrls: ['app/css_files/dashboard.css', 'app/css_files/welcome.css']
 })
