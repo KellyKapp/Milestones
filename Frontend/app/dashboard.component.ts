@@ -31,7 +31,6 @@ export class DashboardComponent {
 		this.goalBuilderService
 		.displayAllGoals()
 		.subscribe(function(res) {
-			console.log(res);
 		}.bind(this));
 
 		this.goalBuilderService.getAllGoals().subscribe(function(res) {

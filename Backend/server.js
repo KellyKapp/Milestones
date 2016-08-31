@@ -70,13 +70,13 @@ app.post('/milestone', function(req, res) {
 				"milestones" : milestone
 			}
 		},
+		{ new: true },
 		function(err, doc) {
 			if (err) {
 				res.status(500);
 				res.send("Error creating new Milestone");
 				console.log(err);
 				return;
-
 			}
 			res.send(doc.milestones[doc.milestones.length - 1]);
 		}
@@ -94,9 +94,10 @@ app.post('/resource', function(req,res) {
 		{"_id": req.body.goalId, "milestone._id": req.body.milestoneId},
 		{
 			"$push": {
-				"milestone.$": resource
+				"milestones.$.resources": resource
 			}
 		},
+		{ new : true },
 		function(err, doc) {
 			if (err) {
 				res.status(500);
@@ -104,9 +105,11 @@ app.post('/resource', function(req,res) {
 				console.log(err);
 				return;
 			}
+			console.log(doc);
 			res.send(resource);
 		});
 });
+
 
 app.post('/team', function(req,res) {
 	GoalModel.findOneAndUpdate(
@@ -116,6 +119,7 @@ app.post('/team', function(req,res) {
 				"milestone.$": req.body.team
 			}
 		},
+		{ new : true },
 		function(err, doc) {
 			if (err) {
 				res.status(500);
@@ -136,6 +140,7 @@ app.post('/obstacle', function(req,res) {
 				"milestone.$": req.body.obstacle
 			}
 		},
+		{ new : true },
 		function(err, doc) {
 			if (err) {
 				res.status(500);

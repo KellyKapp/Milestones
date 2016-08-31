@@ -50,7 +50,7 @@ export class GoalBuilderService {
 	}
 
 	addResource(milestone, resourceObject, goal) {
-		return this.apiService.post("/resource", JSON.stringify({
+		return this.apiService.post('/resource', JSON.stringify({
 			resource : {
 				description: resourceObject.description,
 				cost: resourceObject.cost
@@ -59,8 +59,8 @@ export class GoalBuilderService {
 			milestoneId: milestone._id,
 		})).do(function(res) {
 			console.log(res);
-			console.log(milestone._id);
 			milestone.resources.push(res);
+			console.log(milestone);
 		}.bind(this));
 	}
 

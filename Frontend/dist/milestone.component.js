@@ -29,14 +29,10 @@ var MilestoneComponent = (function () {
             solution: ""
         };
     }
-    MilestoneComponent.prototype.ngOnInit = function () {
-        console.log("In milestone component ngOnInit", this.goal);
-    };
     MilestoneComponent.prototype.addResource = function () {
         this.goalBuilderService
             .addResource(this.activeMilestone, this.resourceObject, this.goal)
             .subscribe(function (res) {
-            console.log(res);
             this.resourceObject = res;
             console.log(this.resourceObject);
         }.bind(this));
@@ -63,8 +59,8 @@ var MilestoneComponent = (function () {
         var start = this.goal.startDate;
         var end = this.goal.completionDate;
         var deadline = this.activeMilestone.deadline;
-        console.log(this.activeMilestone);
-        $('.svg').append('<div id="' + this.activeMilestone._id + '" class="milestone-dot"></div>');
+        $('.svg').append('<div id="' + this.activeMilestone._id +
+            '" class="milestone-dot" (click)="openModal(this.id)"></div>');
         $('#' + this.activeMilestone._id).css("margin-top", function () {
             var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
             var pixelsPerMs = 400 / ms;

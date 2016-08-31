@@ -49,7 +49,7 @@ var GoalBuilderService = (function () {
         }.bind(this));
     };
     GoalBuilderService.prototype.addResource = function (milestone, resourceObject, goal) {
-        return this.apiService.post("/resource", JSON.stringify({
+        return this.apiService.post('/resource', JSON.stringify({
             resource: {
                 description: resourceObject.description,
                 cost: resourceObject.cost
@@ -58,8 +58,8 @@ var GoalBuilderService = (function () {
             milestoneId: milestone._id,
         })).do(function (res) {
             console.log(res);
-            console.log(milestone._id);
             milestone.resources.push(res);
+            console.log(milestone);
         }.bind(this));
     };
     GoalBuilderService.prototype.addTeamMember = function (milestone, teamObject, goal) {

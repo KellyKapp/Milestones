@@ -12,10 +12,34 @@ var core_1 = require("@angular/core");
 var TimelineComponent = (function () {
     function TimelineComponent() {
     }
-    TimelineComponent.prototype.ngOnInit = function () {
-        $('.svg').on('click', 'div.milestone-dot', function (event) {
-            // need to find a way to open a specific milestone by id
-            $(".milestone").modal();
+    // ngOnInit() {
+    // 	let start = this.goal.startDate;
+    // 	let end = this.goal.completionDate;
+    // 	for (let i = 0; i < this.goal.milestones.length; i++) {
+    // 		$('.svg').append
+    // 		('<div id="' + this.goal.milestones[i]._id + 
+    // 			'" class="milestone-dot" (click)="openModal(this.id)"></div>');
+    // 		$('#' + this.goal.milestones[i]._id).css("margin-top", function(){
+    // 			var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
+    // 			var pixelsPerMs = 400 / ms;
+    // 			var milestoneMargin = (Math.round(
+    // 				(new Date(this.goal.milestones[i].deadline).getTime() - new Date(start).getTime()
+    // 			) * pixelsPerMs)) + "px";
+    // 			return milestoneMargin;
+    // 		});
+    // 	}
+    // }
+    TimelineComponent.prototype.openModal = function (divId) {
+        $('.svg').on('click', 'divId', function (event) {
+            for (var i = 0; i < this.goal.milestones.length; i++) {
+                if (this.goal.milestones[i]._id === divId) {
+                    this.goal.milestones[i] = this.activeMilestone;
+                    return this.activeMilestone;
+                }
+            }
+            console.log("clicked");
+            // this.activeMilestone = the milestone with the id that matches the div id
+            $("#" + this.activeMilestone._id).modal();
         });
     };
     ;

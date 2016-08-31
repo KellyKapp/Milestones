@@ -27,7 +27,6 @@ var DashboardComponent = (function () {
         this.goalBuilderService
             .displayAllGoals()
             .subscribe(function (res) {
-            console.log(res);
         }.bind(this));
         this.goalBuilderService.getAllGoals().subscribe(function (res) {
             this.goalItem = res;

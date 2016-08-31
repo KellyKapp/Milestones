@@ -27,6 +27,7 @@ export class GoalBuilderComponent {
 
 	private goal;
 
+
 	milestoneObject = {
 		description: "",
 		deadline: "",
@@ -40,25 +41,27 @@ export class GoalBuilderComponent {
 			private router: Router) {
 
 	}
+
 	ngOnInit() {
 		this.route.params.subscribe(function(params) {
-				this.goalBuilderService.findGoalById(params["_id"])
-				.subscribe(function(goal) {
-					this.goal = goal;
-				}.bind(this));
+			this.goalBuilderService.findGoalById(params["_id"])
+			.subscribe(function(goal) {
+				this.goal = goal;
+				console.log(this.goal);
+			}.bind(this));
 		}.bind(this));
-	} 
+	}
 
 	buildNewMilestone() {
 		console.log(this.milestoneObject);
 		this.goalBuilderService
 		.buildNewMilestone(this.milestoneObject, this.goal)
 		.subscribe(function(res) {
-				console.log(res);
 				this.activeMilestone = res;
 				$(".milestone").modal();
 		}.bind(this));
 	}
+
 
 	// saveGoal() {
 	// 	$(".save").modal();

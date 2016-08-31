@@ -30,6 +30,7 @@ var GoalBuilderComponent = (function () {
             this.goalBuilderService.findGoalById(params["_id"])
                 .subscribe(function (goal) {
                 this.goal = goal;
+                console.log(this.goal);
             }.bind(this));
         }.bind(this));
     };
@@ -38,7 +39,6 @@ var GoalBuilderComponent = (function () {
         this.goalBuilderService
             .buildNewMilestone(this.milestoneObject, this.goal)
             .subscribe(function (res) {
-            console.log(res);
             this.activeMilestone = res;
             $(".milestone").modal();
         }.bind(this));
