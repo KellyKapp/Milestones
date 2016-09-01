@@ -10,54 +10,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var goal_builder_service_1 = require("./goal-builder.service");
+var MilestoneDotComponent = (function () {
+    function MilestoneDotComponent() {
+    }
+    MilestoneDotComponent = __decorate([
+        core_1.Component({
+            selector: 'milestone-dot',
+            template: "\n\t\t<div class=\"milestone-dot\"></div>\n\t",
+            styles: ["\n\t:host {\n\t\tposition: absolute;\n\t\tz-index: 1;\n\t\theight: 20px;\n\t\twidth: 20px;\n\t\tborder-radius: 50%;\n\t\tbackground-color: lightgrey;\n\t\tmargin-left: 65px;\n\t}\n\t"]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], MilestoneDotComponent);
+    return MilestoneDotComponent;
+}());
 var TimelineComponent = (function () {
     function TimelineComponent(goalBuilderService) {
         this.goalBuilderService = goalBuilderService;
-        this.milestones = [];
+        this.openModal = new core_1.EventEmitter();
     }
-    // ngOnInit() {
-    // 	this.milestones = this.goalBuilderService.getMilestonesForGoal(this.goal._id);
-    // 	console.log("in timeline with goal", this.goal, this.milestones);
-    // 	let start = this.goal.startDate;
-    // 	let end = this.goal.completionDate;
-    // 	for (let i = 0; i < this.milestones.length; i++) {
-    // 		console.log("in for loop", this.milestones[i]);
-    // 		$('.svg').append
-    // 		('<div id="' + this.milestones[i]._id + 
-    // 			'" class="milestone-dot" (click)="openModal(this.id)"></div>');
-    // 		$('#' + this.milestones[i]._id).css("margin-top", function(){
-    // 			var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
-    // 			var pixelsPerMs = 400 / ms;
-    // 			var milestoneMargin = (Math.round(
-    // 				(new Date(this.milestones[i].deadline).getTime() - new Date(start).getTime()
-    // 			) * pixelsPerMs)) + "px";
-    // 			return milestoneMargin;
-    // 		});
-    // 	}
-    // }
-    TimelineComponent.prototype.openModal = function (divId) {
-        $('.svg').on('click', 'divId', function (event) {
-            for (var i = 0; i < this.goal.milestones.length; i++) {
-                if (this.goal.milestones[i]._id === divId) {
-                    this.goal.milestones[i] = this.activeMilestone;
-                    return this.activeMilestone;
-                }
-            }
-            console.log("clicked");
-            // this.activeMilestone = the milestone with the id that matches the div id
-            $("#" + this.activeMilestone._id).modal();
-        });
+    TimelineComponent.prototype.getTopMargin = function (milestone) {
+        var start = this.goal.startDate;
+        var end = this.goal.completionDate;
+        console.log(milestone.deadline);
+        var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
+        var pixelsPerMs = 400 / ms;
+        var milestoneMargin = (Math.round((new Date(milestone.deadline).getTime() - new Date(start).getTime()) * pixelsPerMs));
+        console.log(milestoneMargin);
+        return milestoneMargin;
     };
-    ;
+    TimelineComponent.prototype.ngOnInit = function () {
+        // this.milestones = this.goalBuilderService.getMilestonesForGoal(this.goal._id);
+        // console.log("in timeline with goal", this.goal, this.milestones);
+        // let start = this.goal.startDate;
+        // let end = this.goal.completionDate;
+        // for (let i = 0; i < this.milestones.length; i++) {
+        // 	console.log("in for loop", this.milestones[i]);
+        // 	$('.svg').append
+        // 	('<div id="' + this.milestones[i]._id + 
+        // 		'" class="milestone-dot" (click)="openModal(this.id)"></div>');
+        // 	$('#' + this.milestones[i]._id).css("margin-top", function(){
+        // 		var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
+        // 		var pixelsPerMs = 400 / ms;
+        // 		var milestoneMargin = (Math.round(
+        // 			(new Date(this.milestones[i].deadline).getTime() - new Date(start).getTime()
+        // 		) * pixelsPerMs)) + "px";
+        // 		return milestoneMargin;
+        // 	}.bind(this));
+        // }
+        // $( '.milestone-dot' ).on( 'click', this.openModal.bind(this));
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], TimelineComponent.prototype, "goal", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], TimelineComponent.prototype, "openModal", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], TimelineComponent.prototype, "milestones", void 0);
     TimelineComponent = __decorate([
         core_1.Component({
             selector: "timeline",
-            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\" id=\"canvas\">\n\t\t\t\t{{goal.startDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t\t<div class=\"svg\">\n\t\t\t\t<svg height=\"400\" width=\"150\">\n  \t\t\t\t\t<line x1=\"75\" y1=\"0\" x2=\"75\" y2=\"400\" style=\"stroke:#32C5D2;stroke-width:2\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
-            styles: ["\n\t\tsvg {\n\t\t\tposition: absolute;\n\t\t\tz-index: -1;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 15px 58px;\n\t\t\tfont-family: Helvetica;\n\t\t\tfont-size: 1em;\n\t\t\tbackground-color: #32C5D2;\n\t\t\tborder-radius: 0;\n\t\t\tborder: none;\n\t\t\tcolor: white;\n\t\t}\n\t\t.svg {\n\t\t\theight: 400px;\n\t\t\twidth: 150px;\n\t\t}\n\t\t:host ::content .milestone-dot {\n\t\t\tposition: absolute;\n\t\t\tz-index: 1;\n\t\t\theight: 20px;\n\t\t\twidth: 20px;\n\t\t\tborder-radius: 50%;\n\t\t\tbackground-color: lightgrey;\n\t\t\tmargin-left: 65px;\n\t\t}\n\t"]
+            directives: [MilestoneDotComponent],
+            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\" id=\"canvas\">\n\t\t\t\t{{goal.startDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t\t<div class=\"svg\">\n\t\t\t\t<svg height=\"400\" width=\"150\">\n  \t\t\t\t\t<line x1=\"75\" y1=\"0\" x2=\"75\" y2=\"400\" style=\"stroke:#32C5D2;stroke-width:2\" />\n\t\t\t\t</svg>\n\t\t\t\t<milestone-dot \n\t\t\t\t*ngFor=\"let milestone of milestones\"\n\t\t\t\t(click)=\"openModal.emit(milestone)\"\n\t\t\t\t[style.top.px]=\"getTopMargin(milestone)\"\n\t\t\t\t></milestone-dot>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
+            styles: ["\n\t\tsvg {\n\t\t\tposition: absolute;\n\t\t\tz-index: -1;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 15px 58px;\n\t\t\tfont-family: Helvetica;\n\t\t\tfont-size: 1em;\n\t\t\tbackground-color: #32C5D2;\n\t\t\tborder-radius: 0;\n\t\t\tborder: none;\n\t\t\tcolor: white;\n\t\t}\n\t\t.svg {\n\t\t\tposition: relative;\n\t\t\theight: 400px;\n\t\t\twidth: 150px;\n\t\t}\n\n\t"]
         }), 
         __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService])
     ], TimelineComponent);

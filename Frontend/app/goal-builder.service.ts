@@ -2,9 +2,7 @@ import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
 import { Observable } from "rxjs/observable";
 
-
 @Injectable ()
-
 
 export class GoalBuilderService {
 
@@ -12,7 +10,6 @@ export class GoalBuilderService {
 	milestones = [];
 
 	constructor(private apiService: ApiService) {
-
 		this.getAllMilestones().subscribe();
 	}
 
@@ -96,6 +93,7 @@ export class GoalBuilderService {
 	}
 
 	getMilestonesForGoal(goalId) {
+		console.log("getting milestones", this.milestones.length);
 		return this.milestones.filter(function(milestone) {
 			return milestone.goalId === goalId;
 		});
@@ -108,14 +106,14 @@ export class GoalBuilderService {
 //         }.bind(this));
 // }
 
-updateGoal(_id, newValue) {
-	return this.apiService.post("/update", JSON.stringify({
-		_id: _id,
-		goal: newValue
-	})).do(function(res){
-		this.overwrite(this.findItemById(_id), res);
-	}.bind(this));
-}
+	updateGoal(_id, newValue) {
+		return this.apiService.post("/update", JSON.stringify({
+			_id: _id,
+			goal: newValue
+		})).do(function(res){
+			this.overwrite(this.findItemById(_id), res);
+		}.bind(this));
+	}
 
 	findGoalInCache(_id) {
 		for (let goal of this.goals) {
@@ -124,14 +122,6 @@ updateGoal(_id, newValue) {
 			}
 		}
 	}
-
-	// findMilestone(_id) {
-	// 	for (let milestone of this.goals.milestones) {
-	// 		if (milestone._id === _id) {
-	// 			return milestone;
-	// 		}
-	// 	}
-	// }
 
 	findGoalById (_id) {
 		return Observable.create(function(observer) {
@@ -161,16 +151,6 @@ updateGoal(_id, newValue) {
 					}
 		}.bind(this));
 	}
-
-
-	// findMilestoneById (_id) {
-	// 	return Observable.create(function(observer) {
-	// 		let activeMilestone = this.findMilestone(_id);
-	// 		console.log(activeMilestone);
-	// 		observer.next(goal);
-	// 		obeserver.complete();
-	// 	}.bind(this));
-	// };
 
 	overwrite(orig, newValues) {
 		for (let i in newValues) {

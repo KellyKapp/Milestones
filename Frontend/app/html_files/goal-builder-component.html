@@ -29,7 +29,8 @@
 		<div class="col-md-5">
 			<div class="col-md-5 timeline-div">
 				<div class="title">TIMELINE</div>
-				<timeline [goal]="goal"></timeline>
+				<timeline [goal]="goal" [milestones]="milestones" 
+				(openModal)="openModal($event)"></timeline>
 			</div>
 			<div class="col-md-7 create-milestone">
 				<div class="header">DESCRIPTION</div>

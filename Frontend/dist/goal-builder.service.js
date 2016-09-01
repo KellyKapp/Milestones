@@ -91,6 +91,7 @@ var GoalBuilderService = (function () {
         }.bind(this));
     };
     GoalBuilderService.prototype.getMilestonesForGoal = function (goalId) {
+        console.log("getting milestones", this.milestones.length);
         return this.milestones.filter(function (milestone) {
             return milestone.goalId === goalId;
         });
@@ -117,13 +118,6 @@ var GoalBuilderService = (function () {
             }
         }
     };
-    // findMilestone(_id) {
-    // 	for (let milestone of this.goals.milestones) {
-    // 		if (milestone._id === _id) {
-    // 			return milestone;
-    // 		}
-    // 	}
-    // }
     GoalBuilderService.prototype.findGoalById = function (_id) {
         return observable_1.Observable.create(function (observer) {
             // return a goal in cache
@@ -149,14 +143,6 @@ var GoalBuilderService = (function () {
             }
         }.bind(this));
     };
-    // findMilestoneById (_id) {
-    // 	return Observable.create(function(observer) {
-    // 		let activeMilestone = this.findMilestone(_id);
-    // 		console.log(activeMilestone);
-    // 		observer.next(goal);
-    // 		obeserver.complete();
-    // 	}.bind(this));
-    // };
     GoalBuilderService.prototype.overwrite = function (orig, newValues) {
         for (var i in newValues) {
             if (newValues.hasOwnProperty(i)) {

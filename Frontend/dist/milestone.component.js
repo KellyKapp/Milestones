@@ -56,17 +56,20 @@ var MilestoneComponent = (function () {
         }.bind(this));
     };
     MilestoneComponent.prototype.saveMilestone = function () {
-        var start = this.goal.startDate;
-        var end = this.goal.completionDate;
-        var deadline = this.activeMilestone.deadline;
-        $('.svg').append('<div id="' + this.activeMilestone._id +
-            '" class="milestone-dot" (click)="openModal(this.id)"></div>');
-        $('#' + this.activeMilestone._id).css("margin-top", function () {
-            var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
-            var pixelsPerMs = 400 / ms;
-            var milestoneMargin = (Math.round((new Date(deadline).getTime() - new Date(start).getTime()) * pixelsPerMs)) + "px";
-            return milestoneMargin;
-        });
+        // 	let start = this.goal.startDate;
+        // 	let end = this.goal.completionDate;
+        // 	let deadline = this.activeMilestone.deadline;
+        // 	$('.svg').append
+        // 	('<div id="' + this.activeMilestone._id + 
+        // 		'" class="milestone-dot" (click)="openModal(this.id)"></div>');
+        // 	$('#' + this.activeMilestone._id).css("margin-top", function(){
+        // 		var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
+        // 		var pixelsPerMs = 400 / ms;
+        // 		var milestoneMargin = (Math.round(
+        // 			(new Date(deadline).getTime() - new Date(start).getTime()
+        // 		) * pixelsPerMs)) + "px";
+        // 		return milestoneMargin;
+        // });
     };
     __decorate([
         core_1.Input(), 

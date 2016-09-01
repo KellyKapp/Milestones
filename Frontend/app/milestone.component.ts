@@ -77,21 +77,21 @@ export class MilestoneComponent {
 
 	saveMilestone() {
 
-		let start = this.goal.startDate;
-		let end = this.goal.completionDate;
-		let deadline = this.activeMilestone.deadline;
+	// 	let start = this.goal.startDate;
+	// 	let end = this.goal.completionDate;
+	// 	let deadline = this.activeMilestone.deadline;
 
-		$('.svg').append
-		('<div id="' + this.activeMilestone._id + 
-			'" class="milestone-dot" (click)="openModal(this.id)"></div>');
-		$('#' + this.activeMilestone._id).css("margin-top", function(){
-			var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
-			var pixelsPerMs = 400 / ms;
-			var milestoneMargin = (Math.round(
-				(new Date(deadline).getTime() - new Date(start).getTime()
-			) * pixelsPerMs)) + "px";
-			return milestoneMargin;
-		});
+	// 	$('.svg').append
+	// 	('<div id="' + this.activeMilestone._id + 
+	// 		'" class="milestone-dot" (click)="openModal(this.id)"></div>');
+	// 	$('#' + this.activeMilestone._id).css("margin-top", function(){
+	// 		var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
+	// 		var pixelsPerMs = 400 / ms;
+	// 		var milestoneMargin = (Math.round(
+	// 			(new Date(deadline).getTime() - new Date(start).getTime()
+	// 		) * pixelsPerMs)) + "px";
+	// 		return milestoneMargin;
+		// });
 	}
 }
 
