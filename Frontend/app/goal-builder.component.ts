@@ -80,7 +80,7 @@ export class GoalBuilderComponent {
 	getObstacles() {
 		for (let i = 0; i < this.milestones.length; i++) {
 			for (let j = 0; j < this.milestones[i].obstacles.length; j++) {
-				this.obstacles.push(this.milestones[i].obstacles[i]);
+				this.obstacles.push(this.milestones[i].obstacles[j]);
 			}
 		} return this.obstacles;
 	}

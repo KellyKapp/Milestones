@@ -62,7 +62,7 @@ var GoalBuilderComponent = (function () {
     GoalBuilderComponent.prototype.getObstacles = function () {
         for (var i = 0; i < this.milestones.length; i++) {
             for (var j = 0; j < this.milestones[i].obstacles.length; j++) {
-                this.obstacles.push(this.milestones[i].obstacles[i]);
+                this.obstacles.push(this.milestones[i].obstacles[j]);
             }
         }
         return this.obstacles;
