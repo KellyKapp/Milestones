@@ -44,22 +44,18 @@
 		<div class="col col-md-4">
 			<h5 class="output"> RESOURCES:</h5>
 			<div class="row">
-				<resources-output *ngFor="let resource of resources">
+				<resources-output *ngFor="let resource of activeResources">
 				</resources-output>
-				<div class="col-md-7">
-<!-- 					<ul>
-				        <li *ngFor="let resource of activeMilestone.resources">
-				        	{{resourceObject.description}}
-				        </li>
-				    </ul> -->
+<!-- 				<div class="col-md-7">
+
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4"> -->
 <!-- 				    <ul>
 				        <li *ngFor="let resource of activeMilestone.resources">
 				        	{{resourceObject.cost | currency:'USD':true:'1.2-2'}}
 				        </li>
 				    </ul> -->
-				</div>
+<!-- 				</div> -->
 			</div>
 		</div>
 	</div>
@@ -71,7 +67,7 @@
 		        class="form-control name"
 		        type="text"
 		        placeholder="name"
-		        [(ngModel)]="teamObject.member"
+		        [(ngModel)]="teamObject.name"
 		    />
 		    <input #teamMemberRole
 		        class="form-control role"
@@ -86,20 +82,22 @@
 		<div class="col col-md-4">
 			<h5 class="output"> TEAM:</h5>
 			<div class="row">
-				<div class="col-md-6">
+				<team-output *ngFor="let person of activeMilestone.people">
+				</team-output>
+				<!-- <div class="col-md-6">
 					<ul>
-						<li *ngFor="let team of activeMilestone.team">
-							{{teamObject.member}}
+						<li *ngFor="let person of activeMilestone.people">
+							{{person.name}}
 						</li>
 					</ul>
 				</div>
 				<div class="col-md-5">
 					<ul>
-						<li *ngFor="let team of activeMilestone.team">
-							{{teamObject.role}}
+						<li *ngFor="let person of activeMilestone.people">
+							{{person.role}}
 						</li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -125,11 +123,13 @@
 		</div>
 		<div class="col col-md-4">
 			<h5 class="output"> OBSTACLES:</h5>
-			<ul>
+			<obstacle-output *ngFor="let obstacle of activeMilestone.obstacles">
+			</obstacle-output>
+	<!-- 		<ul>
 				<li *ngFor="let obstacle of activeMilestone.obstacles">
-					{{obstacleObject.description}}
+					{{obstacle.description}}
 				</li>
-			</ul>
+			</ul> -->
 		</div>
 	</div>
 </div>

@@ -8,7 +8,7 @@ export class GoalBuilderService {
 
 	goals = [];
 	milestones = [];
-	resources = [];
+
 
 	constructor(private apiService: ApiService) {
 		this.getAllMilestones().subscribe();
@@ -70,8 +70,8 @@ export class GoalBuilderService {
 	addTeamMember(milestone, teamObject) {
 		return this.apiService.post("/people", JSON.stringify({
 			person : {
-				member: teamObject.member,
-				role: teamObject.role,
+				name: teamObject.name,
+				role: teamObject.role
 			},
 			milestoneId: milestone._id
 		})).do(function(res) {
@@ -92,24 +92,10 @@ export class GoalBuilderService {
 	}
 
 	getMilestonesForGoal(goalId) {
-		console.log("getting milestones", this.milestones.length);
 		return this.milestones.filter(function(milestone) {
 			return milestone.goalId === goalId;
 		});
 	}
-
-	getResourcesForMilestone(milestoneId) {
-		return this.resources.filter(function(resource) {
-			return resource.milestoneId === milestoneId;
-		});
-	}
-
-// getSummaryData() {
-//     return this.apiService.get("/summary")
-//         .do(function(res) {
-//             this.goals = res;
-//         }.bind(this));
-// }
 
 	updateGoal(_id, newValue) {
 		return this.apiService.post("/update", JSON.stringify({

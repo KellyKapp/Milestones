@@ -15,9 +15,8 @@
 		</div>
 		<div class="col-md-9">
 			<ul>
-		        <li *ngFor="let milestone of milestones">
-		        	{{milestone.description}}
-		        	{{milestone.deadline | date:"longDate"}}
+		        <li *ngFor="let resource of resources">
+		        	{{resource.description}}
 		        </li>
 		    </ul>
 		</div>
@@ -28,7 +27,11 @@
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
-			<input type="text">
+			<ul>
+		        <li *ngFor="let member of team">
+		        	{{member.name}}
+		        </li>
+		    </ul>
 		</div>
 	</div>
 	<div class="row">
@@ -37,7 +40,11 @@
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
-			<input type="text">
+			<ul>
+				<li *ngFor="let obstacle of obstacles">
+		        <!-- 	{{obstacle.description}} -->
+		        </li>
+	        </ul>
 		</div>
 	</div>
 </div>

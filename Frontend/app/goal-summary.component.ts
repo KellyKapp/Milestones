@@ -33,11 +33,11 @@ export class GoalSummaryComponent {
 	@Input() goal;
 	@Input() milestones;
 	@Input() resources;
+	@Input() team;
+	@Input() obstacles;
 
 	constructor (
 		private goalBuilderService: GoalBuilderService, 
 		private router: Router) {}
-
-
 
 }

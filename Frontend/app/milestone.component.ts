@@ -9,11 +9,28 @@ declare let $;
 
 @Component ({
 	selector: 'resources-output',
-	template: `<div class="resources-output">{{resource.description}}</div>`,
-	styles: ['.resources-output {border: 1px solid black; height: 20px;}']
+	template: `<li class="resources-output">{{resource.description}}</li>`,
 })
 
-class ResourcesOutput {
+class ResourcesOutputComponent {
+
+}
+
+@Component ({
+	selector: 'team-output',
+	template: `<li class="team-output"></li>`,
+})
+
+class TeamOutputComponent {
+
+}
+
+@Component ({
+	selector: 'obstacle-output',
+	template: `<li class="obstacle-output"></li>`,
+})
+
+class ObstacleOutputComponent {
 
 }
 
@@ -22,7 +39,9 @@ class ResourcesOutput {
 	selector: 'milestone',
 	directives: [ 
 		...FORM_DIRECTIVES,
-		ResourcesOutput
+		ResourcesOutputComponent,
+		TeamOutputComponent,
+		ObstacleOutputComponent
 	 ],
 	templateUrl: 'app/html_files/milestone-component.html',
 	styleUrls: ['app/css_files/milestone.css']
@@ -34,10 +53,12 @@ export class MilestoneComponent {
 	@Input() activeMilestone;
 	@Input() goal;
 	@Input() resources;
+	@Input() team;
+	@Input() obstacles;
 
-	start;
-	end; 
-	deadline;
+	// start;
+	// end; 
+	// deadline;
 
 	resourceObject = {
 		description: "",
@@ -45,7 +66,7 @@ export class MilestoneComponent {
 	};
 
 	teamObject = {
-		member: "",
+		name: "",
 		role: ""
 	};
 
@@ -58,18 +79,10 @@ export class MilestoneComponent {
 		private goalBuilderService: GoalBuilderService, 
 		private router: Router) {}
 
-	ngOnInit() {
-		this.resources = this.activeMilestone.resources;
-		console.log(this.activeMilestone.resources);
-	}
-
 	addResource() {
 		this.goalBuilderService
 		.addResource(this.activeMilestone, this.resourceObject)
 		.subscribe(function(res) {
-			// this.resourceObject = res;
-			this.resources.push(res);
-			console.log(this.resources);
 		}.bind(this));
 	}
 
@@ -77,8 +90,6 @@ export class MilestoneComponent {
 		this.goalBuilderService
 		.addTeamMember(this.activeMilestone, this.teamObject)
 		.subscribe(function(res) {
-			console.log(res);
-			this.teamObject = res;
 		}.bind(this));
 	}
 
@@ -86,8 +97,6 @@ export class MilestoneComponent {
 		this.goalBuilderService
 		.addObstacle(this.activeMilestone, this.obstacleObject)
 		.subscribe(function(res) {
-			console.log(res);
-			this.obstacleObject = res;
 		}.bind(this));
 	}
 

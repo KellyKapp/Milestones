@@ -21,6 +21,9 @@ var GoalBuilderComponent = (function () {
         this.router = router;
         this.milestones = [];
         this.resources = [];
+        this.team = [];
+        this.obstacles = [];
+        this.activeResources = [];
         this.milestoneObject = {
             description: "",
             deadline: "",
@@ -33,13 +36,36 @@ var GoalBuilderComponent = (function () {
                 .subscribe(function (goal) {
                 this.goal = goal;
                 this.milestones = this.goalBuilderService.getMilestonesForGoal(this.goal._id);
-                // for (let i = 0; i < this.milestones.length; i++) {
-                // 	for (let j = 0; j < this.milestones[i].resources.length; j++) {
-                // 		this.resources.push(this.milestone.resources[i]);
-                // 	}
-                // }
+                this.resources = this.getResources();
+                this.team = this.getTeam();
+                this.obstacles = this.getObstacles();
             }.bind(this));
         }.bind(this));
+    };
+    GoalBuilderComponent.prototype.getResources = function () {
+        console.log(this.milestones);
+        for (var i = 0; i < this.milestones.length; i++) {
+            for (var j = 0; j < this.milestones[i].resources.length; j++) {
+                this.resources.push(this.milestones[i].resources[j]);
+            }
+        }
+        return this.resources;
+    };
+    GoalBuilderComponent.prototype.getTeam = function () {
+        for (var i = 0; i < this.milestones.length; i++) {
+            for (var j = 0; j < this.milestones[i].people.length; j++) {
+                this.team.push(this.milestones[i].people[j]);
+            }
+        }
+        return this.team;
+    };
+    GoalBuilderComponent.prototype.getObstacles = function () {
+        for (var i = 0; i < this.milestones.length; i++) {
+            for (var j = 0; j < this.milestones[i].obstacles.length; j++) {
+                this.obstacles.push(this.milestones[i].obstacles[i]);
+            }
+        }
+        return this.obstacles;
     };
     GoalBuilderComponent.prototype.buildNewMilestone = function () {
         this.goalBuilderService
@@ -52,6 +78,9 @@ var GoalBuilderComponent = (function () {
     };
     GoalBuilderComponent.prototype.openModal = function (milestone) {
         this.activeMilestone = milestone;
+        this.activeResources = this.activeMilestone.resources;
+        // this.team = this.activeMilestone.people;
+        // this.obstacles = this.activeMilestone.obstacles;
         $(".milestone").modal();
         console.log(milestone);
     };

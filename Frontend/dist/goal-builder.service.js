@@ -16,7 +16,6 @@ var GoalBuilderService = (function () {
         this.apiService = apiService;
         this.goals = [];
         this.milestones = [];
-        this.resources = [];
         this.getAllMilestones().subscribe();
     }
     GoalBuilderService.prototype.getAllGoals = function () {
@@ -70,8 +69,8 @@ var GoalBuilderService = (function () {
     GoalBuilderService.prototype.addTeamMember = function (milestone, teamObject) {
         return this.apiService.post("/people", JSON.stringify({
             person: {
-                member: teamObject.member,
-                role: teamObject.role,
+                name: teamObject.name,
+                role: teamObject.role
             },
             milestoneId: milestone._id
         })).do(function (res) {
@@ -90,22 +89,10 @@ var GoalBuilderService = (function () {
         }.bind(this));
     };
     GoalBuilderService.prototype.getMilestonesForGoal = function (goalId) {
-        console.log("getting milestones", this.milestones.length);
         return this.milestones.filter(function (milestone) {
             return milestone.goalId === goalId;
         });
     };
-    GoalBuilderService.prototype.getResourcesForMilestone = function (milestoneId) {
-        return this.resources.filter(function (resource) {
-            return resource.milestoneId === milestoneId;
-        });
-    };
-    // getSummaryData() {
-    //     return this.apiService.get("/summary")
-    //         .do(function(res) {
-    //             this.goals = res;
-    //         }.bind(this));
-    // }
     GoalBuilderService.prototype.updateGoal = function (_id, newValue) {
         return this.apiService.post("/update", JSON.stringify({
             _id: _id,

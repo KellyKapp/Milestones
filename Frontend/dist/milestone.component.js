@@ -12,29 +12,55 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var router_1 = require("@angular/router");
 var goal_builder_service_1 = require("./goal-builder.service");
-var ResourcesOutput = (function () {
-    function ResourcesOutput() {
+var ResourcesOutputComponent = (function () {
+    function ResourcesOutputComponent() {
     }
-    ResourcesOutput = __decorate([
+    ResourcesOutputComponent = __decorate([
         core_1.Component({
             selector: 'resources-output',
-            template: "<div class=\"resources-output\">{{resource.description}}</div>",
-            styles: ['.resources-output {border: 1px solid black; height: 20px;}']
+            template: "<li class=\"resources-output\">{{resource.description}}</li>",
         }), 
         __metadata('design:paramtypes', [])
-    ], ResourcesOutput);
-    return ResourcesOutput;
+    ], ResourcesOutputComponent);
+    return ResourcesOutputComponent;
+}());
+var TeamOutputComponent = (function () {
+    function TeamOutputComponent() {
+    }
+    TeamOutputComponent = __decorate([
+        core_1.Component({
+            selector: 'team-output',
+            template: "<li class=\"team-output\"></li>",
+        }), 
+        __metadata('design:paramtypes', [])
+    ], TeamOutputComponent);
+    return TeamOutputComponent;
+}());
+var ObstacleOutputComponent = (function () {
+    function ObstacleOutputComponent() {
+    }
+    ObstacleOutputComponent = __decorate([
+        core_1.Component({
+            selector: 'obstacle-output',
+            template: "<li class=\"obstacle-output\"></li>",
+        }), 
+        __metadata('design:paramtypes', [])
+    ], ObstacleOutputComponent);
+    return ObstacleOutputComponent;
 }());
 var MilestoneComponent = (function () {
     function MilestoneComponent(goalBuilderService, router) {
         this.goalBuilderService = goalBuilderService;
         this.router = router;
+        // start;
+        // end; 
+        // deadline;
         this.resourceObject = {
             description: "",
             cost: ""
         };
         this.teamObject = {
-            member: "",
+            name: "",
             role: ""
         };
         this.obstacleObject = {
@@ -42,33 +68,22 @@ var MilestoneComponent = (function () {
             solution: ""
         };
     }
-    MilestoneComponent.prototype.ngOnInit = function () {
-        this.resources = this.activeMilestone.resources;
-        console.log(this.activeMilestone.resources);
-    };
     MilestoneComponent.prototype.addResource = function () {
         this.goalBuilderService
             .addResource(this.activeMilestone, this.resourceObject)
             .subscribe(function (res) {
-            // this.resourceObject = res;
-            this.resources.push(res);
-            console.log(this.resources);
         }.bind(this));
     };
     MilestoneComponent.prototype.addTeamMember = function () {
         this.goalBuilderService
             .addTeamMember(this.activeMilestone, this.teamObject)
             .subscribe(function (res) {
-            console.log(res);
-            this.teamObject = res;
         }.bind(this));
     };
     MilestoneComponent.prototype.addObstacle = function () {
         this.goalBuilderService
             .addObstacle(this.activeMilestone, this.obstacleObject)
             .subscribe(function (res) {
-            console.log(res);
-            this.obstacleObject = res;
         }.bind(this));
     };
     __decorate([
@@ -83,11 +98,21 @@ var MilestoneComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], MilestoneComponent.prototype, "resources", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MilestoneComponent.prototype, "team", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MilestoneComponent.prototype, "obstacles", void 0);
     MilestoneComponent = __decorate([
         core_1.Component({
             selector: 'milestone',
             directives: common_1.FORM_DIRECTIVES.concat([
-                ResourcesOutput
+                ResourcesOutputComponent,
+                TeamOutputComponent,
+                ObstacleOutputComponent
             ]),
             templateUrl: 'app/html_files/milestone-component.html',
             styleUrls: ['app/css_files/milestone.css']
