@@ -9,29 +9,74 @@ declare let $;
 
 @Component ({
 	selector: 'resources-output',
-	template: `<li class="resources-output">{{resource.description}}</li>`,
+	template: `
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
+				<li class="resources-output">{{resource.description}}</li>
+			</div>
+			<div class="col-md-6">
+				<li class="resources-output">{{resource.cost | currency:'USD':true:'1.2-2'}}</li>
+			</div>
+		</div>
+	`,
+	styles: [`
+		li {
+			list-style-type: none;
+		}
+	`]
 })
 
 class ResourcesOutputComponent {
-
+	@Input() resource;
 }
 
 @Component ({
 	selector: 'team-output',
-	template: `<li class="team-output"></li>`,
+	template: `
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
+				<li class="team-output">{{person.name}}</li>
+			</div>
+			<div class="col-md-6">
+				<li class="team-output">{{person.role}}</li>
+			</div>
+		</div>
+	`,
+	styles: [`
+		li {
+			list-style-type: none;
+		}
+	`]
 })
 
 class TeamOutputComponent {
-
+	@Input() person;
 }
 
 @Component ({
 	selector: 'obstacle-output',
-	template: `<li class="obstacle-output"></li>`,
+	template: `
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-4">
+				<li class="obstacle-output">{{obstacle.description}}</li>
+			</div>
+			<div class="col-md=6">
+				<li class="obstacle-output">{{obstacle.solution}}</li>
+			</div>
+		</div>
+	`,
+	styles: [`
+		li {
+			list-style-type: none;
+		}
+	`]
 })
 
 class ObstacleOutputComponent {
-
+	@Input() obstacle;
 }
 
 

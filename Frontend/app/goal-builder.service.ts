@@ -76,6 +76,7 @@ export class GoalBuilderService {
 			milestoneId: milestone._id
 		})).do(function(res) {
 			milestone.people.push(res);
+			// this.milestones[i].people.push(res);
 		}.bind(this));
 	}
 

@@ -13,11 +13,15 @@ var goal_builder_service_1 = require("./goal-builder.service");
 var MilestoneDotComponent = (function () {
     function MilestoneDotComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MilestoneDotComponent.prototype, "milestone", void 0);
     MilestoneDotComponent = __decorate([
         core_1.Component({
             selector: 'milestone-dot',
-            template: "\n\t\t<div class=\"milestone-dot\"></div>\n\t",
-            styles: ["\n\t:host {\n\t\tposition: absolute;\n\t\tz-index: 1;\n\t\theight: 20px;\n\t\twidth: 20px;\n\t\tborder-radius: 50%;\n\t\tbackground-color: lightgrey;\n\t\tmargin-left: 65px;\n\t}\n\t"]
+            template: "\n\t\t<div class=\"milestone-dot\">\n\t\n\t\t</div>\n\t",
+            styles: ["\n\t:host {\n\t\tposition: absolute;\n\t\tz-index: 1;\n\t\theight: 20px;\n\t\twidth: 20px;\n\t\tborder-radius: 50%;\n\t\tbackground-color: lightgrey;\n\t\tmargin-left: 65px;\n\t\tdisplay: inline-block;\n\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], MilestoneDotComponent);
@@ -52,7 +56,7 @@ var TimelineComponent = (function () {
         core_1.Component({
             selector: "timeline",
             directives: [MilestoneDotComponent],
-            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\" id=\"canvas\">\n\t\t\t\t{{goal.startDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t\t<div class=\"svg\">\n\t\t\t\t<svg height=\"400\" width=\"150\">\n  \t\t\t\t\t<line x1=\"75\" y1=\"0\" x2=\"75\" y2=\"400\" style=\"stroke:#32C5D2;stroke-width:2\" />\n\t\t\t\t</svg>\n\t\t\t\t<milestone-dot \n\t\t\t\t\t*ngFor=\"let milestone of milestones\"\n\t\t\t\t\t(click)=\"openModal.emit(milestone)\"\n\t\t\t\t\t[style.top.px]=\"getTopMargin(milestone)\"\n\t\t\t\t>\n\t\t\t\t</milestone-dot>\n\t\t\t</div>\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
+            template: "\n\t\t<div class=\"timeline\">\n\t\t\t<div class=\"date start\" id=\"canvas\">\n\t\t\t\t{{goal.startDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t\t<div class=\"svg\">\n\t\t\t\t<svg height=\"400\" width=\"150\">\n  \t\t\t\t\t<line x1=\"75\" y1=\"0\" x2=\"75\" y2=\"400\" style=\"stroke:#32C5D2;stroke-width:2\" />\n\t\t\t\t</svg>\n\t\t\t\t<milestone-dot \n\t\t\t\t\t*ngFor=\"let milestone of milestones\"\n\t\t\t\t\t[milestone]=\"milestone\"\n\t\t\t\t\t(click)=\"openModal.emit(milestone)\"\n\t\t\t\t\t[style.top.px]=\"getTopMargin(milestone)\"\n\t\t\t\t>\n\t\t\t\t</milestone-dot>\n\t\t\t</div>\n\t\t\t<div class=\"date end\">\n\t\t\t\t{{goal.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
             styles: ["\n\t\tsvg {\n\t\t\tposition: absolute;\n\t\t\tz-index: -1;\n\t\t}\n\t\t.date {\n\t\t\theight: 30px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 0 auto;\n\t\t\ttext-align: center;\n\t\t\tfont-size: 1.15em;\n\t\t}\n\t\t.add-milestone {\n\t\t\theight: 40px;\n\t\t\twidth: 150px;\n\t\t\tmargin: 15px 58px;\n\t\t\tfont-family: Helvetica;\n\t\t\tfont-size: 1em;\n\t\t\tbackground-color: #32C5D2;\n\t\t\tborder-radius: 0;\n\t\t\tborder: none;\n\t\t\tcolor: white;\n\t\t}\n\t\t.svg {\n\t\t\tposition: relative;\n\t\t\theight: 400px;\n\t\t\twidth: 150px;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService])

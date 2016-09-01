@@ -15,10 +15,15 @@ var goal_builder_service_1 = require("./goal-builder.service");
 var ResourcesOutputComponent = (function () {
     function ResourcesOutputComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], ResourcesOutputComponent.prototype, "resource", void 0);
     ResourcesOutputComponent = __decorate([
         core_1.Component({
             selector: 'resources-output',
-            template: "<li class=\"resources-output\">{{resource.description}}</li>",
+            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"resources-output\">{{resource.description}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<li class=\"resources-output\">{{resource.cost | currency:'USD':true:'1.2-2'}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
+            styles: ["\n\t\tli {\n\t\t\tlist-style-type: none;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], ResourcesOutputComponent);
@@ -27,10 +32,15 @@ var ResourcesOutputComponent = (function () {
 var TeamOutputComponent = (function () {
     function TeamOutputComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], TeamOutputComponent.prototype, "person", void 0);
     TeamOutputComponent = __decorate([
         core_1.Component({
             selector: 'team-output',
-            template: "<li class=\"team-output\"></li>",
+            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"team-output\">{{person.name}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<li class=\"team-output\">{{person.role}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
+            styles: ["\n\t\tli {\n\t\t\tlist-style-type: none;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], TeamOutputComponent);
@@ -39,10 +49,15 @@ var TeamOutputComponent = (function () {
 var ObstacleOutputComponent = (function () {
     function ObstacleOutputComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], ObstacleOutputComponent.prototype, "obstacle", void 0);
     ObstacleOutputComponent = __decorate([
         core_1.Component({
             selector: 'obstacle-output',
-            template: "<li class=\"obstacle-output\"></li>",
+            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"obstacle-output\">{{obstacle.description}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md=6\">\n\t\t\t\t<li class=\"obstacle-output\">{{obstacle.solution}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
+            styles: ["\n\t\tli {\n\t\t\tlist-style-type: none;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], ObstacleOutputComponent);

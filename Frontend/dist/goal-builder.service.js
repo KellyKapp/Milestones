@@ -75,6 +75,7 @@ var GoalBuilderService = (function () {
             milestoneId: milestone._id
         })).do(function (res) {
             milestone.people.push(res);
+            // this.milestones[i].people.push(res);
         }.bind(this));
     };
     GoalBuilderService.prototype.addObstacle = function (milestone, obstacleObject) {

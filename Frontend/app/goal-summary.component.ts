@@ -22,8 +22,14 @@ import { ApiService } from "./api.service";
 		    width: 40px;
 		    background-color: #32C5D2;
 		}
+		.goal-name {
+			font-size: 1.2em;
+		}
 		input {
 			border: none;
+		}
+		li {
+			list-style-type: none;
 		}
 	`]
 })

@@ -5,7 +5,7 @@
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
-			<input [(ngModel)]="goal.name">
+			<input class="goal-name" [(ngModel)]="goal.name">
 		</div>
 	</div>
 	<div class="row">
@@ -14,11 +14,22 @@
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
-			<ul>
-		        <li *ngFor="let resource of resources">
-		        	{{resource.description}}
-		        </li>
-		    </ul>
+			<div class="row">
+				<div class="col-md-5">
+					<ul>
+				        <li *ngFor="let resource of resources">
+				        	{{resource.description}}
+				        </li>
+				    </ul>
+				</div>
+				<div class="col-md-7">
+					<ul>
+				        <li *ngFor="let resource of resources">
+				        	{{resource.cost | currency:'USD':true}}
+				        </li>
+				    </ul>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -27,11 +38,22 @@
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
-			<ul>
-		        <li *ngFor="let member of team">
-		        	{{member.name}}
-		        </li>
-		    </ul>
+			<div class="row">
+				<div class="col-md-5">
+					<ul>
+				        <li *ngFor="let member of team">
+				        	{{member.name}}
+				        </li>
+				    </ul>
+				</div>
+				<div class="col-md-7">
+					<ul>
+				        <li *ngFor="let member of team">
+				        	{{member.role}}
+				        </li>
+				    </ul>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -40,12 +62,22 @@
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
-			<ul>
-				<li *ngFor="let obstacle of obstacles">
-
-		        	{{obstacle.description}}
-		        </li>
-	        </ul>
+			<div class="row">
+			<div class="col-md-5">
+				<ul>
+					<li *ngFor="let obstacle of obstacles">
+			        	{{obstacle.description}}
+			        </li>
+		        </ul>
+		    </div>
+		    <div class="col-md-7">
+		    	<ul>
+					<li *ngFor="let obstacle of obstacles">
+			        	{{obstacle.solution}}
+			        </li>
+		        </ul>
+		    </div>
+		    </div>
 		</div>
 	</div>
 </div>

@@ -22,7 +22,7 @@
 <div class="row">
 	<div class="row milestone-resources">
 		<div class="col col-md-7 left">
-			<h5><img src="../media/resources.svg" height="30px" width="30px" alt="Resource"> | RESOURCES</h5>
+			<h5><img src="../media/resources.svg" height="30px" width="30px" alt="Resource"> | ADD NEW RESOURCE</h5>
 <!-- 			<form id="resource-form"> -->
 				<input #resource
 			        class="form-control resource"
@@ -44,7 +44,8 @@
 		<div class="col col-md-4">
 			<h5 class="output"> RESOURCES:</h5>
 			<div class="row">
-				<resources-output *ngFor="let resource of activeResources">
+				<resources-output *ngFor="let resource of activeMilestone.resources"
+				[resource]="resource">
 				</resources-output>
 <!-- 				<div class="col-md-7">
 
@@ -62,7 +63,7 @@
 
 	<div class="row milestone-team">
 		<div class="col col-md-7 left">
-			<h5><img src="../media/team.svg" height="30px" width="30px" alt="Team"> | TEAM</h5>
+			<h5><img src="../media/team.svg" height="30px" width="30px" alt="Team"> | ADD NEW TEAM MEMBER</h5>
 			<input #teamMember
 		        class="form-control name"
 		        type="text"
@@ -82,7 +83,8 @@
 		<div class="col col-md-4">
 			<h5 class="output"> TEAM:</h5>
 			<div class="row">
-				<team-output *ngFor="let person of activeMilestone.people">
+				<team-output *ngFor="let person of activeMilestone.people"
+				[person]="person">
 				</team-output>
 				<!-- <div class="col-md-6">
 					<ul>
@@ -104,7 +106,7 @@
 
 	<div class="row milestone-obstacles">
 		<div class="col col-md-7 left">
-			<h5><img src="../media/obstacles.svg" height="30px" width="30px" alt="Obstacle">| OBSTACLES</h5>
+			<h5><img src="../media/obstacles.svg" height="30px" width="30px" alt="Obstacle">| ADD NEW OBSTACLE / SOLUTION</h5>
 			<input #obstacle
 		        class="form-control description"
 		        type="text"
@@ -122,8 +124,9 @@
 			>SAVE OBSTACLE</button>
 		</div>
 		<div class="col col-md-4">
-			<h5 class="output"> OBSTACLES:</h5>
-			<obstacle-output *ngFor="let obstacle of activeMilestone.obstacles">
+			<h5 class="output"> OBSTACLES / SOLUTIONS:</h5>
+			<obstacle-output *ngFor="let obstacle of activeMilestone.obstacles"
+			[obstacle]="obstacle">
 			</obstacle-output>
 	<!-- 		<ul>
 				<li *ngFor="let obstacle of activeMilestone.obstacles">

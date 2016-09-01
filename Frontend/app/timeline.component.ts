@@ -6,7 +6,9 @@ declare let $;
 @Component({
 	selector: 'milestone-dot',
 	template: `
-		<div class="milestone-dot"></div>
+		<div class="milestone-dot">
+	
+		</div>
 	`,
 	styles: [`
 	:host {
@@ -17,12 +19,13 @@ declare let $;
 		border-radius: 50%;
 		background-color: lightgrey;
 		margin-left: 65px;
+		display: inline-block;
 	}
 	`]
 })
 
 class MilestoneDotComponent {
-
+	@Input() milestone;
 }
 
 @Component({
@@ -39,6 +42,7 @@ class MilestoneDotComponent {
 				</svg>
 				<milestone-dot 
 					*ngFor="let milestone of milestones"
+					[milestone]="milestone"
 					(click)="openModal.emit(milestone)"
 					[style.top.px]="getTopMargin(milestone)"
 				>

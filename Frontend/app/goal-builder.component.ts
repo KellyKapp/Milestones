@@ -97,7 +97,7 @@ export class GoalBuilderComponent {
 
 	openModal(milestone) {
 		this.activeMilestone = milestone;
-		this.activeResources = this.activeMilestone.resources;
+		// this.activeResources = this.activeMilestone.resources;
 		// this.team = this.activeMilestone.people;
 		// this.obstacles = this.activeMilestone.obstacles;
 		$(".milestone").modal();
