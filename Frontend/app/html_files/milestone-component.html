@@ -21,7 +21,7 @@
 
 <div class="row">
 	<div class="row milestone-resources">
-		<div class="col col-md-7 left">
+		<div class="col col-md-6 left">
 			<h5><img src="../media/resources.svg" height="30px" width="30px" alt="Resource"> | ADD NEW RESOURCE</h5>
 <!-- 			<form id="resource-form"> -->
 				<input #resource
@@ -41,7 +41,7 @@
 				>SAVE RESOURCE</button>
 <!-- 			</form> -->
 		</div>
-		<div class="col col-md-4">
+		<div class="col col-md-5">
 			<h5 class="output"> RESOURCES:</h5>
 			<div class="row">
 				<resources-output *ngFor="let resource of activeMilestone.resources"
@@ -62,7 +62,7 @@
 	</div>
 
 	<div class="row milestone-team">
-		<div class="col col-md-7 left">
+		<div class="col col-md-6 left">
 			<h5><img src="../media/team.svg" height="30px" width="30px" alt="Team"> | ADD NEW TEAM MEMBER</h5>
 			<input #teamMember
 		        class="form-control name"
@@ -80,7 +80,7 @@
 		    	(click)="addTeamMember()"
 			>SAVE TEAM MEMBER</button>
 		</div>
-		<div class="col col-md-4">
+		<div class="col col-md-5">
 			<h5 class="output"> TEAM:</h5>
 			<div class="row">
 				<team-output *ngFor="let person of activeMilestone.people"
@@ -105,7 +105,7 @@
 	</div>
 
 	<div class="row milestone-obstacles">
-		<div class="col col-md-7 left">
+		<div class="col col-md-6 left">
 			<h5><img src="../media/obstacles.svg" height="30px" width="30px" alt="Obstacle">| ADD NEW OBSTACLE / SOLUTION</h5>
 			<input #obstacle
 		        class="form-control description"
@@ -123,8 +123,8 @@
 		    	(click)="addObstacle()"
 			>SAVE OBSTACLE</button>
 		</div>
-		<div class="col col-md-4">
-			<h5 class="output"> OBSTACLES / SOLUTIONS:</h5>
+		<div class="col col-md-5">
+			<h5 class="output"> OBSTACLES:</h5>
 			<obstacle-output *ngFor="let obstacle of activeMilestone.obstacles"
 			[obstacle]="obstacle">
 			</obstacle-output>

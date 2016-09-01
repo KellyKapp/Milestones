@@ -53,3 +53,6 @@ button.btn.btn-default.save {
     color: #32C5D2;
     margin: 10px 0;
 }
+div.date.end {
+	margin-top: 10px;
+}

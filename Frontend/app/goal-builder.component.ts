@@ -60,6 +60,15 @@ export class GoalBuilderComponent {
 		}.bind(this));
 	}
 
+	refreshMilestones() {
+		this.resources = [];
+		this.team = [];
+		this.obstacles = [];
+		this.getResources();
+		this.getTeam();
+		this.getObstacles();
+	}
+
 	getResources() {
 		console.log(this.milestones);
 		for (let i = 0; i < this.milestones.length; i++) {

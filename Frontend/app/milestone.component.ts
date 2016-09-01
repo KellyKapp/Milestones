@@ -12,10 +12,10 @@ declare let $;
 	template: `
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<li class="resources-output">{{resource.description}}</li>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<li class="resources-output">{{resource.cost | currency:'USD':true:'1.2-2'}}</li>
 			</div>
 		</div>
@@ -36,10 +36,10 @@ class ResourcesOutputComponent {
 	template: `
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<li class="team-output">{{person.name}}</li>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<li class="team-output">{{person.role}}</li>
 			</div>
 		</div>
@@ -60,11 +60,8 @@ class TeamOutputComponent {
 	template: `
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-4">
+			<div class="col-md-9">
 				<li class="obstacle-output">{{obstacle.description}}</li>
-			</div>
-			<div class="col-md=6">
-				<li class="obstacle-output">{{obstacle.solution}}</li>
 			</div>
 		</div>
 	`,
@@ -101,6 +98,8 @@ export class MilestoneComponent {
 	@Input() team;
 	@Input() obstacles;
 
+	@Output() onMilestoneChange = new EventEmitter();
+
 	// start;
 	// end; 
 	// deadline;
@@ -128,6 +127,7 @@ export class MilestoneComponent {
 		this.goalBuilderService
 		.addResource(this.activeMilestone, this.resourceObject)
 		.subscribe(function(res) {
+			this.onMilestoneChange.emit();
 		}.bind(this));
 	}
 
@@ -135,6 +135,7 @@ export class MilestoneComponent {
 		this.goalBuilderService
 		.addTeamMember(this.activeMilestone, this.teamObject)
 		.subscribe(function(res) {
+			this.onMilestoneChange.emit();
 		}.bind(this));
 	}
 
@@ -142,6 +143,7 @@ export class MilestoneComponent {
 		this.goalBuilderService
 		.addObstacle(this.activeMilestone, this.obstacleObject)
 		.subscribe(function(res) {
+			this.onMilestoneChange.emit();
 		}.bind(this));
 	}
 

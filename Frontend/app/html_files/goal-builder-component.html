@@ -78,6 +78,7 @@
 					*ngIf="activeMilestone" 
 					[goal]="goal"
 					[resources]="resources"
+					(onMilestoneChange)="refreshMilestones()"
 					>
 					</milestone>
 				</div>

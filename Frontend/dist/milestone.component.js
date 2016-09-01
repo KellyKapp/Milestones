@@ -22,7 +22,7 @@ var ResourcesOutputComponent = (function () {
     ResourcesOutputComponent = __decorate([
         core_1.Component({
             selector: 'resources-output',
-            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"resources-output\">{{resource.description}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<li class=\"resources-output\">{{resource.cost | currency:'USD':true:'1.2-2'}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
+            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<li class=\"resources-output\">{{resource.description}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"resources-output\">{{resource.cost | currency:'USD':true:'1.2-2'}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
             styles: ["\n\t\tli {\n\t\t\tlist-style-type: none;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
@@ -39,7 +39,7 @@ var TeamOutputComponent = (function () {
     TeamOutputComponent = __decorate([
         core_1.Component({
             selector: 'team-output',
-            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"team-output\">{{person.name}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<li class=\"team-output\">{{person.role}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
+            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-6\">\n\t\t\t\t<li class=\"team-output\">{{person.name}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"team-output\">{{person.role}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
             styles: ["\n\t\tli {\n\t\t\tlist-style-type: none;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
@@ -56,7 +56,7 @@ var ObstacleOutputComponent = (function () {
     ObstacleOutputComponent = __decorate([
         core_1.Component({
             selector: 'obstacle-output',
-            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-4\">\n\t\t\t\t<li class=\"obstacle-output\">{{obstacle.description}}</li>\n\t\t\t</div>\n\t\t\t<div class=\"col-md=6\">\n\t\t\t\t<li class=\"obstacle-output\">{{obstacle.solution}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
+            template: "\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-1\"></div>\n\t\t\t<div class=\"col-md-9\">\n\t\t\t\t<li class=\"obstacle-output\">{{obstacle.description}}</li>\n\t\t\t</div>\n\t\t</div>\n\t",
             styles: ["\n\t\tli {\n\t\t\tlist-style-type: none;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [])
@@ -67,6 +67,7 @@ var MilestoneComponent = (function () {
     function MilestoneComponent(goalBuilderService, router) {
         this.goalBuilderService = goalBuilderService;
         this.router = router;
+        this.onMilestoneChange = new core_1.EventEmitter();
         // start;
         // end; 
         // deadline;
@@ -87,18 +88,21 @@ var MilestoneComponent = (function () {
         this.goalBuilderService
             .addResource(this.activeMilestone, this.resourceObject)
             .subscribe(function (res) {
+            this.onMilestoneChange.emit();
         }.bind(this));
     };
     MilestoneComponent.prototype.addTeamMember = function () {
         this.goalBuilderService
             .addTeamMember(this.activeMilestone, this.teamObject)
             .subscribe(function (res) {
+            this.onMilestoneChange.emit();
         }.bind(this));
     };
     MilestoneComponent.prototype.addObstacle = function () {
         this.goalBuilderService
             .addObstacle(this.activeMilestone, this.obstacleObject)
             .subscribe(function (res) {
+            this.onMilestoneChange.emit();
         }.bind(this));
     };
     __decorate([
@@ -121,6 +125,10 @@ var MilestoneComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], MilestoneComponent.prototype, "obstacles", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], MilestoneComponent.prototype, "onMilestoneChange", void 0);
     MilestoneComponent = __decorate([
         core_1.Component({
             selector: 'milestone',

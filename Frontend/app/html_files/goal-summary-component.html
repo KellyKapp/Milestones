@@ -1,6 +1,6 @@
 <div class="goal-summary">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<h5>GOAL</h5>
 			<div class="small-line"></div>
 		</div>
@@ -9,20 +9,20 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<h5>RESOURCES</h5>
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
 			<div class="row">
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<ul>
 				        <li *ngFor="let resource of resources">
 				        	{{resource.description}}
 				        </li>
 				    </ul>
 				</div>
-				<div class="col-md-7">
+				<div class="col-md-6">
 					<ul>
 				        <li *ngFor="let resource of resources">
 				        	{{resource.cost | currency:'USD':true}}
@@ -33,20 +33,21 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<h5>TEAM</h5>
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
 			<div class="row">
-				<div class="col-md-5">
+				<div class="col-md-6">
+					
 					<ul>
 				        <li *ngFor="let member of team">
 				        	{{member.name}}
 				        </li>
 				    </ul>
 				</div>
-				<div class="col-md-7">
+				<div class="col-md-6">
 					<ul>
 				        <li *ngFor="let member of team">
 				        	{{member.role}}
@@ -57,20 +58,20 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<h5>OBSTACLES</h5>
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
 			<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-6">
 				<ul>
 					<li *ngFor="let obstacle of obstacles">
 			        	{{obstacle.description}}
 			        </li>
 		        </ul>
 		    </div>
-		    <div class="col-md-7">
+		    <div class="col-md-6">
 		    	<ul>
 					<li *ngFor="let obstacle of obstacles">
 			        	{{obstacle.solution}}

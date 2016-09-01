@@ -27,7 +27,7 @@ var DisplayGoalComponent = (function () {
         core_1.Component({
             selector: "display-goal",
             template: "\n\t\t<div class=\"row goal-block\" (click)=\"viewGoal()\">\n\t\t\t<div class=\"goal-name\">\n\t\t\t\t{{goalItem.name}}\n\t\t\t</div>\n\t\t\t<div class=\"completion-date\">\n\t\t\t\t{{goalItem.completionDate | date:\"longDate\"}}\n\t\t\t</div>\n\t\t</div>\n\t",
-            styles: ["\n\t\t.goal-block {\n\t\t\tbackground-color: #32c5d2;\n\t\t\tpadding: 5px 15px;\n\t\t}\n\t\t.goal-name {\n\t\t\tfont-size: 1.7em;\n\t\t\theight: 50px;\n\t\t\twidth: 200px\n\t\t}\n\t\t.completion-date {\n\t\t\tfont-size: 1.2em;\n\t\t\theight: 40px;\n\t\t\tcolor: white;\n\t\t\twidth: 200px;\n\t\t}\n\t"]
+            styles: ["\n\t\t.goal-block {\n\t\t\tbackground-color: #32c5d2;\n\t\t\tpadding: 5px 15px;\n\t\t}\n\t\t.goal-name {\n\t\t\tfont-size: 1.7em;\n\t\t\theight: 50px;\n\t\t\twidth: 300px\n\t\t}\n\t\t.completion-date {\n\t\t\tfont-size: 1.2em;\n\t\t\theight: 40px;\n\t\t\tcolor: white;\n\t\t\twidth: 200px;\n\t\t}\n\t"]
         }), 
         __metadata('design:paramtypes', [goal_builder_service_1.GoalBuilderService, router_1.Router])
     ], DisplayGoalComponent);

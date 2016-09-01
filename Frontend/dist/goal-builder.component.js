@@ -42,6 +42,14 @@ var GoalBuilderComponent = (function () {
             }.bind(this));
         }.bind(this));
     };
+    GoalBuilderComponent.prototype.refreshMilestones = function () {
+        this.resources = [];
+        this.team = [];
+        this.obstacles = [];
+        this.getResources();
+        this.getTeam();
+        this.getObstacles();
+    };
     GoalBuilderComponent.prototype.getResources = function () {
         console.log(this.milestones);
         for (var i = 0; i < this.milestones.length; i++) {

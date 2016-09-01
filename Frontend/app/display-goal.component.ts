@@ -22,7 +22,7 @@ import { Router } from "@angular/router";
 		.goal-name {
 			font-size: 1.7em;
 			height: 50px;
-			width: 200px
+			width: 300px
 		}
 		.completion-date {
 			font-size: 1.2em;

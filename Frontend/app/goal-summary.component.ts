@@ -9,7 +9,7 @@ import { ApiService } from "./api.service";
 	selector: "goal-summary",
 	templateUrl: 'app/html_files/goal-summary-component.html',
 	styles: [`
-		.col-md-3 {
+		.col-md-2 {
 			border-right: 1px solid grey;
 			font-size: 1.15em
 		}
@@ -30,6 +30,7 @@ import { ApiService } from "./api.service";
 		}
 		li {
 			list-style-type: none;
+			font-size: .85em;
 		}
 	`]
 })

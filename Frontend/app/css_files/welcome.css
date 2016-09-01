@@ -74,9 +74,12 @@ p {
     font-size: 1.25em;
     text-align: justify;
 }
+.text-area p {
+    font-size: 16.5px;
+}
 .graphics-area {
-    padding-left: 100px;
-    padding-top: 40px;
+    padding-left: 40px;
+    padding-top: 100px;
 }
 .icon {
     height: 175px;

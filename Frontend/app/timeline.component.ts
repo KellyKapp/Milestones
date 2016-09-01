@@ -81,6 +81,9 @@ class MilestoneDotComponent {
 			height: 400px;
 			width: 150px;
 		}
+		.end {
+			margin-top: 20px;
+		}
 	`]
 })
 
