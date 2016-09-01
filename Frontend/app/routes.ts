@@ -11,10 +11,10 @@ export const routes: RouterConfig = [
         path: "",
         component: WelcomeComponent
     },
-    {
-        path: "login",
-        component: LoginComponent
-    },
+    // {
+    //     path: "login",
+    //     component: LoginComponent
+    // },
     // {
     //     path: "dashboard/:_id",
     //     component: DashboardComponent

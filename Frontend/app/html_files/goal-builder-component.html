@@ -1,20 +1,20 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container-fluid">
-		    <div class="navbar-header">
-			      <a class="navbar-brand" routerLink="/">
-				        <img id="brand" alt="Brand" src="../media/Short_Logo-Grey.svg" height="90px">
-			      </a>
-		    </div>
-		    <div class="pull-right">
-				    <ul class="nav navbar-nav navbar-right">
-						    <li>
-							      <a routerLink="/dashboard">DASHBOARD</a>
-						    </li>
-						    <li>
-							      <a routerLink="">LOG OUT</a>
-						    </li>
-				    </ul>
-		    </div>
+	    <div class="navbar-header">
+	      <a class="navbar-brand" routerLink="/">
+		    <img id="brand" alt="Brand" src="../media/Short_Logo-Grey.svg" height="90px">
+	      </a>
+	    </div>
+	    <div class="pull-right">
+		    <ul class="nav navbar-nav navbar-right">
+			    <li>
+				      <a routerLink="/dashboard">DASHBOARD</a>
+			    </li>
+			    <!-- <li>
+				      <a routerLink="">LOG OUT</a>
+			    </li> -->
+		    </ul>
+	    </div>
 	  </div>
 </nav>
 
@@ -23,14 +23,19 @@
 	<div class="row goal-builder">
 		<div class="col-md-7 col-sm-12 goal-detail">
 			<div class="title">GOAL SUMMARY</div>
-			<goal-summary [goal]="goal"></goal-summary>
+			<goal-summary 
+			[goal]="goal"
+			[milestones]="milestones"></goal-summary>
 		</div>
 
 		<div class="col-md-5">
 			<div class="col-md-5 timeline-div">
 				<div class="title">TIMELINE</div>
-				<timeline [goal]="goal" [milestones]="milestones" 
-				(openModal)="openModal($event)"></timeline>
+				<timeline 
+					[goal]="goal" 
+					[milestones]="milestones" 
+					(openModal)="openModal($event)">
+				</timeline>
 			</div>
 			<div class="col-md-7 create-milestone">
 				<div class="header">DESCRIPTION</div>
@@ -66,7 +71,9 @@
 				<div class="modal-body">
 					<milestone 
 					[activeMilestone]="activeMilestone"
-					*ngIf="activeMilestone" [goal]="goal"
+					*ngIf="activeMilestone" 
+					[goal]="goal"
+					[resources]="resources"
 					>
 					</milestone>
 				</div>
@@ -86,11 +93,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="save-goal">
+<!-- 	<div class="save-goal">
 		<button class="btn btn-default save" (click)="saveGoal()">
 		SAVE GOAL
 		</button>
-	</div>
+	</div> -->
 </div>
 
 

@@ -20,6 +20,7 @@ var GoalBuilderComponent = (function () {
         this.route = route;
         this.router = router;
         this.milestones = [];
+        this.resources = [];
         this.milestoneObject = {
             description: "",
             deadline: "",
@@ -32,12 +33,15 @@ var GoalBuilderComponent = (function () {
                 .subscribe(function (goal) {
                 this.goal = goal;
                 this.milestones = this.goalBuilderService.getMilestonesForGoal(this.goal._id);
-                console.log("in ngOnInint of GoalBuilderComponent", this.goal);
+                // for (let i = 0; i < this.milestones.length; i++) {
+                // 	for (let j = 0; j < this.milestones[i].resources.length; j++) {
+                // 		this.resources.push(this.milestone.resources[i]);
+                // 	}
+                // }
             }.bind(this));
         }.bind(this));
     };
     GoalBuilderComponent.prototype.buildNewMilestone = function () {
-        console.log(this.milestoneObject);
         this.goalBuilderService
             .buildNewMilestone(this.milestoneObject, this.goal)
             .subscribe(function (res) {
@@ -49,6 +53,7 @@ var GoalBuilderComponent = (function () {
     GoalBuilderComponent.prototype.openModal = function (milestone) {
         this.activeMilestone = milestone;
         $(".milestone").modal();
+        console.log(milestone);
     };
     GoalBuilderComponent = __decorate([
         core_1.Component({

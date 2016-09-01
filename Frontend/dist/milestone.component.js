@@ -12,6 +12,19 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var router_1 = require("@angular/router");
 var goal_builder_service_1 = require("./goal-builder.service");
+var ResourcesOutput = (function () {
+    function ResourcesOutput() {
+    }
+    ResourcesOutput = __decorate([
+        core_1.Component({
+            selector: 'resources-output',
+            template: "<div class=\"resources-output\">{{resource.description}}</div>",
+            styles: ['.resources-output {border: 1px solid black; height: 20px;}']
+        }), 
+        __metadata('design:paramtypes', [])
+    ], ResourcesOutput);
+    return ResourcesOutput;
+}());
 var MilestoneComponent = (function () {
     function MilestoneComponent(goalBuilderService, router) {
         this.goalBuilderService = goalBuilderService;
@@ -29,15 +42,18 @@ var MilestoneComponent = (function () {
             solution: ""
         };
     }
+    MilestoneComponent.prototype.ngOnInit = function () {
+        this.resources = this.activeMilestone.resources;
+        console.log(this.activeMilestone.resources);
+    };
     MilestoneComponent.prototype.addResource = function () {
         this.goalBuilderService
             .addResource(this.activeMilestone, this.resourceObject)
             .subscribe(function (res) {
-            this.resourceObject = res;
-            console.log(this.resourceObject);
+            // this.resourceObject = res;
+            this.resources.push(res);
+            console.log(this.resources);
         }.bind(this));
-        // let form = (<HTMLFormElement>document.getElementById("resource-form"));
-        // form.reset();
     };
     MilestoneComponent.prototype.addTeamMember = function () {
         this.goalBuilderService
@@ -55,22 +71,6 @@ var MilestoneComponent = (function () {
             this.obstacleObject = res;
         }.bind(this));
     };
-    MilestoneComponent.prototype.saveMilestone = function () {
-        // 	let start = this.goal.startDate;
-        // 	let end = this.goal.completionDate;
-        // 	let deadline = this.activeMilestone.deadline;
-        // 	$('.svg').append
-        // 	('<div id="' + this.activeMilestone._id + 
-        // 		'" class="milestone-dot" (click)="openModal(this.id)"></div>');
-        // 	$('#' + this.activeMilestone._id).css("margin-top", function(){
-        // 		var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
-        // 		var pixelsPerMs = 400 / ms;
-        // 		var milestoneMargin = (Math.round(
-        // 			(new Date(deadline).getTime() - new Date(start).getTime()
-        // 		) * pixelsPerMs)) + "px";
-        // 		return milestoneMargin;
-        // });
-    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
@@ -79,10 +79,16 @@ var MilestoneComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], MilestoneComponent.prototype, "goal", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MilestoneComponent.prototype, "resources", void 0);
     MilestoneComponent = __decorate([
         core_1.Component({
             selector: 'milestone',
-            directives: common_1.FORM_DIRECTIVES.slice(),
+            directives: common_1.FORM_DIRECTIVES.concat([
+                ResourcesOutput
+            ]),
             templateUrl: 'app/html_files/milestone-component.html',
             styleUrls: ['app/css_files/milestone.css']
         }), 

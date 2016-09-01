@@ -19,8 +19,8 @@ declare let $;
 		margin-left: 65px;
 	}
 	`]
-
 })
+
 class MilestoneDotComponent {
 
 }
@@ -38,12 +38,12 @@ class MilestoneDotComponent {
   					<line x1="75" y1="0" x2="75" y2="400" style="stroke:#32C5D2;stroke-width:2" />
 				</svg>
 				<milestone-dot 
-				*ngFor="let milestone of milestones"
-				(click)="openModal.emit(milestone)"
-				[style.top.px]="getTopMargin(milestone)"
-				></milestone-dot>
+					*ngFor="let milestone of milestones"
+					(click)="openModal.emit(milestone)"
+					[style.top.px]="getTopMargin(milestone)"
+				>
+				</milestone-dot>
 			</div>
-			
 			<div class="date end">
 				{{goal.completionDate | date:"longDate"}}
 			</div>
@@ -77,15 +77,14 @@ class MilestoneDotComponent {
 			height: 400px;
 			width: 150px;
 		}
-
 	`]
 })
 
 export class TimelineComponent {
 
 	@Input() goal;
-	@Output() openModal = new EventEmitter();
 	@Input() milestones;
+	@Output() openModal = new EventEmitter();
 
 	constructor(private goalBuilderService: GoalBuilderService) {}
 
@@ -93,39 +92,13 @@ export class TimelineComponent {
 
 		let start = this.goal.startDate;
 		let end = this.goal.completionDate;
-		console.log(milestone.deadline);
 
 		var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
 		var pixelsPerMs = 400 / ms;
 		var milestoneMargin = (Math.round(
 			(new Date(milestone.deadline).getTime() - new Date(start).getTime()
 		) * pixelsPerMs));
-		console.log(milestoneMargin);
 		return milestoneMargin;
-	}
-
-	ngOnInit() {
-		// this.milestones = this.goalBuilderService.getMilestonesForGoal(this.goal._id);
-		// console.log("in timeline with goal", this.goal, this.milestones);
-		// let start = this.goal.startDate;
-		// let end = this.goal.completionDate;
-
-		// for (let i = 0; i < this.milestones.length; i++) {
-		// 	console.log("in for loop", this.milestones[i]);
-		// 	$('.svg').append
-		// 	('<div id="' + this.milestones[i]._id + 
-		// 		'" class="milestone-dot" (click)="openModal(this.id)"></div>');
-		// 	$('#' + this.milestones[i]._id).css("margin-top", function(){
-		// 		var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
-		// 		var pixelsPerMs = 400 / ms;
-		// 		var milestoneMargin = (Math.round(
-		// 			(new Date(this.milestones[i].deadline).getTime() - new Date(start).getTime()
-		// 		) * pixelsPerMs)) + "px";
-		// 		return milestoneMargin;
-		// 	}.bind(this));
-		// }
-
-		// $( '.milestone-dot' ).on( 'click', this.openModal.bind(this));
 	}
 
 }

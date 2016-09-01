@@ -27,7 +27,7 @@ export class GoalBuilderComponent {
 
 	private goal;
 	private milestones = [];
-
+	private resources = [];
 
 	milestoneObject = {
 		description: "",
@@ -39,9 +39,7 @@ export class GoalBuilderComponent {
 	constructor(
 			private goalBuilderService: GoalBuilderService,
 			private route: ActivatedRoute, 
-			private router: Router) {
-
-	}
+			private router: Router) {}
 
 	ngOnInit() {
 		this.route.params.subscribe(function(params) {
@@ -49,33 +47,30 @@ export class GoalBuilderComponent {
 			.subscribe(function(goal) {
 				this.goal = goal;
 				this.milestones = this.goalBuilderService.getMilestonesForGoal(this.goal._id);
-				console.log("in ngOnInint of GoalBuilderComponent", this.goal);
+				// for (let i = 0; i < this.milestones.length; i++) {
+				// 	for (let j = 0; j < this.milestones[i].resources.length; j++) {
+				// 		this.resources.push(this.milestone.resources[i]);
+				// 	}
+				// }
 			}.bind(this));
 		}.bind(this));
-
-	
-
 	}
 
 	buildNewMilestone() {
-		console.log(this.milestoneObject);
 		this.goalBuilderService
 		.buildNewMilestone(this.milestoneObject, this.goal)
 		.subscribe(function(res) {
-				this.activeMilestone = res;
-				this.milestones.push(res);
-				$(".milestone").modal();
+			this.activeMilestone = res;
+			this.milestones.push(res);
+			$(".milestone").modal();
 		}.bind(this));
 	}
 
 	openModal(milestone) {
 		this.activeMilestone = milestone;
 		$(".milestone").modal();
+		console.log(milestone);
 	}
 
-
-	// saveGoal() {
-	// 	$(".save").modal();
-	// }
 }
 

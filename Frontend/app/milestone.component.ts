@@ -7,11 +7,22 @@ import { TimelineComponent } from "./timeline.component";
 
 declare let $;
 
+@Component ({
+	selector: 'resources-output',
+	template: `<div class="resources-output">{{resource.description}}</div>`,
+	styles: ['.resources-output {border: 1px solid black; height: 20px;}']
+})
+
+class ResourcesOutput {
+
+}
+
 
 @Component ({
 	selector: 'milestone',
 	directives: [ 
 		...FORM_DIRECTIVES,
+		ResourcesOutput
 	 ],
 	templateUrl: 'app/html_files/milestone-component.html',
 	styleUrls: ['app/css_files/milestone.css']
@@ -22,6 +33,7 @@ export class MilestoneComponent {
 
 	@Input() activeMilestone;
 	@Input() goal;
+	@Input() resources;
 
 	start;
 	end; 
@@ -46,15 +58,19 @@ export class MilestoneComponent {
 		private goalBuilderService: GoalBuilderService, 
 		private router: Router) {}
 
+	ngOnInit() {
+		this.resources = this.activeMilestone.resources;
+		console.log(this.activeMilestone.resources);
+	}
+
 	addResource() {
 		this.goalBuilderService
 		.addResource(this.activeMilestone, this.resourceObject)
 		.subscribe(function(res) {
-				this.resourceObject = res;
-				console.log(this.resourceObject);
+			// this.resourceObject = res;
+			this.resources.push(res);
+			console.log(this.resources);
 		}.bind(this));
-		// let form = (<HTMLFormElement>document.getElementById("resource-form"));
-		// form.reset();
 	}
 
 	addTeamMember() {
@@ -75,24 +91,6 @@ export class MilestoneComponent {
 		}.bind(this));
 	}
 
-	saveMilestone() {
-
-	// 	let start = this.goal.startDate;
-	// 	let end = this.goal.completionDate;
-	// 	let deadline = this.activeMilestone.deadline;
-
-	// 	$('.svg').append
-	// 	('<div id="' + this.activeMilestone._id + 
-	// 		'" class="milestone-dot" (click)="openModal(this.id)"></div>');
-	// 	$('#' + this.activeMilestone._id).css("margin-top", function(){
-	// 		var ms = Math.abs(new Date(end).getTime() - new Date(start).getTime());
-	// 		var pixelsPerMs = 400 / ms;
-	// 		var milestoneMargin = (Math.round(
-	// 			(new Date(deadline).getTime() - new Date(start).getTime()
-	// 		) * pixelsPerMs)) + "px";
-	// 		return milestoneMargin;
-		// });
-	}
 }
 
 

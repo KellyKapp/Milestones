@@ -8,6 +8,7 @@ export class GoalBuilderService {
 
 	goals = [];
 	milestones = [];
+	resources = [];
 
 	constructor(private apiService: ApiService) {
 		this.getAllMilestones().subscribe();
@@ -62,9 +63,7 @@ export class GoalBuilderService {
 			},
 			milestoneId: milestone._id,
 		})).do(function(res) {
-			console.log(res);
 			milestone.resources.push(res);
-			console.log(milestone);
 		}.bind(this));
 	}
 
@@ -96,6 +95,12 @@ export class GoalBuilderService {
 		console.log("getting milestones", this.milestones.length);
 		return this.milestones.filter(function(milestone) {
 			return milestone.goalId === goalId;
+		});
+	}
+
+	getResourcesForMilestone(milestoneId) {
+		return this.resources.filter(function(resource) {
+			return resource.milestoneId === milestoneId;
 		});
 	}
 

@@ -14,8 +14,12 @@
 			<div class="small-line"></div>
 		</div>
 		<div class="col-md-9">
-			<input>
-		<!-- 	[(ngModel)]="milestone.resources" -->
+			<ul>
+		        <li *ngFor="let milestone of milestones">
+		        	{{milestone.description}}
+		        	{{milestone.deadline | date:"longDate"}}
+		        </li>
+		    </ul>
 		</div>
 	</div>
 	<div class="row">

@@ -16,12 +16,18 @@ var GoalSummaryComponent = (function () {
         this.goalBuilderService = goalBuilderService;
         this.router = router;
     }
-    GoalSummaryComponent.prototype.ngOnInit = function () {
-    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], GoalSummaryComponent.prototype, "goal", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], GoalSummaryComponent.prototype, "milestones", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], GoalSummaryComponent.prototype, "resources", void 0);
     GoalSummaryComponent = __decorate([
         core_1.Component({
             selector: "goal-summary",

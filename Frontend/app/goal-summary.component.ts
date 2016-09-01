@@ -31,15 +31,13 @@ import { ApiService } from "./api.service";
 export class GoalSummaryComponent {
 
 	@Input() goal;
-
-	private milestone;
+	@Input() milestones;
+	@Input() resources;
 
 	constructor (
 		private goalBuilderService: GoalBuilderService, 
 		private router: Router) {}
 
-	ngOnInit() {
 
-	}
 
 }
