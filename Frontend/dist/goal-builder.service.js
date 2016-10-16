@@ -142,6 +142,20 @@ var GoalBuilderService = (function () {
             }
         }
     };
+    GoalBuilderService.prototype.deleteGoal = function (_id) {
+        return this.apiService.post("/deleteGoal", JSON.stringify({
+            _id: _id
+        })).do(function (res) {
+            this.goals = res;
+        }.bind(this));
+    };
+    GoalBuilderService.prototype.deleteMilestone = function (_id) {
+        return this.apiService.post("/deleteMilestone", JSON.stringify({
+            _id: _id
+        })).do(function (res) {
+            this.milestones = res;
+        }.bind(this));
+    };
     GoalBuilderService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [api_service_1.ApiService])

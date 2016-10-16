@@ -68,9 +68,7 @@ var MilestoneComponent = (function () {
         this.goalBuilderService = goalBuilderService;
         this.router = router;
         this.onMilestoneChange = new core_1.EventEmitter();
-        // start;
-        // end; 
-        // deadline;
+        this.onDelete = new core_1.EventEmitter();
         this.resourceObject = {
             description: "",
             cost: ""
@@ -105,6 +103,9 @@ var MilestoneComponent = (function () {
             this.onMilestoneChange.emit();
         }.bind(this));
     };
+    MilestoneComponent.prototype.deleteMilestone = function () {
+        this.onDelete.emit();
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
@@ -129,6 +130,10 @@ var MilestoneComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], MilestoneComponent.prototype, "onMilestoneChange", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], MilestoneComponent.prototype, "onDelete", void 0);
     MilestoneComponent = __decorate([
         core_1.Component({
             selector: 'milestone',

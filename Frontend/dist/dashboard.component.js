@@ -44,6 +44,9 @@ var DashboardComponent = (function () {
             this.router.navigate(['/goal-builder', res._id]);
         }.bind(this));
     };
+    DashboardComponent.prototype.deleteGoal = function (id) {
+        this.goalBuilderService.deleteGoal(id).subscribe();
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: "dashboard",

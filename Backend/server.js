@@ -12,7 +12,7 @@ var GoalModel = dbModels.GoalModel;
 var MilestoneModel = dbModels.MilestoneModel;
 var UserModel = require("./user.model")(mongoose);
 
-var app = express();
+var app = express(); 
 
 app.use(cors());
 
@@ -54,6 +54,52 @@ app.post('/create', function(req, res) {
 	});
 });
 
+app.post('/updateGoal', function(req, res) {
+	var _id = req.body.goal._id;
+	GoalModel.findOneAndUpdate(
+		{_id: _id},
+		{$set : {
+			name: req.body.goal.name,
+			startDate: req.body.goal.startDate,
+			completionDate: req.body.goal.completionDate
+		}},
+		{new: true},
+		function(err, data) {
+			if (err) {
+				res.status(500);
+				res.send("Error updating Goal");
+				return;
+			}
+			res.send(data);
+		}
+	);
+});
+
+app.post('/deleteGoal', function(req, res) {
+	GoalModel.remove(
+		{
+			_id: req.body._id
+		},
+		function(err){
+			if (err) {
+				res.status(500);
+				res.send("Error deleting Goal");
+				return;
+			}
+			GoalModel.find(
+				{},
+				function (err, data) {
+					if (err) {
+						res.status(500);
+						res.send("Error getting all Goals");
+						return;
+					}
+					res.send(JSON.stringify(data));
+				}
+			);
+		}
+	);
+});
 
 app.post('/milestone', function(req, res) {
 	var milestoneData = {
@@ -64,8 +110,6 @@ app.post('/milestone', function(req, res) {
 		obstacles: [],
 		goalId: req.body.milestone.goalId
 	};
-
-	console.log(milestoneData);
 
 	var milestone = new MilestoneModel (milestoneData);
 
@@ -78,6 +122,32 @@ app.post('/milestone', function(req, res) {
 		}
 		res.send(doc);
 	});
+});
+
+app.post('/deleteMilestone', function(req, res) {
+	MilestoneModel.remove(
+		{
+			_id: req.body._id
+		},
+		function(err){
+			if (err) {
+				res.status(500);
+				res.send("Error deleting Milestone");
+				return;
+			}
+			MilestoneModel.find(
+				{},
+				function (err, data) {
+					if (err) {
+						res.status(500);
+						res.send("Error getting all Milestones");
+						return;
+					}
+					res.send(JSON.stringify(data));
+				}
+			);
+		}
+	);
 });
 
 
@@ -169,7 +239,6 @@ app.get('/all', function(req, res) {
 				return;
 			}
 			res.send(JSON.stringify(data));
-			console.log(data);
 		}
 	);
 });
@@ -184,7 +253,6 @@ app.get('/milestones', function(req, res) {
 				return;
 			}
 			res.send(JSON.stringify(data));
-			console.log(data);
 		}
 		);
 });
@@ -199,7 +267,6 @@ app.get('/allmilestones', function(req, res) {
 				return;
 			}
 			res.send(JSON.stringify(data));
-			console.log(data);
 		}
 	);
 });

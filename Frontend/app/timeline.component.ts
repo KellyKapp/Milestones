@@ -45,7 +45,8 @@ class MilestoneDotComponent {
 					[milestone]="milestone"
 					(click)="openModal.emit(milestone)"
 					[style.top.px]="getTopMargin(milestone)"
-				>
+					(onDelete)="deleteMilestone(milestone._id)"
+					>
 				</milestone-dot>
 			</div>
 			<div class="date end">
@@ -106,6 +107,10 @@ export class TimelineComponent {
 			(new Date(milestone.deadline).getTime() - new Date(start).getTime()
 		) * pixelsPerMs));
 		return milestoneMargin;
+	}
+
+	deleteMilestone(id) {
+		this.goalBuilderService.deleteMilestone(id).subscribe();
 	}
 
 }

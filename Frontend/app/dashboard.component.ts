@@ -50,4 +50,8 @@ export class DashboardComponent {
 			this.router.navigate(['/goal-builder', res._id]);
 		}.bind(this));
 	}
+
+	deleteGoal(id) {
+		this.goalBuilderService.deleteGoal(id).subscribe();
+	}
 }

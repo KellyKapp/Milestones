@@ -23,6 +23,7 @@
 	<display-goal
 		*ngFor="let goalItem of this.goalBuilderService.goals; let i = index;"
 		[goalItem]="goalItem"
+		(onDelete)="deleteGoal(goalItem._id)"
 	></display-goal>
 </div>
 

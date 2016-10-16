@@ -53,6 +53,7 @@ class ResourcesOutputComponent {
 
 class TeamOutputComponent {
 	@Input() person;
+
 }
 
 @Component ({
@@ -99,10 +100,8 @@ export class MilestoneComponent {
 	@Input() obstacles;
 
 	@Output() onMilestoneChange = new EventEmitter();
+	@Output() onDelete = new EventEmitter();
 
-	// start;
-	// end; 
-	// deadline;
 
 	resourceObject = {
 		description: "",
@@ -145,6 +144,10 @@ export class MilestoneComponent {
 		.subscribe(function(res) {
 			this.onMilestoneChange.emit();
 		}.bind(this));
+	}
+
+	deleteMilestone() {
+		this.onDelete.emit();
 	}
 
 }

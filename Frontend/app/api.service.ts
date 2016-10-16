@@ -54,9 +54,6 @@ export class ApiService {
 			body,
 			{headers: this.postHeaders}
 		)
-		// .toPromise().then(function(data) {
-		// 	return data.json();
-		// }).catch(err => Observable.throw(err));
 		.map(this.checkForError)
 		.catch(err => Observable.throw(err))
 		.map(this.getJSON);

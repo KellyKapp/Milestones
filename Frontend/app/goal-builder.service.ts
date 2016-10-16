@@ -152,5 +152,21 @@ export class GoalBuilderService {
 		}
 	}
 
+	deleteGoal(_id) {
+		return this.apiService.post("/deleteGoal", JSON.stringify({
+			_id: _id
+		})).do(function(res) {
+			this.goals = res;
+		}.bind(this));
+	}
+
+	deleteMilestone(_id) {
+		return this.apiService.post("/deleteMilestone", JSON.stringify({
+			_id: _id
+		})).do(function(res) {
+			this.milestones = res;
+		}.bind(this));
+	}
+
 }
 
