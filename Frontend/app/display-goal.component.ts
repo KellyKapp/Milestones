@@ -12,11 +12,11 @@ import { Router } from "@angular/router";
 			<div class="completion-date">
 				{{goalItem.completionDate | date:"longDate"}}
 			</div>
-			<div class="delete-goal">
-				<button (click)="viewGoal()">View</button>
+			<div class="view-goal" id="test">
+				<button (click)="viewGoal()">VIEW DETAILS</button>
 			</div>
 			<div class="delete-goal">
-				<button (click)="deleteGoal()">-</button>
+				<button (click)="deleteGoal()">DELETE</button>
 			</div>
 		</div>
 	`,
@@ -35,6 +35,22 @@ import { Router } from "@angular/router";
 			height: 40px;
 			color: white;
 			width: 200px;
+		}
+		.view-goal {
+			float: left;
+			margin-right: 40px;
+		}
+		.delete-goal {
+			float: right;
+		}
+		button {
+			height: 25px;
+		    font-family: Helvetica;
+		    font-size: .8em;
+		    background-color: #2F353B;
+		    border-radius: 0;
+		    border: none;
+		    color: #FFF;
 		}
 	`]
 })
